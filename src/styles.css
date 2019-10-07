@@ -57,3 +57,19 @@
     margin-right: 4px;
 }
 
+.profile-pic{
+    display: block;
+    background-image: url("./assets/images/profile-pic.png");
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+@media only screen and (max-width: 995px) {
+    .profile-pic{
+        display: none;
+    }
+  }
