@@ -20,13 +20,29 @@
     color: white;
 }
 
+.dark-theme-background{
+    background-color: #1db36d;
+    color: white;
+}
+
 .text-centered{
     text-align: center;
 }
 
 .login-wrapper{
-    margin-top: 8%;
-    margin-bottom: 8%;
+    margin-bottom: 10%;
     border: 1px solid #e0e0e0;
-    padding: 40px;
+    padding: 45px;
+    border-radius: 4px;
+}
+
+.margin-top-style{
+    margin-top: 2%;
+}
+
+.text-style-heading{
+    font-family: Calibri;
+    font-weight: 300;
+    font-size: 25px;
+    color: green;
 }

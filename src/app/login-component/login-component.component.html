@@ -1,6 +1,15 @@
 <div class="container">
-    <div class="col-md-5  centered">
+    <div class="col-md-5 margin-top-style centered">
+        <div *ngIf="loginSuccess" class="alert alert-success" role="alert">
+            Congratulations! your action has been successful!
+        </div>
+
+        <div *ngIf="loginError" class="alert alert-warning" role="alert">
+            Error! Invalid username or password!
+        </div>
+
         <form class="login-wrapper">
+            <div class="text-style-heading">Login to the community!</div><br />
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -13,8 +22,15 @@
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember me?</label>
+            </div>
 
-            <button type="submit" class="btn theme-background btn-block">Login</button>
+            <button type="button" class="btn dark-theme-background btn-block" (click)="login()">
+                <span *ngIf="loginLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Login
+            </button>
         </form>
     </div>
 </div>
