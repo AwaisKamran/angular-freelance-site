@@ -1,0 +1,32 @@
+.centered{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+.clear-both{
+    clear: both;
+}
+
+.theme-background{
+    background-color: #1dbf73;
+    color: white;
+}
+
+.text-centered{
+    text-align: center;
+}
+
+.login-wrapper{
+    margin-top: 8%;
+    margin-bottom: 8%;
+    border: 1px solid #e0e0e0;
+    padding: 40px;
+}
