@@ -55,3 +55,10 @@
     background-position: center;
     padding: 10px;
 }
+
+.slider-heading{
+    font-size: 26px;
+    font-weight: 500;
+    font-family: 'Calibri';
+    color: #46CD84;
+}

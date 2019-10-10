@@ -1,7 +1,22 @@
 <div class="preview-container">
     <div class="container">
         <div class="row">
-            <div class="col-md-7"></div>
+            <div class="col-md-7">
+                <div class="slider-heading">A growing community</div>
+                <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-interval="10000">
+                           Hello World 
+                        </div>
+                        <div class="carousel-item" data-interval="1500">
+                           Hello World 
+                        </div>
+                        <div class="carousel-item">
+                           Hello World 
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-5 margin-top-style">
                 <div *ngIf="loginSuccess" class="alert alert-success" role="alert">
                     Congratulations! your action has been successful!
@@ -12,9 +27,9 @@
                 </div>
 
                 <form class="login-wrapper">
-                    <img src="../../assets/images/logo 1.png" width="250" class="img-fluid centered" />
+                    <img src="../../assets/images/logo.png" width="250" class="img-fluid centered" />
                     <div class="form-group">
-     
+
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                             placeholder="Email">
                     </div>
