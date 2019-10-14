@@ -38,7 +38,7 @@
 }
 
 .margin-top-style{
-    margin-top: 2%;
+    margin-top: 4%;
 }
 
 .text-style-heading{
@@ -61,4 +61,37 @@
     font-weight: 500;
     font-family: 'Calibri';
     color: #46CD84;
+    margin-top: 20%;
+}
+
+.yellow{
+    color: yellow;
+    margin-right: 4px;
+}
+
+.user-qoute-text{
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 200;
+    font-family: 'Calibri';
+}
+
+.user-name{
+    font-size: 22px;
+    font-weight: 200;
+    font-family: 'Calibri';
+}
+
+.user-image{
+    background-image: url("../../assets/images/dummy-profile-picture.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.text-center{
+    text-align: center;
 }
