@@ -5,15 +5,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
-import { UserBadgeComponent } from './user-badge/user-badge.component';
-import { UserBadgeComponentComponent } from './user-badge-component/user-badge-component.component';
+import { UserBadgeComponent } from './user-badge-component/user-badge.component';
+import { UserMiniBadgeComponent } from './user-mini-badge-component/user-mini-badge.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponentComponent,
     UserBadgeComponent,
-    UserBadgeComponentComponent
+    UserMiniBadgeComponent
   ],
   imports: [
     NgbModule,
