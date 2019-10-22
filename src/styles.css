@@ -68,6 +68,33 @@
     background-position: center;
 }
 
+.heading-highlighter{
+    color:#46CD84
+}
+
+.service-heading{
+    font-size: 18px;
+    font-weight: 400 !important;
+}
+
+.service-detail{
+    font-size: 16px;
+    font-weight: 300 !important;
+}
+
+.service-image{
+    width: 75px;
+}
+
+.service-flex-box{
+    display: flex;
+    align-items: center;
+}
+
+.container-padding{
+    padding: 20px;
+}
+
 @media only screen and (max-width: 995px) {
     .profile-pic{
         display: none;
