@@ -1,0 +1,116 @@
+.dashboard-container{
+    background-color: #fbf9f9;
+}
+
+.headline{
+    margin-bottom: 10px;
+}
+
+.profile-card{
+    background-color: white;
+}
+
+.order-list{
+    margin-left: 20px;
+}
+
+.order-wrapper{
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.order-container{
+    background-color: white;
+    padding: 10px;
+}
+
+.order-heading{
+    background-color: white;
+}
+
+.padding-10{
+    padding: 10px;
+}
+
+.margin-20{
+    margin: 20px;
+}
+
+.badge-rating{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.yellow{
+    color: yellow;
+}
+
+.profile-badge{
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.no-padding-left{
+    padding-right: 0px !important;
+}
+
+.no-margin-left{
+    margin-left: 0px !important;
+}
+
+.no-padding-top{
+    padding-top: 0px !important;
+}
+
+.button-style{
+    margin-top: 10px;
+}
+
+.create-service-icon{
+    color: #258cab;
+    font-size: 100px;
+    text-align: center;
+    margin-top: 45%;
+}
+
+.create-service-icon-container{
+    background-color: white;
+    min-height: 292px;
+    min-width: 223px;
+    text-align: center;
+    cursor: pointer
+}
+
+.heart-icon{
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+.green{
+    color: #34a734;
+}
+
+.bold{
+    font-weight: 500;
+}
+
+.float-right{
+    float: right;
+}
+
+.float-left{
+    float: left;
+}
+
+.clear-both{
+    clear: both;
+}
+
+.user-actions{
+    margin-top: 10px;
+}
+
+.placeholder{
+    background-color: #e0e0e0;
+}

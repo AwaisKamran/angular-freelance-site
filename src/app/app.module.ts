@@ -8,6 +8,7 @@ import { LoginComponentComponent } from './login-component/login-component.compo
 import { UserBadgeComponent } from './user-badge-component/user-badge.component';
 import { UserMiniBadgeComponent } from './user-mini-badge-component/user-mini-badge.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserServicesComponent } from './user-services/user-services.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponentComponent,
     UserBadgeComponent,
     UserMiniBadgeComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserServicesComponent
   ],
   imports: [
     NgbModule,
