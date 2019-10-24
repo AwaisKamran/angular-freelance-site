@@ -1,0 +1,60 @@
+.dashboard-container{
+    background-color: #fbf9f9;
+}
+
+.profile-card{
+    background-color: white;
+}
+
+.order-list{
+    margin-left: 20px;
+}
+
+.order-wrapper{
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.order-container{
+    background-color: white;
+    padding: 10px;
+}
+
+.order-heading{
+    background-color: white;
+}
+
+.padding-10{
+    padding: 10px;
+}
+
+.margin-20{
+    margin: 20px;
+}
+
+.badge-rating{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.yellow{
+    color: yellow;
+}
+
+.profile-badge{
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.no-padding-left{
+    padding-right: 0px !important;
+}
+
+.no-margin-left{
+    margin-left: 0px !important;
+}
+
+.no-padding-top{
+    padding-top: 0px !important;
+}

@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { UserBadgeComponent } from './user-badge-component/user-badge.component';
 import { UserMiniBadgeComponent } from './user-mini-badge-component/user-mini-badge.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponentComponent,
     UserBadgeComponent,
-    UserMiniBadgeComponent
+    UserMiniBadgeComponent,
+    DashboardComponent
   ],
   imports: [
     NgbModule,
