@@ -1,5 +1,11 @@
 .navigation-bar{
-    background-color: #1dbf73;
+    background-color: white;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+.navbar-logo{
+    width: 52px;
 }
 
 .color-white{
@@ -59,7 +65,7 @@
 
 .profile-pic{
     display: block;
-    background-image: url("./assets/images/profile-pic.png");
+    background-image: url("./assets/images/dummy-profile-picture.jpg");
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -100,3 +106,47 @@
         display: none;
     }
   }
+
+.theme-background{
+    background-color: #1dbf73;
+    color: white;
+}
+
+.dark-theme-background{
+    background-color: #1db36d;
+    color: white;
+}
+
+.text-color-green{
+    color: #1db36d;
+}
+
+.background-picture{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 275px;
+    overflow: hidden;
+}
+
+.image-block-style{
+    margin-bottom: 30px;
+}
+
+.image-tag{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: black;
+    opacity: 0.6;
+    color: white;
+    font-size: 22px;
+    font-weight: 100;
+    position: absolute;
+    bottom: 0px;
+    width: 92%;
+}
+
+.nav-link:hover{
+    color: #1db36d !important;
+}

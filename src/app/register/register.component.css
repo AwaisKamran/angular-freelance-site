@@ -1,0 +1,130 @@
+.no-padding-left{
+    padding-left: 0px; 
+}
+
+.no-overflow{
+    overflow: hidden;
+}
+
+.form{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
+
+.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flag-margin{
+    margin-top: -4px;
+}
+
+.red{
+    color: red;
+    margin-left: 4px;
+}
+
+.typeContainer{
+    border: 1px solid #1dbf73;
+    padding: 4px;
+    color: #1dbf73;
+    border-radius:5px;
+    width: 45%;
+    float: left;
+    margin-right: 2px;
+    text-align: center;
+    height: 60px;
+    line-height: 54px;
+    font-size: 20px;
+    font-weight: 200;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.green{
+    color: #1dbf73;
+    cursor: pointer;
+}
+
+.selectType{
+    margin-bottom: 25px;
+    height: 65px;
+}
+
+.greenBlock{
+    background-color: #1dbf73;
+    color: white;
+}
+
+.half-button{
+    width: 49%;
+}
+
+.facebook{
+    color: white;
+    background-color: #3b5999;
+    margin-right: 4px;
+}
+
+.gmail{
+    color: white;
+    background-color: #d44638;
+    margin-left: 2px;
+    margin-top: 0px;
+}
+
+.float-left{
+    float: left;
+}
+
+.clear-both{
+    clear: both;
+}
+
+.social-login{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.no-padding{
+    padding: 0px !important;
+}
+
+.margin-bottom-button{
+    margin-bottom: 8px;
+}
+
+.padding-button-left{
+    padding-left: 4px !important;
+}
+
+.padding-button-right{
+    padding-right: 4px !important;
+}
+
+.login-form{
+    padding: 10px;
+}
+
+.login-wrapper{
+    padding: 15px;
+}
+
+@media only screen and (max-width: 800px) {
+    .padding-button-left{
+        padding-left: 0px !important;
+    }
+    
+    .padding-button-right{
+        padding-right: 0px !important;
+    }
+}

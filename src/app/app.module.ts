@@ -1,30 +1,51 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponentComponent } from './login-component/login-component.component';
-import { UserBadgeComponent } from './user-badge-component/user-badge.component';
-import { UserMiniBadgeComponent } from './user-mini-badge-component/user-mini-badge.component';
+import { LoginComponent } from './login/login.component';
+import { UserMiniBadgeComponent } from './user-mini-badge/user-mini-badge.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserServicesComponent } from './user-services/user-services.component';
+
+import { CategoryService } from './services/category.service';
+import { ServicesService } from './services/services.service';
+import { SubCategoryService } from './services/sub-category.service';
+import { UserService } from './services/user.service';
+import { RegisterComponent } from './register/register.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponentComponent,
-    UserBadgeComponent,
+    LoginComponent,
     UserMiniBadgeComponent,
     DashboardComponent,
-    UserServicesComponent
+    UserServicesComponent,
+    RegisterComponent,
+    UserSettingsComponent
   ],
   imports: [
     NgbModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
+    CategoryService,
+    ServicesService,
+    SubCategoryService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

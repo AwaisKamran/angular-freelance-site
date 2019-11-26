@@ -8,6 +8,7 @@
 
 .profile-card{
     background-color: white;
+    border: 1px solid #e0e0e0;
 }
 
 .order-list{
@@ -22,14 +23,16 @@
 .order-container{
     background-color: white;
     padding: 10px;
+    border: 1px solid #e0e0e0;
 }
 
 .order-heading{
     background-color: white;
+    border: 1px solid #e0e0e0;
 }
 
-.padding-10{
-    padding: 10px;
+.padding-20{
+    padding: 20px;
 }
 
 .margin-20{
@@ -40,6 +43,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .yellow{
@@ -107,10 +111,85 @@
     clear: both;
 }
 
-.user-actions{
+.placeholder{
+    background-color: #e0e0e0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 175px;
+}
+
+.badge-name{
+    width: 100%;
+    text-align: center;
+}
+
+.badge-position{
+    width: 100%;
+    text-align: center;
+}
+
+.badge-about-me{
+    font-size: 15px;
+}
+
+.bold{
+    font-weight: 500;
+}
+
+.badge-rating{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-container{
+    text-align: center;
+    font-size: 100px;
+    color: #45a539;
+    height: 258px;
+    line-height: 258px;
+    cursor: pointer;
+}
+
+.green{
+    color: #45a539;
+}
+
+.field{
     margin-top: 10px;
 }
 
-.placeholder{
-    background-color: #e0e0e0;
+.back-button{
+    cursor: pointer;
+}
+
+.create-order{
+    background-color: white;
+    padding: 20px;
+}
+
+.no-padding{
+    padding: 0px !important;
+}
+
+.image-style{
+    width: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+}
+
+.hide{
+    display: none;
 }

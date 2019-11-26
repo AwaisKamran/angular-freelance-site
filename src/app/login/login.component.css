@@ -1,0 +1,136 @@
+.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+.clear-both{
+    clear: both;
+}
+
+.text-centered{
+    text-align: center;
+}
+
+.login-wrapper{
+    margin-bottom: 10%;
+    padding: 35px;
+    background-color: white;
+    opacity: 0.92;
+}
+
+.margin-top-style{
+    margin-top: 4%;
+}
+
+.text-style-heading{
+    font-family: Calibri;
+    font-weight: 300;
+    font-size: 25px;
+    color: green;
+}
+
+.preview-container{
+    background-image: url("../../assets/images/preview.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 10px;
+    height: 350px;
+}
+
+.preview-logo-container{
+    background-image: url("../../assets/images/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 200px;
+    margin-top: 45px;
+    opacity: 0.70;
+}
+
+.slider-heading{
+    font-size: 28px;
+    font-weight: 200;
+    font-family: 'Calibri';
+    color: #656565;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.container-section-heading{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    font-weight: 300;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.green{
+    color: #46CD84;
+}
+
+.services-section{
+    background-color: white;
+}
+
+.social-login{
+    width: 100%;
+    margin-top: 8px;
+}
+
+.float-left{
+    float: left;
+}
+
+.clear-both{
+    clear: both;
+}
+
+.btn-light-weight{
+    font-weight: 200;
+}
+
+.btn-light-green{
+    background-color: #4e904e;
+    border: 1px solid #4e904e;
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+.email-field-margin{
+    margin-top: 5px;
+}
+
+.preview-container-heading{
+    font-size: 26px;
+}
+
+.preview-container-sub-heading{
+    font-size: 22px;
+}
+
+.service-flex-box{
+    margin-bottom: 40px;
+}
+
+.row-content{
+    background-color: #46CD84;
+    color: white;
+    padding: 20px;
+}

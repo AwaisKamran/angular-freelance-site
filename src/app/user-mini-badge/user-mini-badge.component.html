@@ -1,0 +1,11 @@
+<div class="user-qoute col-md-12 col-sm-12 col-12">
+    <div class="user-image" [ngStyle]="userStyle"></div>
+    <span class="user-qoute-text">"{{userQuote}}"</span>
+    <div class="user-details"> 
+        <div class="user-name">{{userName}}</div>
+        <div class="user-rating">
+            <i *ngFor="let star of stars" class="fa fa-star yellow" aria-hidden="true"></i>
+        </div>
+        <div class="user-position">{{userPosition}}</div>
+    </div>
+</div>

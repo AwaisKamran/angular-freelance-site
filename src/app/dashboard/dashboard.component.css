@@ -4,6 +4,7 @@
 
 .profile-card{
     background-color: white;
+    border: 1px solid #e0e0e0;
 }
 
 .order-list{
@@ -18,14 +19,20 @@
 .order-container{
     background-color: white;
     padding: 10px;
+    border: 1px solid #e0e0e0;
 }
 
 .order-heading{
     background-color: white;
+    border: 1px solid #e0e0e0;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 5px;
+    padding-right: 8px;
 }
 
-.padding-10{
-    padding: 10px;
+.padding-20{
+    padding: 20px;
 }
 
 .margin-20{
@@ -36,6 +43,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .yellow{
@@ -57,4 +65,63 @@
 
 .no-padding-top{
     padding-top: 0px !important;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+.clear-both{
+    clear: both;
+}
+
+.order-count{
+    font-weight: 500;
+}
+
+.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.badge-name{
+    width: 100%;
+    text-align: center;
+}
+
+.badge-position{
+    width: 100%;
+    text-align: center;
+}
+
+.badge-about-me{
+    font-size: 15px;
+}
+
+.bold{
+    font-weight: 500;
+}
+
+/** Buyers style **/
+.buyer-name{
+    width: 100%;
+    text-align: center;
+}
+
+.badge-progress{
+    background-color: #45a539;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.field{
+    margin-top: 10px;
 }

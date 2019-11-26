@@ -1,0 +1,141 @@
+<div class="resgiter-container no-overflow">
+    <div *ngIf="isRegister" class="form col-lg-5 col-md-5 col-sm-12 col-12">
+        <br/>
+        <div *ngIf="registerSuccess" class="alert alert-success" role="alert">
+            Congratulations! user has been registered!
+        </div>
+
+        <div *ngIf="registerError" class="alert alert-danger" role="alert">
+            Error! There was an internal server error.
+        </div>
+
+        <div *ngIf="missingFields" class="alert alert-warning" role="alert">
+            Warning! Please fill in all the fields.
+        </div>
+
+        <img src="assets/images/logo.png" width="250" class="img-fluid centered" /><br/>
+
+        <div class="selectType">
+            <div [ngClass]="{ 'greenBlock': isFreelancer === true }" class="typeContainer margin-right-10" (click)="selectType(true)">Become freelancer</div>
+            <div [ngClass]="{ 'greenBlock': isFreelancer === false }" class="typeContainer" (click)="selectType(false)">Hire freelancers</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="exampleInputEmail1">Username<span class="red">*</span></label>
+            <input [(ngModel)]="data.name" type="text" class="form-control" placeholder="Enter username">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address<span class="red">*</span></label>
+            <input [(ngModel)]="data.email" type="email" class="form-control" placeholder="Enter email">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Password<span class="red">*</span></label>
+            <input [(ngModel)]="data.password" type="password" class="form-control" placeholder="Enter your password">
+        </div>
+
+        <div class="col-md-12 col-12 form-group no-padding-left">
+            <label>
+                Country
+                <img class="flag-margin" [src]="flag" width="25" />
+                <span class="red">*</span>
+            </label>
+            <div>
+                <select class="form-control" [(ngModel)]="data.country" (change)="countryChanged()">
+                    <option *ngFor="let country of countries; let i = index;" [value]="i">
+                        {{ country.name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-12">
+            <div class="row">
+                <div class="col-md-4 col-4 form-group no-padding-left">
+                    <label for="exampleInputEmail1">Country code<span class="red">*</span></label>
+                    <div>
+                        <select class="form-control countryCodes" [(ngModel)]="data.code" disabled>
+                            <option *ngFor="let country of countries">
+                                {{country.callingCodes[0]}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-8 form-group no-padding-left">
+                    <label for="exampleInputEmail1">Phone number<span class="red">*</span></label>
+                    <input [(ngModel)]="data.phone" type="text" class="form-control" placeholder="Enter your phone number">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">City<span class="red">*</span></label>
+            <input [(ngModel)]="data.city" type="text" class="form-control" placeholder="Enter your city">
+        </div>
+
+        <div class="form-group" *ngIf="isFreelancer">
+            <label for="exampleInputEmail1">Travel Radius (km)<span class="red">*</span></label>
+            <input [(ngModel)]="data.travelRadius" type="text" class="form-control" placeholder="Enter travel radius">
+            <small class="form-text text-muted">Please note that the mentioned travel radius will enable the hirers to
+                reach you within the stated region.</small>
+        </div>
+
+        <button type="button" class="btn dark-theme-background btn-block" (click)="register()">
+            <span *ngIf="regsiterLoading" class="spinner-border spinner-border-sm" role="status"
+                aria-hidden="true"></span>
+            Register
+        </button><br />
+    </div>
+
+    <div *ngIf="!isRegister">
+        <div class="row">
+            <div class="col-md-5 col-sm-11 col-11 margin-top-style no-padding form login-form">
+                <div class="login-wrapper">
+                    <div *ngIf="loginSuccess" class="alert alert-success" role="alert">
+                        Congratulations! your action has been successful!
+                    </div>
+    
+                    <div *ngIf="loginError" class="alert alert-danger" role="alert">
+                        Error! Invalid username or password!
+                    </div>
+    
+                    <img src="assets/images/logo.png" width="250" class="img-fluid centered" />
+    
+                    <div class="form-group email-field-margin">
+                        <input type="email" [(ngModel)]="userData.email" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Email">
+                    </div>
+    
+                    <div class="form-group">
+                        <input type="password" [(ngModel)]="userData.password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label" for="exampleCheck1">Not a member yet? <span class="green" (click)="toggleRegisterForm()">Register Now!</span></label>
+                    </div>
+    
+                    <button type="button" class="btn dark-theme-background btn-block" (click)="login()">
+                        <span *ngIf="loginLoading" class="spinner-border spinner-border-sm" role="status"
+                            aria-hidden="true"></span>
+                        Login
+                    </button>
+    
+                    <div class="social-login row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 no-padding padding-button-right margin-bottom-button">
+                            <button type="button" class="btn btn-block facebook">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 no-padding padding-button-left margin-bottom-button">
+                            <button type="button" class="btn btn-block gmail">
+                                <i class="fa fa-google" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="clear-both"></div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
