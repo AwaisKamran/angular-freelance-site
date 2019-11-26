@@ -48,12 +48,12 @@
 }
 
 .preview-logo-container{
-    background-image: url("../../assets/images/logo.png");
+    background-image: url("../../assets/images/logo-alternate.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 200px;
-    margin-top: 45px;
+    height: 135px;
+    margin-top: 80px;
     opacity: 0.70;
 }
 

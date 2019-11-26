@@ -1,3 +1,19 @@
+@media screen and (max-width: 935px) {
+    #footerAccordion{
+        display: show;
+    }
+
+    .sub-nav-bar{
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 935px) {
+    #footerAccordion{
+        display: none;
+    }
+}
+  
 .pointer-cursor{
     cursor: pointer;
 }
@@ -19,6 +35,7 @@
     height: 45px;
     line-height: 45px;
     overflow: hidden;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .sub-nav-bar-contant{
@@ -35,4 +52,82 @@
     font-size: 12px;
     padding-left: 4px;
     padding-right: 4px;
+}
+
+.nav-link{
+    padding: 0px !important;
+    cursor: pointer;
+    padding-left: 25px !important;
+    color: #807d7d;
+}
+
+.dropdown-toggle::after{
+    display: none !important;
+}
+
+.dropdown-item{
+    padding: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dropdown-menu{
+    top: -3px !important;
+    border: 0px !important;
+    border-radius: 0px !important;
+    background-color: #f7f7f7 !important;
+}
+
+.dropdown-item:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #1db36d !important;
+}
+
+.sub-nav-content{
+    display: inline-block;
+    margin-right: 25px;
+}
+
+.card-header{
+    background-color: #1db36d;
+    color: white !important;
+}
+
+.footer-btn{
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+.clear-both{
+    clear: both;
+}
+
+.card-body{
+    padding: 10px !important;
+    background-color: #f7f7f7 !important;
+}
+
+.card-body{
+    padding: 10px !important
+}
+
+.card-body > .dropdown-item {
+    color: gray;
+    text-decoration: none;
+    height: 45px;
+    line-height: 45px;
+}
+
+.card-body > .dropdown-item:hover {
+    background-color: #ded6d6 !important;
 }
