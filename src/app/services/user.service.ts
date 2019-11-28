@@ -28,6 +28,10 @@ export class UserService {
     return localStorage.getItem('user')? true: false;
   }
 
+  isUserAdmin(){
+    return parseInt(this.user.type) === 0? true: false;
+  }
+
   storeUserInfo(data){
     localStorage.setItem('user', JSON.stringify(data));
   }

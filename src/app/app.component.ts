@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'app';
   public isUserActive: boolean = false;
+  public isUserAdmin: boolean = false;
 
   constructor(
     public userService: UserService,
@@ -18,6 +19,8 @@ export class AppComponent {
 
   onActivate(evt){
     this.isUserActive = this.userService.isUserLoggedIn();
+    this.isUserAdmin = this.userService.isUserAdmin();
+
     if(!this.isUserActive && (evt.constructor.name !== 'RegisterComponent')){
       this.router.navigate([`/login`]);
     }

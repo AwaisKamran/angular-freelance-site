@@ -1,0 +1,43 @@
+.order-container{
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.headline{
+    margin-bottom: 10px;
+}
+
+.placeholder{
+    background-color: #e0e0e0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 175px;
+}
+
+.green{
+    color: #45a539;
+}
+
+.bold{
+    font-weight: 500;
+}
+
+.float-right{
+    float: right;
+}
+
+.float-left{
+    float: left;
+}
+
+.clear-both{
+    clear: both;
+}
+
+.heart-icon{
+    color: #e0e0e0;
+    cursor: pointer;
+}

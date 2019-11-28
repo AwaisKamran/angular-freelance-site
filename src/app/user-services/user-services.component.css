@@ -2,10 +2,6 @@
     background-color: #fbf9f9;
 }
 
-.headline{
-    margin-bottom: 10px;
-}
-
 .profile-card{
     background-color: white;
     border: 1px solid #e0e0e0;
@@ -46,15 +42,6 @@
     text-align: center;
 }
 
-.yellow{
-    color: yellow;
-}
-
-.profile-badge{
-    padding-bottom: 25px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
 .no-padding-left{
     padding-right: 0px !important;
 }
@@ -86,11 +73,6 @@
     cursor: pointer
 }
 
-.heart-icon{
-    color: #e0e0e0;
-    cursor: pointer;
-}
-
 .green{
     color: #34a734;
 }
@@ -111,38 +93,8 @@
     clear: both;
 }
 
-.placeholder{
-    background-color: #e0e0e0;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 200px;
-    height: 175px;
-}
-
-.badge-name{
-    width: 100%;
-    text-align: center;
-}
-
-.badge-position{
-    width: 100%;
-    text-align: center;
-}
-
-.badge-about-me{
-    font-size: 15px;
-}
-
 .bold{
     font-weight: 500;
-}
-
-.badge-rating{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
 }
 
 .centered{

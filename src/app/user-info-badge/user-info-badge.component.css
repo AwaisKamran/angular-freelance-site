@@ -1,0 +1,52 @@
+.profile-card{
+    background-color: white;
+    border: 1px solid #e0e0e0;
+}
+
+.profile-badge{
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.badge-rating{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.yellow{
+    color: yellow;
+}
+
+.badge-name{
+    width: 100%;
+    text-align: center;
+}
+
+.badge-position{
+    width: 100%;
+    text-align: center;
+}
+
+.badge-about-me{
+    font-size: 15px;
+}
+
+.bold{
+    font-weight: 500;
+}
+
+.padding-20{
+    padding: 20px;
+}
+
+.margin-20{
+    margin: 20px;
+}

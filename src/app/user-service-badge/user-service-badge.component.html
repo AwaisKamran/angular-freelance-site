@@ -1,0 +1,14 @@
+<div class="order-container">
+    <div class="headline">{{ service.title }}</div>
+    <div class="placeholder" [ngStyle]="{'background-image': 'url(' + service.image + ')'}"></div><br/>
+    <div class="user-actions">
+        <div class="like-icon float-left">
+            <i class="fa fa-heart heart-icon"></i>
+        </div>
+        <div class="service-price float-right green">
+            Price <span class="bold">${{ service.hourlyCost }}</span>
+        </div>
+        <div class="clear-both"></div>
+    </div>
+    <button *ngIf="buyService" class="btn btn-block btn-success button-style">Buy Service</button>
+</div>

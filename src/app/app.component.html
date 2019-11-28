@@ -50,7 +50,7 @@
 <!-- Header End -->
 
 <!-- Sub Nav bar Start-->
-<div class="sub-nav-bar">
+<div *ngIf="isUserActive && isUserAdmin" class="sub-nav-bar">
   <div class="sub-nav-content">
     <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
       Food

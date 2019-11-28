@@ -18,6 +18,8 @@ import { SubCategoryService } from './services/sub-category.service';
 import { UserService } from './services/user.service';
 import { RegisterComponent } from './register/register.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { UserServiceBadgeComponent } from './user-service-badge/user-service-badge.component';
+import { UserInfoBadgeComponent } from './user-info-badge/user-info-badge.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
     DashboardComponent,
     UserServicesComponent,
     RegisterComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    UserServiceBadgeComponent,
+    UserInfoBadgeComponent
   ],
   imports: [
     NgbModule,

@@ -57,7 +57,7 @@
 .nav-link{
     padding: 0px !important;
     cursor: pointer;
-    padding-left: 25px !important;
+    padding-right: 25px !important;
     color: #807d7d;
 }
 
@@ -71,7 +71,7 @@
     padding-right: 15px;
 }
 
-.dropdown-menu{
+.sub-nav-content  > .dropdown-menu{
     top: -3px !important;
     border: 0px !important;
     border-radius: 0px !important;
@@ -81,7 +81,7 @@
     overflow-y: auto;
 }
 
-.dropdown-item:hover {
+.sub-nav-content > .dropdown-menu > .dropdown-item:hover {
     color: white;
     text-decoration: none;
     background-color: #1db36d !important;

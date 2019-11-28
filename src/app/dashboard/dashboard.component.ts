@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -6,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  public stars = [];
-  constructor() { }
+  constructor(
+    public userService: UserService
+  ) { }
 
   ngOnInit() {
-    this.stars = new Array(5);
   }
 
+  isUserView(){
+    return !this.userService.isUserAdmin(); 
+  }
 }
