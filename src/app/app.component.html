@@ -195,7 +195,7 @@
 </div>
 
 <!-- collapsible navbar - START-->
-<div class="accordion" id="footerAccordion">
+<div *ngIf="isUserActive && isUserAdmin" class="accordion" id="footerAccordion">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
