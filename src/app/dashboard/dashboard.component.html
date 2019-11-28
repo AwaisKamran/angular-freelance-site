@@ -15,34 +15,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="order-wrapper col-lg-4">
-                                <div class="order-container">
-                                    <img src="assets/images/profile-pic.png" class="order-profile"
-                                        class="rounded-circle centered" width="60" height="60" />
-                                    <div class="buyer-name">Roger Mccoy</div>
-                                    <div class="badge-rating">
-                                        <i *ngFor="let star of stars" class="fa fa-star yellow" aria-hidden="true"></i>
-                                    </div>
-                                    <hr/>
-                                    <div class="badge-container">
-                                        <div class="badge-heading float-left bold">Price</div>
-                                        <div class="badge-value float-right">$150</div>
-                                        <div class="clear-both"></div>
-                                    </div>
-
-                                    <div class="badge-container">
-                                        <div class="badge-heading float-left bold">Due In</div>
-                                        <div class="badge-value float-right">2d 3hr</div>
-                                        <div class="clear-both"></div>
-                                    </div>
-
-                                    <div class="badge-container">
-                                        <div class="badge-heading float-left bold">Status</div>
-                                        <div class="badge-value float-right badge-progress">In progress</div>
-                                        <div class="clear-both"></div>
-                                    </div><br/>
-
-                                    <button class="btn btn-block btn-success">View Order</button>
-                                </div>
+                                <app-user-order-badge></app-user-order-badge>
                             </div>
                         </div>
                     </div>

@@ -2,11 +2,6 @@
     background-color: #fbf9f9;
 }
 
-.profile-card{
-    background-color: white;
-    border: 1px solid #e0e0e0;
-}
-
 .order-list{
     margin-left: 20px;
 }
@@ -39,22 +34,6 @@
     margin: 20px;
 }
 
-.badge-rating{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.yellow{
-    color: yellow;
-}
-
-.profile-badge{
-    padding-bottom: 25px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
 .no-padding-left{
     padding-right: 0px !important;
 }
@@ -81,47 +60,4 @@
 
 .order-count{
     font-weight: 500;
-}
-
-.centered{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.badge-name{
-    width: 100%;
-    text-align: center;
-}
-
-.badge-position{
-    width: 100%;
-    text-align: center;
-}
-
-.badge-about-me{
-    font-size: 15px;
-}
-
-.bold{
-    font-weight: 500;
-}
-
-/** Buyers style **/
-.buyer-name{
-    width: 100%;
-    text-align: center;
-}
-
-.badge-progress{
-    background-color: #45a539;
-    color: white;
-    border-radius: 3px;
-    padding: 3px;
-    font-size: 12px;
-    margin-top: 2px;
-}
-
-.field{
-    margin-top: 10px;
 }

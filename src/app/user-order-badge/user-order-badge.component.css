@@ -1,0 +1,52 @@
+.order-container{
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buyer-name{
+    width: 100%;
+    text-align: center;
+}
+
+.badge-rating{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.yellow{
+    color: yellow;
+}
+
+.badge-progress{
+    background-color: #45a539;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.bold{
+    font-weight: 500;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+.clear-both{
+    clear: both;
+}

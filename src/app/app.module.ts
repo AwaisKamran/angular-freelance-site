@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserServiceBadgeComponent } from './user-service-badge/user-service-badge.component';
 import { UserInfoBadgeComponent } from './user-info-badge/user-info-badge.component';
+import { UserOrderBadgeComponent } from './user-order-badge/user-order-badge.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UserInfoBadgeComponent } from './user-info-badge/user-info-badge.compon
     RegisterComponent,
     UserSettingsComponent,
     UserServiceBadgeComponent,
-    UserInfoBadgeComponent
+    UserInfoBadgeComponent,
+    UserOrderBadgeComponent
   ],
   imports: [
     NgbModule,
