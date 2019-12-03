@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   public services: any = [];
   public url: any;
   public searching: boolean = false;
+  public userView: boolean = false;
   
   public data = {
     categoryId: "-1",
@@ -42,6 +43,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userView = this.isUserView();
   }
 
   isUserView(){

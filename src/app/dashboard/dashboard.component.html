@@ -1,5 +1,5 @@
 <div class="dashboard-container">
-    <div *ngIf="isUserView()" class="user-container container">
+    <div *ngIf="userView" class="user-container container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                 <app-user-info-badge></app-user-info-badge>
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div *ngIf="!isUserView()" class="admin-container container">
+    <div *ngIf="!userView" class="admin-container container">
         <div class="row mt-2">
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-2">
                 <select class="form-control no-padding" [(ngModel)]="data.categoryId" (change)="categoryChanged()">

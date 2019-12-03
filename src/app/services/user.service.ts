@@ -33,10 +33,16 @@ export class UserService {
   }
 
   storeUserInfo(data){
-    localStorage.setItem('user', JSON.stringify(data));
+    let container = this;
+    return new Promise(function(resolve, reject){
+      localStorage.setItem('user', JSON.stringify(data));
+      container.user = JSON.parse(localStorage.getItem('user'));
+      resolve();
+    });
   }
 
   logout(){
     localStorage.removeItem('user');
+    this.user = undefined;
   }
 }

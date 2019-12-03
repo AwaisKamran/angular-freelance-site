@@ -119,8 +119,10 @@ export class RegisterComponent {
       this.userService.login(this.userData).subscribe(
         (res: any) => {
           if (res.success) {
-            this.userService.storeUserInfo(res.data);
-            this.router.navigate([`/dashboard`]);
+            let container = this;
+            this.userService.storeUserInfo(res.data).then(function(){
+              container.router.navigate([`/dashboard`]);
+            });
           }
           else {
             this.loginError = true;

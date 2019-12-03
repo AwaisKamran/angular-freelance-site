@@ -56,43 +56,51 @@ export class AppComponent {
   }
 
   toggleFood() {
+    let val = this.showFood;
     this.resetDropdowns();
-    this.showFood = !this.showFood;
+    this.showFood = !val;
   }
 
   toggleCleaning() {
+    let val = this.showCleaning;
     this.resetDropdowns();
-    this.showCleaning = !this.showCleaning;
+    this.showCleaning = !val;
   }
 
   toggleMaintenance() {
+    let val = this.showMaintenance;
     this.resetDropdowns();
-    this.showMaintenance = !this.showMaintenance;
+    this.showMaintenance = !val;
   }
 
   toggleManagement() {
+    let val = this.showManagement;
     this.resetDropdowns();
-    this.showManagement = !this.showManagement;
+    this.showManagement = !val;
   }
 
   togglePets() {
+    let val = this.showPets;
     this.resetDropdowns();
-    this.showPets = !this.showPets;
+    this.showPets = !val;
   }
 
   toggleChildren() {
+    let val = this.showChildren;
     this.resetDropdowns();
-    this.showChildren = !this.showChildren;
+    this.showChildren = !val;
   }
 
   toggleElderly() {
+    let val = this.showElderly;
     this.resetDropdowns();
-    this.showElderly = !this.showElderly;
+    this.showElderly = !val;
   }
 
   toggleLifestyle() {
+    let val = this.showLifestyle;
     this.resetDropdowns();
-    this.showLifestyle = !this.showLifestyle;
+    this.showLifestyle = !val;
   }
 
   resetDropdowns() {
