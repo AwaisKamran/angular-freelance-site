@@ -49,146 +49,169 @@
 </nav>
 <!-- Header End -->
 
-<!-- Sub Nav bar Start-->
-<div *ngIf="isUserActive && isUserAdmin" class="sub-nav-bar">
-  <div class="sub-nav-content">
-    <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+<!-- Sub Nav bar Start  -->
+<div class="sub-nav-bar" *ngIf="isUserActive && isUserAdmin">
+  <div class="sub-nav-bar-container">
+    <div class="nav-bar-title" (click)="toggleFood()">
       Food
     </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Butler Services</a>
-      <a class="dropdown-item" href="#">Cake baking</a>
-      <a class="dropdown-item" href="#">Food shopping</a>
-      <a class="dropdown-item" href="#">Preparing meals</a>
-      <a class="dropdown-item" href="#">Waiting services</a>
+    <div class="nav-bar-dropdown-container row" *ngIf="showFood">
+      <div class="col-lg-6 col-md-6 col-6 no-padding">
+        <a class="dropdown-item" href="#">Butler Services</a>
+        <a class="dropdown-item" href="#">Cake baking</a>
+        <a class="dropdown-item" href="#">Food shopping</a>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6 no-padding">
+        <a class="dropdown-item" href="#">Preparing meals</a>
+        <a class="dropdown-item" href="#">Waiting services</a>
+      </div>
     </div>
   </div>
 
-  <div class="sub-nav-content">
-    <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+  <div class="sub-nav-bar-container">
+    <div class="nav-bar-title" (click)="toggleCleaning()">
       Cleaning
     </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Air conditioners</a>
-      <a class="dropdown-item" href="#">Furnace air filters</a>
-      <a class="dropdown-item" href="#">Bathroom cleaning</a>
-      <a class="dropdown-item" href="#">Car washing</a>
-      <a class="dropdown-item" href="#">Cleaning blinds</a>
-      <a class="dropdown-item" href="#">Cleaning refrigerator</a>
-      <a class="dropdown-item" href="#">Dishwashing</a>
-      <a class="dropdown-item" href="#">Garage cleaning</a>
-      <a class="dropdown-item" href="#">House cleaning</a>
-      <a class="dropdown-item" href="#">Kitchen cleaning</a>
-      <a class="dropdown-item" href="#">Laundry</a>
-      <a class="dropdown-item" href="#">Machine cleaning</a>
-      <a class="dropdown-item" href="#">Mopping floors</a>
-      <a class="dropdown-item" href="#">Pool cleaning</a>
-      <a class="dropdown-item" href="#">Shampooing carpets</a>
-      <a class="dropdown-item" href="#">Sweeping</a>
-      <a class="dropdown-item" href="#">Taking out trash</a>
-      <a class="dropdown-item" href="#">Vaccuming curtains</a>
-      <a class="dropdown-item" href="#">Vaccuming</a>
-      <a class="dropdown-item" href="#">Waste collection</a>
-      <a class="dropdown-item" href="#">Window cleaning</a>
+    <div class="nav-bar-dropdown-container row" *ngIf="showCleaning">
+      <div class="col-lg-6 col-md-6 col-6 no-padding">
+        <a class="dropdown-item" href="#">Air conditioners</a>
+        <a class="dropdown-item" href="#">Furnace air filters</a>
+        <a class="dropdown-item" href="#">Bathroom cleaning</a>
+        <a class="dropdown-item" href="#">Car washing</a>
+        <a class="dropdown-item" href="#">Cleaning blinds</a>
+        <a class="dropdown-item" href="#">Cleaning refrigerator</a>
+        <a class="dropdown-item" href="#">Dishwashing</a>
+        <a class="dropdown-item" href="#">Garage cleaning</a>
+        <a class="dropdown-item" href="#">House cleaning</a>
+        <a class="dropdown-item" href="#">Kitchen cleaning</a>
+        <a class="dropdown-item" href="#">Laundry</a>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6 no-padding">
+        <a class="dropdown-item" href="#">Machine cleaning</a>
+        <a class="dropdown-item" href="#">Mopping floors</a>
+        <a class="dropdown-item" href="#">Pool cleaning</a>
+        <a class="dropdown-item" href="#">Shampooing carpets</a>
+        <a class="dropdown-item" href="#">Sweeping</a>
+        <a class="dropdown-item" href="#">Taking out trash</a>
+        <a class="dropdown-item" href="#">Vaccuming curtains</a>
+        <a class="dropdown-item" href="#">Vaccuming</a>
+        <a class="dropdown-item" href="#">Waste collection</a>
+        <a class="dropdown-item" href="#">Window cleaning</a>
+      </div>
     </div>
   </div>
 
-  <div class="sub-nav-content">
-    <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+  <div class="sub-nav-bar-container">
+    <div class="nav-bar-title" (click)="toggleMaintenance()">
       Maintenance
     </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Construction</a>
-      <a class="dropdown-item" href="#">Decorating</a>
-      <a class="dropdown-item" href="#">DIY fixing</a>
-      <a class="dropdown-item" href="#">Garden fencing</a>
-      <a class="dropdown-item" href="#">Fence maintenance</a>
-      <a class="dropdown-item" href="#">Gardening</a>
-      <a class="dropdown-item" href="#">Garden maintenance</a>
-      <a class="dropdown-item" href="#">Interior designing</a>
-      <a class="dropdown-item" href="#">Lawn maintenance</a>
-      <a class="dropdown-item" href="#">Mowing the lawn</a>
-      <a class="dropdown-item" href="#">Painting</a>
-      <a class="dropdown-item" href="#">Plumbing</a>
-      <a class="dropdown-item" href="#">Window fixing</a>
-      <a class="dropdown-item" href="#">Tree surgery</a>
-      <a class="dropdown-item" href="#">Tree pruning</a>
-      <a class="dropdown-item" href="#">Panels</a>
-      <a class="dropdown-item" href="#">Partition the wall</a>
-      <a class="dropdown-item" href="#">Watering plants</a>
-      <a class="dropdown-item" href="#">Weeding the garden</a>
+    <div class="nav-bar-dropdown-container row" *ngIf="showMaintenance">
+      <div class="col-lg-6 col-md-6 col-6 no-padding">
+        <a class="dropdown-item" href="#">Construction</a>
+        <a class="dropdown-item" href="#">Decorating</a>
+        <a class="dropdown-item" href="#">DIY fixing</a>
+        <a class="dropdown-item" href="#">Garden fencing</a>
+        <a class="dropdown-item" href="#">Fence maintenance</a>
+        <a class="dropdown-item" href="#">Gardening</a>
+        <a class="dropdown-item" href="#">Garden maintenance</a>
+        <a class="dropdown-item" href="#">Interior designing</a>
+        <a class="dropdown-item" href="#">Lawn maintenance</a>
+        <a class="dropdown-item" href="#">Mowing the lawn</a>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6 no-padding">
+        <a class="dropdown-item" href="#">Painting</a>
+        <a class="dropdown-item" href="#">Plumbing</a>
+        <a class="dropdown-item" href="#">Window fixing</a>
+        <a class="dropdown-item" href="#">Tree surgery</a>
+        <a class="dropdown-item" href="#">Tree pruning</a>
+        <a class="dropdown-item" href="#">Panels</a>
+        <a class="dropdown-item" href="#">Partition the wall</a>
+        <a class="dropdown-item" href="#">Watering plants</a>
+        <a class="dropdown-item" href="#">Weeding the garden</a>
+      </div>
     </div>
   </div>
 
-  <div class="sub-nav-content">
-    <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+  <div class="sub-nav-bar-container">
+    <div class="nav-bar-title" (click)="toggleManagement()">
       Management
     </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Accountancy</a>
-      <a class="dropdown-item" href="#">Administration</a>
-      <a class="dropdown-item" href="#">Chauffeur</a>
-      <a class="dropdown-item" href="#">Event planning</a>
-      <a class="dropdown-item" href="#">Health management</a>
-      <a class="dropdown-item" href="#">Home sitting</a>
-      <a class="dropdown-item" href="#">House removals</a>
-      <a class="dropdown-item" href="#">Personal assistant</a>
-      <a class="dropdown-item" href="#">Security</a>
+    <div class="nav-bar-dropdown-container row" *ngIf="showManagement">
+      <div class="col-lg-6 col-md-6 col-6 no-padding">
+        <a class="dropdown-item" href="#">Accountancy</a>
+        <a class="dropdown-item" href="#">Administration</a>
+        <a class="dropdown-item" href="#">Chauffeur</a>
+        <a class="dropdown-item" href="#">Event planning</a>
+        <a class="dropdown-item" href="#">Health management</a>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6 no-padding">
+        <a class="dropdown-item" href="#">Home sitting</a>
+        <a class="dropdown-item" href="#">House removals</a>
+        <a class="dropdown-item" href="#">Personal assistant</a>
+        <a class="dropdown-item" href="#">Security</a>
+      </div>
     </div>
   </div>
 
-  <div class="sub-nav-content">
-    <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+  <div class="sub-nav-bar-container">
+    <div class="nav-bar-title" (click)="togglePets()">
       Pets
     </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Bathing pet</a>
-      <a class="dropdown-item" href="#">Feeding pet</a>
-      <a class="dropdown-item" href="#">Pampering pet</a>
-      <a class="dropdown-item" href="#">Pet sitting</a>
-      <a class="dropdown-item" href="#">Vet visit</a>
+    <div class="nav-bar-dropdown-container row" *ngIf="showPets">
+      <div class="col-lg-12 col-md-12 col-12 no-padding">
+        <a class="dropdown-item" href="#">Bathing pet</a>
+        <a class="dropdown-item" href="#">Feeding pet</a>
+        <a class="dropdown-item" href="#">Pampering pet</a>
+        <a class="dropdown-item" href="#">Pet sitting</a>
+        <a class="dropdown-item" href="#">Vet visit</a>
+      </div>
     </div>
   </div>
 
-  <div class="sub-nav-content">
-    <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+  <div class="sub-nav-bar-container">
+    <div class="nav-bar-title" (click)="toggleChildren()">
       Children
     </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Babysitting</a>
-      <a class="dropdown-item" href="#">School run</a>
-      <a class="dropdown-item" href="#">Tutoring</a>
-      <a class="dropdown-item" href="#">Homework support</a>
+    <div class="nav-bar-dropdown-container row" *ngIf="showChildren">
+      <div class="col-lg-12 col-md-12 col-12 no-padding">
+        <a class="dropdown-item" href="#">Babysitting</a>
+        <a class="dropdown-item" href="#">School run</a>
+        <a class="dropdown-item" href="#">Tutoring</a>
+        <a class="dropdown-item" href="#">Homework support</a>
+      </div>
     </div>
   </div>
 
-  <div class="sub-nav-content">
-    <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+  <div class="sub-nav-bar-container">
+    <div class="nav-bar-title" (click)="toggleElderly()">
       Elderly care
     </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Care</a>
-      <a class="dropdown-item" href="#">Companionship</a>
-      <a class="dropdown-item" href="#">Daily activities</a>
-      <a class="dropdown-item" href="#">Nursing</a>
+    <div class="nav-bar-dropdown-container row" *ngIf="showElderly">
+      <div class="col-lg-12 col-md-12 col-12 no-padding">
+        <a class="dropdown-item" href="#">Care</a>
+        <a class="dropdown-item" href="#">Companionship</a>
+        <a class="dropdown-item" href="#">Daily activities</a>
+        <a class="dropdown-item" href="#">Nursing</a>
+      </div>
     </div>
   </div>
 
-  <div class="sub-nav-content">
-    <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
-      Lifestyle
+  <div class="sub-nav-bar-container">
+      <div class="nav-bar-title" (click)="toggleLifestyle()">
+        Lifestyle
+      </div>
+      <div class="nav-bar-dropdown-container row" *ngIf="showLifestyle">
+        <div class="col-lg-12 col-md-12 col-12 no-padding">
+          <a class="dropdown-item" href="#">Care</a>
+          <a class="dropdown-item" href="#">Companionship</a>
+          <a class="dropdown-item" href="#">Daily activities</a>
+          <a class="dropdown-item" href="#">Nursing</a>
+        </div>
+      </div>
     </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Hair & Beauty</a>
-      <a class="dropdown-item" href="#">Massage Therapy</a>
-      <a class="dropdown-item" href="#">Personal Trainer</a>
-      <a class="dropdown-item" href="#">Photographer</a>
-      <a class="dropdown-item" href="#">Private Lessons</a>
-      <a class="dropdown-item" href="#">Therapies</a>
-    </div>
-  </div>
 </div>
 <!-- Sub Nav bar End-->
+
 
 <div class="content">
   <router-outlet (activate)='onActivate($event)'></router-outlet>
@@ -199,8 +222,7 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseOne"
-          aria-controls="collapseOne">
+        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">
           <div class="float-left">Food</div>
           <div class="float-right">+</div>
           <div class="fclear-both"></div>
@@ -222,8 +244,7 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseTwo"
-          aria-controls="collapseOne">
+        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseOne">
           <div class="float-left">Cleaning</div>
           <div class="float-right">+</div>
           <div class="fclear-both"></div>
@@ -249,11 +270,10 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseThree"
-         aria-controls="collapseOne">
-         <div class="float-left">Maintenance</div>
-         <div class="float-right">+</div>
-         <div class="fclear-both"></div>
+        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseThree" aria-controls="collapseOne">
+          <div class="float-left">Maintenance</div>
+          <div class="float-right">+</div>
+          <div class="fclear-both"></div>
         </div>
       </h2>
     </div>
@@ -276,8 +296,7 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseFour"
-          aria-controls="collapseOne">
+        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseFour" aria-controls="collapseOne">
           <div class="float-left">Management</div>
           <div class="float-right">+</div>
           <div class="fclear-both"></div>
@@ -303,8 +322,7 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseFive"
-          aria-controls="collapseOne">
+        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseFive" aria-controls="collapseOne">
           <div class="float-left">Pets</div>
           <div class="float-right">+</div>
           <div class="fclear-both"></div>
@@ -326,8 +344,7 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseSix"
-          aria-controls="collapseOne">
+        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseSix" aria-controls="collapseOne">
           <div class="float-left">Children</div>
           <div class="float-right">+</div>
           <div class="fclear-both"></div>
@@ -348,8 +365,7 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseSeven"
-          aria-controls="collapseOne">
+        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseSeven" aria-controls="collapseOne">
           <div class="float-left">Elderly Children</div>
           <div class="float-right">+</div>
           <div class="fclear-both"></div>
@@ -370,8 +386,7 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseEight"
-          aria-controls="collapseOne">
+        <div class="btn footer-btn" data-toggle="collapse" data-target="#collapseEight" aria-controls="collapseOne">
           <div class="float-left">Lifestyle</div>
           <div class="float-right">+</div>
           <div class="fclear-both"></div>
@@ -381,12 +396,12 @@
 
     <div id="collapseEight" class="collapse" aria-labelledby="headingOne" data-parent="#footerAccordion">
       <div class="card-body">
-          <a class="dropdown-item" href="#">Hair & Beauty</a>
-          <a class="dropdown-item" href="#">Massage Therapy</a>
-          <a class="dropdown-item" href="#">Personal Trainer</a>
-          <a class="dropdown-item" href="#">Photographer</a>
-          <a class="dropdown-item" href="#">Private Lessons</a>
-          <a class="dropdown-item" href="#">Therapies</a>
+        <a class="dropdown-item" href="#">Hair & Beauty</a>
+        <a class="dropdown-item" href="#">Massage Therapy</a>
+        <a class="dropdown-item" href="#">Personal Trainer</a>
+        <a class="dropdown-item" href="#">Photographer</a>
+        <a class="dropdown-item" href="#">Private Lessons</a>
+        <a class="dropdown-item" href="#">Therapies</a>
       </div>
     </div>
   </div>

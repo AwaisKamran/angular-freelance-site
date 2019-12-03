@@ -36,6 +36,7 @@
     line-height: 45px;
     overflow: hidden;
     border-bottom: 1px solid #e0e0e0;
+    padding-left: 25px;
 }
 
 .sub-nav-bar-contant{
@@ -146,4 +147,33 @@
 .dropdown-menu::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     outline: 1px solid slategrey;
+}
+
+.nav-bar-dropdown-container{
+    z-index: 100;
+    background-color: white;
+    position: absolute;
+}
+
+.sub-nav-bar-container{
+    float: left;
+    margin-right: 35px;
+}
+
+.nav-bar-title{
+    color: gray;
+    cursor: pointer;
+}
+
+.nav-bar-title:hover{
+    color: #1db36d;
+}
+
+.dropdown-item:hover{
+    background-color: #1db36d;
+    color: white;
+}
+
+.no-padding{
+    padding: 0px;
 }
