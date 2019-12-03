@@ -5,6 +5,7 @@ import { ConstantsService } from './constants.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ServicesService {
   public url: string;
   constructor(
@@ -20,5 +21,13 @@ export class ServicesService {
 
   getUserServicesById(id){
     return this.http.get(`${this.url}api/service/getUserServicesById.php?userId=${id}`);
+  }
+
+  getFilteredUserServices(data){
+    return this.http.post(`${this.url}api/service/getFilteredUserServices.php`, {"data": data });
+  }
+
+  searchUserServices(data){
+    return this.http.post(`${this.url}api/service/searchUserService.php`, { "data": data });
   }
 }

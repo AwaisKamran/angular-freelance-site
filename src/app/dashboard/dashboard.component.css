@@ -61,3 +61,15 @@
 .order-count{
     font-weight: 500;
 }
+
+.green{
+    background-color: #1db36d !important;
+}
+
+.no-data-available{
+    color: black;
+    background-color: #e0e0e0;
+    width: 100%;
+    text-align: center;
+    padding: 2.5%;
+}

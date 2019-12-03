@@ -83,7 +83,7 @@ export class UserServicesComponent implements OnInit {
     .subscribe((res: any) => {
       if(res.success && res.data.length > 0){
         for (const service of res.data) {
-          service.image = this.getImageUrl(service.id);
+          service.image = this.constantsService.getImageUrl(service.id);
         }
         this.userServices = res.data;
       }
@@ -167,9 +167,5 @@ export class UserServicesComponent implements OnInit {
     this.data.categoryId = "-1";
     this.data.subCategoryId = "-1";
     this.imageProfile = "../../assets/images/placeholder.jpg";
-  }
-
-  getImageUrl(id){
-    return `${this.url}uploads/service/${id}.jpg`;
   }
 }
