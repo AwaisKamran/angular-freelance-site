@@ -72,10 +72,33 @@
             <div *ngIf="services.length > 0" class="service-container">
                 <div class="row">
                     <div *ngFor="let service of services" class="order-wrapper col-lg-4">
-                        <app-user-service-badge [service]="service" [buyService]="true"></app-user-service-badge>
+                        <app-user-service-badge (openDialog)="onOpenDialog($event)" [service]="service" [buyService]="true"></app-user-service-badge>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="dialog-container" *ngIf="dialogOpened">
+    <div class="user-details">
+        <div class="float-left">
+            <div class="user-detail-image"></div>
+        </div>
+        <div class="float-left">
+            <div class="user-detail-name">{{ dialogData.user.name }}</div>
+            <div class="user-detail-email">{{ dialogData.user.email }}</div>
+            <div class="user-detail-travel-radius">{{ dialogData.user.travelRadius }}</div>
+        </div>
+    </div>
+
+    <div class="service-detail">
+        <div class="service-detail-name">{{ dialogData.title }}</div>
+        <div class="service-cover-image">{{ dialogData.name }}</div>
+        <div class="service-detail-description">{{ dialogData.description }}</div>
+        <div class="service-detail-hourly-rate">Price {{ dialogData.hourlyCost }}/hr</div>
+        <div class="service-detail-minimum-hours">{{ dialogData.minimumHours }} hours</div>
+    </div>
+    <button class="btn btn-block btn-success">Buy Order</button>
 </div>

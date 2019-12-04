@@ -1,4 +1,5 @@
 .order-container{
+    position: relative;
     background-color: white;
     padding: 10px;
     border: 1px solid #e0e0e0;
@@ -6,6 +7,11 @@
 
 .headline{
     margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.headline:hover{
+    color: green;
 }
 
 .placeholder{
@@ -13,7 +19,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    width: 200px;
+    width: 205px;
     height: 175px;
 }
 
@@ -39,5 +45,49 @@
 
 .heart-icon{
     color: #e0e0e0;
+    cursor: pointer;
+}
+
+.travel-radius{
+    color: white;
+    background-color: #decb5b;
+    text-align: right;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    position: absolute;
+    padding: 5px;
+    top: 12px;
+    right: 0px;
+    font-size: 15px;
+}
+
+.user-actions{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.user-details{
+    margin-bottom: 10px;
+}
+
+.user-detail-image{
+    width: 35px;
+    height: 35px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+}
+
+.float-left{
+    float: left;
+}
+
+.clear-both{
+    clear: both;
+}
+
+.user-detail-title{
+    margin-left: 5px;
+    margin-top: 5px;
     cursor: pointer;
 }

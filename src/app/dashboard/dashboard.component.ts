@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit {
   public url: any;
   public searching: boolean = false;
   public userView: boolean = false;
+  public dialogData: any = undefined;
+  public dialogOpened: boolean = false;
   
   public data = {
     categoryId: "-1",
@@ -112,5 +114,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  onOpenDialog(event){
+    this.dialogData = event;
+    this.dialogOpened = true;
+  }
 
+  toggleDialog(){
+    this.dialogOpened = !this.dialogOpened;
+  }
 }
