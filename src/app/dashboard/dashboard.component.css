@@ -78,13 +78,26 @@
 .dialog-container{
     position: absolute;
     top: 20px;
-    left: 40%;
+    left: 25%;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    padding: 10px;
+    padding: 20px;
+    z-index: 100;
     background-color: white;
     -webkit-box-shadow: 0 10px 6px -6px #777;
        -moz-box-shadow: 0 10px 6px -6px #777;
             box-shadow: 0 10px 6px -6px #777;
+}
+
+.overlay{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: black;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 99;
 }

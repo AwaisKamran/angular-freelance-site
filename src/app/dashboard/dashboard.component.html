@@ -80,7 +80,7 @@
     </div>
 </div>
 
-
+<div class="overlay" *ngIf="dialogOpened"></div>
 <div class="dialog-container" *ngIf="dialogOpened">
     <div class="user-details">
         <div class="float-left">
@@ -91,7 +91,8 @@
             <div class="user-detail-email">{{ dialogData.user.email }}</div>
             <div class="user-detail-travel-radius">{{ dialogData.user.travelRadius }}</div>
         </div>
-    </div>
+        <div class="clear-both"></div>
+    </div><br/><br/>
 
     <div class="service-detail">
         <div class="service-detail-name">{{ dialogData.title }}</div>
@@ -99,6 +100,6 @@
         <div class="service-detail-description">{{ dialogData.description }}</div>
         <div class="service-detail-hourly-rate">Price {{ dialogData.hourlyCost }}/hr</div>
         <div class="service-detail-minimum-hours">{{ dialogData.minimumHours }} hours</div>
-    </div>
+    </div><br/>
     <button class="btn btn-block btn-success">Buy Order</button>
 </div>
