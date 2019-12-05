@@ -20,9 +20,6 @@
       <li *ngIf="isUserActive" class="nav-item">
         <a class="nav-link" href="#">Orders</a>
       </li>
-      <li *ngIf="isUserActive" class="nav-item">
-        <a class="nav-link" href="#">Analytics</a>
-      </li>
     </ul>
     <form *ngIf="!isUserActive" class="form-inline my-2 my-lg-0">
       <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="register()">Login</button>
@@ -31,7 +28,7 @@
 
   <div *ngIf="isUserActive" class="dropdown show form-inline">
     <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <div class="profile-pic"></div>
+      <div class="profile-pic" [ngStyle]="{'background-image': userImagePath }"></div>
     </a>
 
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">

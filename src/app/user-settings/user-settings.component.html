@@ -2,43 +2,21 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                <div class="profile-card padding-20 margin-20">
-                    <div class="profile-badge">
-                        <img src="assets/images/dummy-profile-picture.jpg" class="rounded-circle centered" width="90"
-                            height="90" />
-                        <div class="badge-rating">
-                            <i *ngFor="let star of stars" class="fa fa-star yellow" aria-hidden="true"></i>
-                        </div>
-                        <div class="badge-name">Awais Kamran</div>
-                        <div class="badge-position">UI/UX Developer</div>
-                        <hr />
-                        <div class="badge-about-me">
-                            <div class="bold">About me</div>
-                            Listening no no behaviour existence assurance situation is. Because
-                            add why not esteems amiable him. Interested the unaffected mrs law friendship add
-                            principles. Indeed on people do merits to. Court heard which up above hoped grave do. Answer
-                            living law things either sir bed length. Looked before we an on merely.
-                            These no death he at share alone.
-                        </div>
-                    </div>
-                </div>
+                <app-user-info-badge></app-user-info-badge>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                 <div class="create-order padding-10 margin-20">
-                    <div *ngIf="serviceSuccess" class="alert alert-success" role="alert">
+                    <div *ngIf="userDataUpdated" class="alert alert-success" role="alert">
                         Congratulations! Your new service has been created.
                     </div>
 
-                    <div *ngIf="serviceError" class="alert alert-danger" role="alert">
+                    <div *ngIf="userDataUpdatedError" class="alert alert-danger" role="alert">
                         Error! There was an internal server error.
                     </div>
 
-                    <div *ngIf="missingField" class="alert alert-warning" role="alert">
-                        Warning! You are missing some fields.
-                    </div>
-
+                    <input #fileDiv class="hide" type="file" (change)="onFileChanged($event)" />
                     <div class="centered">
-                        <img [src]="imageProfile" class="image-style" (click)="openFileExplorer()" /><br />
+                        <img [src]="imageProfile" title="click to change profile picture" class="image-style" (click)="openFileExplorer()" /><br />
                     </div>
 
                     <div class="form-group">
@@ -72,7 +50,7 @@
                         />
                     </div>
 
-                    <button type="button" class="btn btn-success btn-block" (click)="createService()">
+                    <button type="button" class="btn btn-success btn-block" (click)="updateUserInformation()">
                         <span *ngIf="serviceLoading" class="spinner-border spinner-border-sm" role="status"
                             aria-hidden="true"></span>
                         Update

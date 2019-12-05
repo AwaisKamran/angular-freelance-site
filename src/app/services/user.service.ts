@@ -16,6 +16,10 @@ export class UserService {
     if (localStorage.getItem('user')) this.user = JSON.parse(localStorage.getItem('user'));
   }
 
+  getUserObject(){
+    return this.user;
+  }
+
   login(data) {
     return this.http.post(`${this.url}api/user/login.php`, { "data": data });
   }
@@ -24,12 +28,20 @@ export class UserService {
     return this.http.post(`${this.url}api/user/addUser.php`, { "data": data });
   }
 
+  updateUserInfo(data){
+    return this.http.post(`${this.url}api/user/updateUserInfo.php`, { "data": data });
+  }
+
   isUserLoggedIn(){
     return localStorage.getItem('user')? true: false;
   }
 
   isUserAdmin(){
     return parseInt(this.user.type) === 0? true: false;
+  }
+
+  getLoggedInUserImage(){
+    return `${this.url}uploads/user/${this.user.id}.jpg`;
   }
 
   storeUserInfo(data){

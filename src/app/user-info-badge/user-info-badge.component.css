@@ -25,6 +25,10 @@
     color: yellow;
 }
 
+.gray{
+    color: #e0e0e0;;
+}
+
 .badge-name{
     width: 100%;
     text-align: center;

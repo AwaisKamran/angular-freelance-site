@@ -19,6 +19,7 @@ export class AppComponent {
   public showChildren = false;
   public showElderly = false;
   public showLifestyle = false;
+  public userImagePath = undefined;
 
   constructor(
     public userService: UserService,
@@ -28,6 +29,7 @@ export class AppComponent {
   onActivate(evt) {
     this.isUserActive = this.userService.isUserLoggedIn();
     this.isUserAdmin = this.userService.isUserAdmin();
+    this.userImagePath = `url(${this.userService.getLoggedInUserImage()}), url(./assets/images/profile-pic.png)`;
 
     if (!this.isUserActive && (evt.constructor.name !== 'RegisterComponent')) {
       this.router.navigate([`/login`]);
