@@ -21,6 +21,8 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserServiceBadgeComponent } from './user-service-badge/user-service-badge.component';
 import { UserInfoBadgeComponent } from './user-info-badge/user-info-badge.component';
 import { UserOrderBadgeComponent } from './user-order-badge/user-order-badge.component';
+import { OrderPageComponent } from './order-page/order-page.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { UserOrderBadgeComponent } from './user-order-badge/user-order-badge.com
     UserSettingsComponent,
     UserServiceBadgeComponent,
     UserInfoBadgeComponent,
-    UserOrderBadgeComponent
+    UserOrderBadgeComponent,
+    OrderPageComponent,
+    CommentListComponent
   ],
   imports: [
     NgbModule,

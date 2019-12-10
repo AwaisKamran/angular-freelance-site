@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CountryService } from '../services/country.service';
-import { EventEmitter } from 'events';
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-user-info-badge',
