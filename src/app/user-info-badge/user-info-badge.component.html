@@ -13,7 +13,7 @@
             <div *ngIf="user.aboutMe">{{ user.aboutMe }}</div>
             <div *ngIf="!user.aboutMe">Not Specified</div>
 
-            <div *ngIf="view">
+            <div *ngIf='user.type === "1"'>
                 <div class="bold mt-3 mb-0.5">Travel Radius</div>
                 <div *ngIf="user.travelRadius"><i class="fa fa-bicycle green" aria-hidden="true"></i> {{ user.travelRadius }} km</div>
             </div>
@@ -22,8 +22,9 @@
     <div class="location-section mt-2">
         <div class="bold mb-0.5">Location</div>
         <div *ngIf="user.country">
-            <img width="26" src="{{ getCountryFlag(user.country) }}" />
-            {{ getCountryName(user.country) }}
+            <div class="flag-width float-left" [ngStyle]="{'background-image': getCountryFlag() }"></div>
+            <span class="float-left">{{ getCountryName() }}</span>
+            <div class="clear-both"></div>
         </div>
 
         <div *ngIf="user.city"><i class="fa fa-map-marker green" aria-hidden="true"></i> {{ user.city }}</div>

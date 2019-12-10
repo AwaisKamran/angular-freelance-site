@@ -67,3 +67,20 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.flag-width{
+    width: 26px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 4px;
+}
+
+.float-left{
+    float: left;
+}
+
+.clear-both{
+    clear: both;
+}

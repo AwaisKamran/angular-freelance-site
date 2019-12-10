@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { ImageService } from '../services/image.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-settings',
@@ -8,7 +9,7 @@ import { ImageService } from '../services/image.service';
   styleUrls: ['./user-settings.component.css']
 })
 export class UserSettingsComponent implements OnInit {
-  @ViewChild('fileDiv', { static: false}) fileDiv: ElementRef<HTMLElement>;
+  @ViewChild('fileDiv', { static: true}) fileDiv: ElementRef<HTMLElement>;
   
   public stars = [];
   public userDataUpdated: boolean = false;
@@ -24,7 +25,8 @@ export class UserSettingsComponent implements OnInit {
 
   constructor(
     public userService: UserService,
-    public imageService: ImageService
+    public imageService: ImageService,
+    public router: Router
   ) { 
     this.imageProfile =  this.userService.getLoggedInUserImage();
     this.imageProfile = `url(${this.imageProfile})`;
@@ -47,7 +49,6 @@ export class UserSettingsComponent implements OnInit {
     reader.readAsDataURL(this.file);
   }
 
-  
   saveServiceImage(serviceId){
     const formData = new FormData();
     formData.append('fileToUpload', this.file);
@@ -72,6 +73,13 @@ export class UserSettingsComponent implements OnInit {
           this.userDataUpdated = true;
           this.userDataUpdatedError = false;
           if(this.file) this.saveServiceImage(res.data);
+
+          let user = {...this.userService.user};
+          user.aboutMe = this.data.aboutMe;
+          user.bankName = this.data.bankName;
+          user.bankAccountNumber = this.data.bankAccountNumber;
+          this.userService.storeUserInfo(user);
+          window.location.reload();
         }  
         else{
           this.userDataUpdated = false;

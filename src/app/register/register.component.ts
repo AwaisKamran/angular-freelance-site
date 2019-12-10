@@ -51,6 +51,7 @@ export class RegisterComponent {
   getCountries() {
     this.countryService.getCountries().subscribe(
       (res: any) => {
+        this.countryService.data = res;
         this.countries = res;
         this.data.country = 238;
         this.data.code = this.countries[238].callingCodes[0];

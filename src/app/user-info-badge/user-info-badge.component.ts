@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CountryService } from '../services/country.service';
+import { EventEmitter } from 'events';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-user-info-badge',
@@ -12,12 +14,15 @@ export class UserInfoBadgeComponent implements OnInit {
   public starsCount = [];
   public user: any = undefined;
   public userImage: string = "assets/images/profile-pic.png";
-  @Input() view:string;
 
   constructor(
     public userService: UserService,
     public countryService: CountryService
   ) { 
+    this.fetchDetails();
+  }
+
+  fetchDetails(){
     this.user = this.userService.getUserObject();
     this.userImage = this.userService.getLoggedInUserImage();
     this.userImage = `url(${this.userImage})`;
@@ -30,11 +35,11 @@ export class UserInfoBadgeComponent implements OnInit {
     this.starsCount = new Array(count);
   }
 
-  getCountryName(index){
-    return this.countryService.data[index].nativeName;
+  getCountryName(){
+    return this.userService.getUserObject().countryName;
   }
 
-  getCountryFlag(index){
-    return this.countryService.data[index].flag;
+  getCountryFlag(){
+    return `url(${this.userService.getUserObject().flag})`;
   }
 }

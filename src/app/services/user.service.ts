@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConstantsService } from './constants.service';
+import { CountryService } from './country.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class UserService {
   public user: any;
   constructor(
     public http: HttpClient,
-    public constantsService: ConstantsService
+    public constantsService: ConstantsService,
+    public countryService: CountryService
   ) {
     this.url = this.constantsService.url;
     if (localStorage.getItem('user')) this.user = JSON.parse(localStorage.getItem('user'));
@@ -46,9 +48,14 @@ export class UserService {
 
   storeUserInfo(data){
     let container = this;
-    return new Promise(function(resolve, reject){
+    return new Promise(function(resolve, reject){   
       localStorage.setItem('user', JSON.stringify(data));
       container.user = JSON.parse(localStorage.getItem('user'));
+
+      container.user.flag = container.countryService.data[container.user.country].flag;
+      container.user.countryName = container.countryService.data[container.user.country].nativeName;
+
+      localStorage.setItem('user', JSON.stringify(container.user));
       resolve();
     });
   }

@@ -14,10 +14,10 @@
       <li *ngIf="isUserActive" class="nav-item">
         <a class="nav-link" [routerLink]="['dashboard']" href="#">Dashboard</a>
       </li>
-      <li *ngIf="isUserActive" class="nav-item">
+      <li *ngIf="isUserActive && !isUserAdmin" class="nav-item">
         <a class="nav-link" [routerLink]="['user-services']" href="#">Services</a>
       </li>
-      <li *ngIf="isUserActive" class="nav-item">
+      <li *ngIf="isUserActive && !isUserAdmin" class="nav-item">
         <a class="nav-link" href="#">Orders</a>
       </li>
     </ul>
@@ -35,7 +35,7 @@
       <div class="dropdown-item" (click)="navigateToSettings()">
         <i class="fa fa-cog menu-icon" aria-hidden="true"></i> Settings
       </div>
-      <div class="dropdown-item" (click)="navigateToUserServices()">
+      <div *ngIf="!isUserAdmin" class="dropdown-item" (click)="navigateToUserServices()">
         <i class="fa fa-address-book-o menu-icon" aria-hidden="true"></i> My Profile
       </div>
       <div class="dropdown-item pointer-cursor" (click)="logout()">

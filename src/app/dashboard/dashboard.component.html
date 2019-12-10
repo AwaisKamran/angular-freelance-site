@@ -2,13 +2,13 @@
     <div *ngIf="userView" class="user-container container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                <app-user-info-badge view="userView"></app-user-info-badge>
+                <app-user-info-badge></app-user-info-badge>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                 <div class="order-list padding-10 margin-20 no-padding-left no-margin-left no-padding-top">
                     <div class="order-heading">
                         <div class="order-heading-value float-left">Order List</div>
-                        <div class="order-count float-right">Active (1)</div>
+                        <div class="order-count float-right">Active ({{ orderList.length }})</div>
                     </div>
                     <div class="clear-both"></div>
 
@@ -16,6 +16,10 @@
                         <div class="row">
                             <div *ngFor="let order of orderList" class="order-wrapper col-lg-4">
                                 <app-user-order-badge [order]="order"></app-user-order-badge>
+                            </div>
+
+                            <div class="no-data-available mt-2" *ngIf="orderList.length === 0">
+                                No Data Available
                             </div>
                         </div>
                     </div>
