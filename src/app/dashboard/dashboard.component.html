@@ -14,8 +14,8 @@
 
                     <div class="container">
                         <div class="row">
-                            <div class="order-wrapper col-lg-4">
-                                <app-user-order-badge></app-user-order-badge>
+                            <div *ngFor="let order of orderList" class="order-wrapper col-lg-4">
+                                <app-user-order-badge [order]="order"></app-user-order-badge>
                             </div>
                         </div>
                     </div>
@@ -83,6 +83,15 @@
 <div class="overlay" *ngIf="dialogOpened"></div>
 <div class="dialog-container" *ngIf="dialogOpened">
     <div class="cross-icon" (click)="toggleDialog()"><i class="fa fa-times" aria-hidden="true"></i></div>
+    
+    <div *ngIf="orderCreatedSuccess" class="alert alert-success" role="alert">
+        Congratulations! Your order is created.
+    </div>
+
+    <div *ngIf="orderCreatedError" class="alert alert-danger" role="alert">
+        Error! There was an internal server error.
+    </div>
+
     <div class="user-details">
         <div class="float-left">
             <div class="user-detail-image"></div>
@@ -102,5 +111,6 @@
         <div class="service-detail-minimum-hours"><span class="bold">Minimum Hours</span> {{ dialogData.minimumHours }} hours</div>
         <div class="user-detail-travel-radius"><span class="bold">Travel Radius</span> {{ dialogData.user.travelRadius }}</div>
     </div><br/>
-    <button class="btn btn-block btn-outline-success">Buy Order</button>
+
+    <button class="btn btn-block btn-outline-success" (click)="buyOrder()">Buy Order</button>
 </div>

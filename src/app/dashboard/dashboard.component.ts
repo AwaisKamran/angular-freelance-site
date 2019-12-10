@@ -5,6 +5,7 @@ import { CategoryService } from '../services/category.service';
 import { SubCategoryService } from '../services/sub-category.service';
 import { ConstantsService } from '../services/constants.service';
 import { CountryService } from '../services/country.service';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +23,10 @@ export class DashboardComponent implements OnInit {
   public userView: boolean = false;
   public dialogData: any = undefined;
   public dialogOpened: boolean = false;
+  public orderCreatedSuccess: boolean = false;
+  public orderCreatedError: boolean = false;
+  public orderList: any = [];
+
   
   public data = {
     categoryId: "-1",
@@ -36,7 +41,8 @@ export class DashboardComponent implements OnInit {
     public subCategoryService: SubCategoryService,
     public constantsService: ConstantsService,
     public countryService: CountryService,
-    public servicesService: ServicesService
+    public servicesService: ServicesService,
+    public orderService: OrderService
   ) { 
     this.getCategories();
     this.getSubCategories();
@@ -46,6 +52,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.userView = this.isUserView();
+    if(this.userView) this.getUserOrderList(this.userService.getUserObject().id);
   }
 
   isUserView(){
@@ -121,5 +128,43 @@ export class DashboardComponent implements OnInit {
 
   toggleDialog(){
     this.dialogOpened = !this.dialogOpened;
+  }
+
+  getUserOrderList(id){
+    this.orderService.getOrderByUserId(id)
+    .subscribe((res: any) => {
+      if(res.success){
+        this.orderList = res.data;
+      }  
+    }, (err: any) => {
+    });
+  }
+
+  buyOrder(){
+    let data = {
+      serviceId: this.dialogData.id,
+      hourRequired : null,
+      budget : null,
+      orderInstructions : null,
+      categoryId : null,
+      subCategoryId : null,
+      status : null,
+      type : null
+    };
+
+    this.orderService.createOrder(data)
+    .subscribe((res: any) => {
+      if(res.success){
+        this.orderCreatedSuccess = true;
+        this.orderCreatedError = false;
+      }  
+      else{
+        this.orderCreatedSuccess = false;
+        this.orderCreatedError = true;
+      }
+    }, (err: any) => {
+      this.orderCreatedSuccess = false;
+      this.orderCreatedError = true;
+    });
   }
 }

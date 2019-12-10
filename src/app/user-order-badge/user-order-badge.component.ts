@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-order-badge',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-order-badge.component.css']
 })
 export class UserOrderBadgeComponent implements OnInit {
-
+  @Input() order: any;
   constructor() { }
 
   ngOnInit() {
