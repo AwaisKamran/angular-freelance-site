@@ -28,7 +28,7 @@
 }
 
 .footer-sub-titles:hover{
-    color: green;
+    color: #1dbf73;
     font-weight: 100 !important;
 }
 
@@ -37,6 +37,29 @@
     width: 100%;
     padding-top: 25px;
 }
+
+div::selection{
+    color: white;
+    background-color: #1dbf73;
+}
+
+
+span::selection{
+    color: white;
+    background-color: #1dbf73;
+}
+
+h4::selection{
+    color: white;
+    background-color: #1dbf73;
+}
+
+a::selection{
+    color: white;
+    background-color: #1dbf73;
+}
+
+
 
 .float-left{
     float: left;

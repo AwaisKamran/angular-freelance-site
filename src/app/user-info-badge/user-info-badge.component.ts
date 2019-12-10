@@ -10,13 +10,15 @@ export class UserInfoBadgeComponent implements OnInit {
   public stars = [];
   public starsCount = [];
   public user: any = undefined;
-  public userImage: string = "assets/images/dummy-profile-picture.jpg";
+  public userImage: string = "assets/images/profile-pic.png";
 
   constructor(
     public userService: UserService,
   ) { 
     this.user = this.userService.getUserObject();
     this.userImage = this.userService.getLoggedInUserImage();
+    this.userImage = `url(${this.userImage})`;
+    this.userImage += ',url(assets/images/profile-pic.png)';
   }
 
   ngOnInit() {

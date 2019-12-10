@@ -27,6 +27,8 @@ export class UserSettingsComponent implements OnInit {
     public imageService: ImageService
   ) { 
     this.imageProfile =  this.userService.getLoggedInUserImage();
+    this.imageProfile = `url(${this.imageProfile})`;
+    this.imageProfile += ',url("../../assets/images/profile-pic.png")';
   }
 
   ngOnInit() {

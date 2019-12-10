@@ -119,6 +119,10 @@
     padding: 15px;
 }
 
+.margin-bottom-5{
+    margin-bottom: 5px;
+}
+
 @media only screen and (max-width: 800px) {
     .padding-button-left{
         padding-left: 0px !important;

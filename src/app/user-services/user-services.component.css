@@ -74,7 +74,11 @@
 }
 
 .green{
-    color: #34a734;
+    color: #1dbf73;
+}
+
+.green-block{
+    background-color: #1dbf73 !important;
 }
 
 .bold{
@@ -113,7 +117,7 @@
 }
 
 .green{
-    color: #45a539;
+    color: #1dbf73;
 }
 
 .field{

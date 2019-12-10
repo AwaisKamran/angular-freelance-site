@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from "../services/user.service";
 import { ServicesService } from "../services/services.service";
 import { CategoryService } from '../services/category.service';
@@ -6,6 +6,7 @@ import { SubCategoryService } from '../services/sub-category.service';
 import { ConstantsService } from '../services/constants.service';
 import { CountryService } from '../services/country.service';
 import { OrderService } from '../services/order.service';
+import { DropdownService } from "../services/dropdown.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -42,12 +43,16 @@ export class DashboardComponent implements OnInit {
     public constantsService: ConstantsService,
     public countryService: CountryService,
     public servicesService: ServicesService,
-    public orderService: OrderService
+    public orderService: OrderService,
+    public dropDownService: DropdownService
   ) { 
     this.getCategories();
     this.getSubCategories();
     this.getCountries();
     this.url = this.constantsService.url;
+
+    this.data.country = this.userService.getUserObject().country;
+    this.data.city = this.userService.getUserObject().city;
   }
 
   ngOnInit() {
@@ -138,6 +143,10 @@ export class DashboardComponent implements OnInit {
       }  
     }, (err: any) => {
     });
+  }
+
+  closeDropDown(){
+    this.dropDownService.resetDropdowns();
   }
 
   buyOrder(){

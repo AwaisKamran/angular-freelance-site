@@ -16,7 +16,7 @@
                             <div class="order-wrapper col-lg-4">
                                 <div class="order-container">
                                     <div class="add-container" (click)="addService()">
-                                        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-plus-square-o green" aria-hidden="true"></i>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
 
                     <input #fileDiv class="hide" type="file" (change)="onFileChanged($event)" />
 
-                    <button type="button" class="btn btn-success btn-block" (click)="createService()">
+                    <button type="button" class="btn btn-success btn-block green-block" (click)="createService()">
                         <span *ngIf="serviceLoading" class="spinner-border spinner-border-sm" role="status"
                             aria-hidden="true"></span>
                         Create

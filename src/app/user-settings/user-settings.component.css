@@ -71,8 +71,16 @@
     margin-right: auto;
     border: 1px solid #e0e0e0;
     cursor: pointer;
+    background-color: #e0e0e0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .hide{
     display: none;
+}
+
+.green-block{
+    background-color: #1dbf73 !important;
 }

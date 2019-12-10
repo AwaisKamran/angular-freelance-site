@@ -25,9 +25,9 @@
     </div>
 
     <div *ngIf="!userView" class="admin-container container">
-        <div class="row mt-2">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-2">
-                <select class="form-control no-padding" [(ngModel)]="data.categoryId" (change)="categoryChanged()">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-2 no-padding-right">
+                <select class="form-control no-padding" [(ngModel)]="data.categoryId" (click)="closeDropDown()" (change)="categoryChanged()">
                     <option value="-1" selected>Select Category</option>
                     <option *ngFor="let category of categories" [value]="category.id">
                         {{ category.categoryName }}
@@ -36,7 +36,7 @@
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-2">
-                <select class="form-control no-padding" [(ngModel)]="data.subCategoryId">
+                <select class="form-control no-padding" [(ngModel)]="data.subCategoryId" (click)="closeDropDown()">
                     <option value="-1" selected>Select Sub-Category</option>
                     <option *ngFor="let subcategory of filteredSubcategories" [value]="subcategory.id">
                         {{ subcategory.subCategoryName }}
@@ -44,8 +44,8 @@
                 </select>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-2">
-                <select class="form-control" [(ngModel)]="data.country">
+            <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-2">
+                <select disabled class="form-control" [(ngModel)]="data.country">
                     <option value="-1" selected>Select Country</option>
                     <option *ngFor="let country of countries; let i = index;" [value]="i">
                         {{ country.name }}
@@ -55,9 +55,9 @@
 
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-2">
                 <div class="form-group mb-0">
-                    <input type="text" class="form-control" [(ngModel)]="data.city" placeholder="Your city" />
+                    <input disabled type="text" class="form-control" [(ngModel)]="data.city" placeholder="Your city" />
                 </div>
-            </div>
+            </div> -->
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-2 mb-5">
                 <button class="btn btn-block btn-success green" type="button" (click)="fetchServices()">
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="row mb-5">
+        <div class="row">
             <div *ngIf="services.length === 0" class="no-data-available">No services available.</div>
             <div *ngIf="services.length > 0" class="service-container">
                 <div class="row">

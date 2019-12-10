@@ -35,7 +35,7 @@
     font-family: Calibri;
     font-weight: 300;
     font-size: 25px;
-    color: green;
+    color: #1dbf73;
 }
 
 .preview-container{
@@ -80,7 +80,7 @@
 }
 
 .green{
-    color: #46CD84;
+    color: #1dbf73;
 }
 
 .services-section{
@@ -105,8 +105,8 @@
 }
 
 .btn-light-green{
-    background-color: #4e904e;
-    border: 1px solid #4e904e;
+    background-color: #1dbf73;
+    border: 1px solid #1dbf73;
 }
 
 .no-padding{

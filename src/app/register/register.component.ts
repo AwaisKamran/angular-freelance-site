@@ -26,6 +26,7 @@ export class RegisterComponent {
     name: undefined,
     email: undefined,
     password: undefined,
+    position: undefined,
     code: undefined,
     country: undefined,
     city: undefined,
@@ -76,7 +77,7 @@ export class RegisterComponent {
     ) {
       this.missingFields = false;
       this.data.phone = this.data.code + "" + this.data.phone;
-      this.data.country = this.countries[this.data.country].name;
+      this.data.country = this.data.country; //this.countries[this.data.country].name;
       this.data.type = this.isFreelancer? "1": "0";
       this.regiterLoading = true;
 
@@ -86,6 +87,11 @@ export class RegisterComponent {
           if(res.success){
             this.registerError = false;
             this.registerSuccess = true;
+
+            //Login user as the registration is successful
+            this.userData.email = this.data.email;
+            this.userData.password = this.data.password;
+            this.login();
           }
           else{
             this.registerError = true;

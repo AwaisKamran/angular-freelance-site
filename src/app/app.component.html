@@ -22,7 +22,7 @@
       </li>
     </ul>
     <form *ngIf="!isUserActive" class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="register()">Login</button>
+      <button class="btn btn-outline-success btn-outline-green my-2 my-sm-0" type="button" (click)="register()">Login</button>
     </form>
   </div>
 
@@ -49,10 +49,10 @@
 <!-- Sub Nav bar Start  -->
 <div class="sub-nav-bar" *ngIf="isUserActive && isUserAdmin">
   <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="toggleFood()">
+    <div class="nav-bar-title" (click)="dropDownService.toggleFood()">
       Food
     </div>
-    <div class="nav-bar-dropdown-container row" *ngIf="showFood">
+    <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showFood">
       <div class="col-lg-6 col-md-6 col-6 no-padding">
         <a class="dropdown-item" href="#">Butler Services</a>
         <a class="dropdown-item" href="#">Cake baking</a>
@@ -66,10 +66,10 @@
   </div>
 
   <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="toggleCleaning()">
+    <div class="nav-bar-title" (click)="dropDownService.toggleCleaning()">
       Cleaning
     </div>
-    <div class="nav-bar-dropdown-container row" *ngIf="showCleaning">
+    <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showCleaning">
       <div class="col-lg-6 col-md-6 col-6 no-padding">
         <a class="dropdown-item" href="#">Air conditioners</a>
         <a class="dropdown-item" href="#">Furnace air filters</a>
@@ -99,10 +99,10 @@
   </div>
 
   <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="toggleMaintenance()">
+    <div class="nav-bar-title" (click)="dropDownService.toggleMaintenance()">
       Maintenance
     </div>
-    <div class="nav-bar-dropdown-container row" *ngIf="showMaintenance">
+    <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showMaintenance">
       <div class="col-lg-6 col-md-6 col-6 no-padding">
         <a class="dropdown-item" href="#">Construction</a>
         <a class="dropdown-item" href="#">Decorating</a>
@@ -130,10 +130,10 @@
   </div>
 
   <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="toggleManagement()">
+    <div class="nav-bar-title" (click)="dropDownService.toggleManagement()">
       Management
     </div>
-    <div class="nav-bar-dropdown-container row" *ngIf="showManagement">
+    <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showManagement">
       <div class="col-lg-6 col-md-6 col-6 no-padding">
         <a class="dropdown-item" href="#">Accountancy</a>
         <a class="dropdown-item" href="#">Administration</a>
@@ -151,10 +151,10 @@
   </div>
 
   <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="togglePets()">
+    <div class="nav-bar-title" (click)="dropDownService.togglePets()">
       Pets
     </div>
-    <div class="nav-bar-dropdown-container row" *ngIf="showPets">
+    <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showPets">
       <div class="col-lg-12 col-md-12 col-12 no-padding">
         <a class="dropdown-item" href="#">Bathing pet</a>
         <a class="dropdown-item" href="#">Feeding pet</a>
@@ -166,10 +166,10 @@
   </div>
 
   <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="toggleChildren()">
+    <div class="nav-bar-title" (click)="dropDownService.toggleChildren()">
       Children
     </div>
-    <div class="nav-bar-dropdown-container row" *ngIf="showChildren">
+    <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showChildren">
       <div class="col-lg-12 col-md-12 col-12 no-padding">
         <a class="dropdown-item" href="#">Babysitting</a>
         <a class="dropdown-item" href="#">School run</a>
@@ -180,10 +180,10 @@
   </div>
 
   <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="toggleElderly()">
+    <div class="nav-bar-title" (click)="dropDownService.toggleElderly()">
       Elderly care
     </div>
-    <div class="nav-bar-dropdown-container row" *ngIf="showElderly">
+    <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showElderly">
       <div class="col-lg-12 col-md-12 col-12 no-padding">
         <a class="dropdown-item" href="#">Care</a>
         <a class="dropdown-item" href="#">Companionship</a>
@@ -194,10 +194,10 @@
   </div>
 
   <div class="sub-nav-bar-container">
-      <div class="nav-bar-title" (click)="toggleLifestyle()">
+      <div class="nav-bar-title" (click)="dropDownService.toggleLifestyle()">
         Lifestyle
       </div>
-      <div class="nav-bar-dropdown-container row" *ngIf="showLifestyle">
+      <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showLifestyle">
         <div class="col-lg-12 col-md-12 col-12 no-padding">
           <a class="dropdown-item" href="#">Care</a>
           <a class="dropdown-item" href="#">Companionship</a>
@@ -208,7 +208,6 @@
     </div>
 </div>
 <!-- Sub Nav bar End-->
-
 
 <div class="content">
   <router-outlet (activate)='onActivate($event)'></router-outlet>

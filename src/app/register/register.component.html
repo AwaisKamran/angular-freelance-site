@@ -35,6 +35,13 @@
             <input [(ngModel)]="data.password" type="password" class="form-control" placeholder="Enter your password">
         </div>
 
+        <div class="form-group" *ngIf="isFreelancer">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Position</label>
+                <input [(ngModel)]="data.position" type="text" class="form-control" placeholder="Enter your position">
+            </div>
+        </div>
+
         <div class="col-md-12 col-12 form-group no-padding-left">
             <label>
                 Country
@@ -101,7 +108,7 @@
                         Error! Invalid username or password!
                     </div>
     
-                    <img src="assets/images/logo.png" width="250" class="img-fluid centered" />
+                    <img src="assets/images/logo.png" width="250" class="img-fluid margin-bottom-5 centered" />
     
                     <div class="form-group email-field-margin">
                         <input type="email" [(ngModel)]="userData.email" class="form-control" aria-describedby="emailHelp"

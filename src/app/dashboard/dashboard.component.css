@@ -72,6 +72,7 @@
     width: 100%;
     text-align: center;
     padding: 2.5%;
+    margin-bottom: 20px;
 }
 
 
@@ -128,4 +129,12 @@
     right: 20px;
     top: 20px;
     cursor: pointer;
+}
+
+.admin-container{
+    padding: 30px;
+}
+
+.no-padding-right{
+    padding-right: 0px !important
 }

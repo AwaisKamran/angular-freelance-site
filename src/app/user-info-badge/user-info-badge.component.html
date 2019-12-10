@@ -1,17 +1,17 @@
 <div class="profile-card padding-20 margin-20">
     <div class="profile-badge">
-        <img [src]="userImage" class="rounded-circle centered" width="90"
-            height="90" />
+        <div [ngStyle]="{'background-image': userImage }" class="profile-picture centered"></div>
         <div class="badge-rating">
             <i *ngFor="let star of stars" class="fa fa-star yellow" aria-hidden="true"></i>
             <i *ngFor="let star of starsCount" class="fa fa-star gray" aria-hidden="true"></i>
         </div>
         <div class="badge-name">{{ user.name }}</div>
-        <div class="badge-position">UI/UX Developer</div>
+        <div class="badge-position">{{ user.position }}</div>
         <hr />
         <div class="badge-about-me">
             <div class="bold">About me</div>
-            {{ user.aboutMe }}
+            <div *ngIf="user.aboutMe">{{ user.aboutMe }}</div>
+            <div *ngIf="!user.aboutMe">Not Specified</div>
         </div>
     </div>
 </div>

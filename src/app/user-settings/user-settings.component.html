@@ -16,7 +16,7 @@
 
                     <input #fileDiv class="hide" type="file" (change)="onFileChanged($event)" />
                     <div class="centered">
-                        <img [src]="imageProfile" title="click to change profile picture" class="image-style" (click)="openFileExplorer()" /><br />
+                        <div [ngStyle]="{ 'background-image': imageProfile }" title="click to change profile picture" class="image-style" (click)="openFileExplorer()"></div><br />
                     </div>
 
                     <div class="form-group">
@@ -50,7 +50,7 @@
                         />
                     </div>
 
-                    <button type="button" class="btn btn-success btn-block" (click)="updateUserInformation()">
+                    <button type="button" class="btn btn-success btn-block green-block" (click)="updateUserInformation()">
                         <span *ngIf="serviceLoading" class="spinner-border spinner-border-sm" role="status"
                             aria-hidden="true"></span>
                         Update

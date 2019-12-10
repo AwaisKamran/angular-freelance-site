@@ -83,9 +83,26 @@
 }
 
 .sub-nav-content > .dropdown-menu > .dropdown-item:hover {
-    color: white;
     text-decoration: none;
-    background-color: #1db36d !important;
+    color: #1db36d !important;
+}
+
+.form-inline > .dropdown-menu{
+    padding: 0px;
+}
+
+.form-inline > .dropdown-menu > .dropdown-item{
+    height: 36px !important;
+    line-height: 36px !important;
+}
+
+.form-inline > .dropdown-menu > .dropdown-item:hover {
+    text-decoration: none;
+    color: #1db36d !important;
+}
+
+.form-inline > .dropdown-menu > .dropdown-item:hover .menu-icon{
+    color: #1db36d !important;
 }
 
 .sub-nav-content{
@@ -170,10 +187,20 @@
 }
 
 .dropdown-item:hover{
-    background-color: #1db36d;
-    color: white;
+    color: #1db36d !important;
+    background-color: #fbfafa !important;
 }
 
 .no-padding{
     padding: 0px;
+}
+
+.btn-outline-green{
+    border-color: #1dbf73 !important;
+    color: #1dbf73 !important;
+}
+
+.btn-outline-green:hover{
+    background-color: #1dbf73 !important;
+    color: white !important;
 }
