@@ -68,6 +68,7 @@ export class DashboardComponent implements OnInit {
     this.countryService.getCountries().subscribe(
       (res: any) => {
         this.countries = res;
+        this.countryService.data = res;
         //this.data.country = 238;
       }, (error) => {
       }

@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CountryService {
-
+  public data: any = [];
   constructor(
     public http: HttpClient
   ) { }
