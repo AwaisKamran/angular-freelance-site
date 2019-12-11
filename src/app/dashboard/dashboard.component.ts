@@ -159,7 +159,8 @@ export class DashboardComponent implements OnInit {
       categoryId : null,
       subCategoryId : null,
       status : null,
-      type : null
+      type : null,
+      orderCreatedBy: this.userService.getUserObject().id
     };
 
     this.orderService.createOrder(data)

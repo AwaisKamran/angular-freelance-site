@@ -8,6 +8,8 @@ import { ConstantsService } from './constants.service';
 
 export class OrderService {
   public url: string;
+  public clickedOrder: any = undefined;
+  
   constructor(
     public http: HttpClient,
     public constantsService: ConstantsService

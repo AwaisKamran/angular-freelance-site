@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserServicesComponent } from './user-services/user-services.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { OrderPageComponent } from './order-page/order-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'user-services', component: UserServicesComponent },
   { path: 'user-settings', component: UserSettingsComponent },
+  { path: 'order-page/:id', component: OrderPageComponent },
   {
     path: '',
     redirectTo: '/login',

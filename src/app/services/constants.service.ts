@@ -12,7 +12,7 @@ export class ConstantsService {
     return `${this.url}uploads/service/${id}.jpg`;
   }
 
-  getUserImageUrl(id){
-    return `${this.url}uploads/service/${id}.jpg`;
+  getServiceImageUrl(id){
+    return `${this.url}uploads/user/${id}.jpg`;
   }
 }

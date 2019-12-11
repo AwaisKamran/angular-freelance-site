@@ -11,8 +11,10 @@
 }
 
 .buyer-name{
-    width: 100%;
     text-align: center;
+    margin-left: 10px;
+    height: 30px;
+    line-height: 30px;
 }
 
 .badge-rating{
@@ -35,6 +37,24 @@
     margin-top: 2px;
 }
 
+.badge-delivered{
+    background-color: orangered;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.badge-revision{
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
 .bold{
     font-weight: 500;
 }
@@ -49,4 +69,27 @@
 
 .clear-both{
     clear: both;
+}
+
+.order-profile{
+    width: 35px;
+    height: 35px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.service-image{
+    width: 100%;
+    min-height: 130px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.service-name{
+    text-align: center;
 }

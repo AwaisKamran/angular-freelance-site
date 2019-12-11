@@ -1,28 +1,33 @@
 <div class="order-container">
-    <img src="assets/images/profile-pic.png" class="order-profile"
-        class="rounded-circle centered" width="60" height="60" />
-    <div class="buyer-name">Roger Mccoy</div>
+    <div [ngStyle]="{ 'background-image': imageProfile}" class="order-profile float-left"></div>
+    <div class="buyer-name float-left">{{ order.user.username}}</div>
+    <div class="clear-both"></div>
+
+    <div [ngStyle]="{ 'background-image': serviceImageProfile}" class="service-image centered"></div>
+    <div [title]="order.service.title" class="service-name">{{ order.service.title }}</div>
     <div class="badge-rating">
         <i *ngFor="let star of stars" class="fa fa-star yellow" aria-hidden="true"></i>
     </div>
     <hr/>
     <div class="badge-container">
         <div class="badge-heading float-left bold">Price</div>
-        <div class="badge-value float-right">$150</div>
+        <div class="badge-value float-right">£ {{ order.service.hourlyCost * order.service.minimumHours}}</div>
         <div class="clear-both"></div>
     </div>
 
     <div class="badge-container">
         <div class="badge-heading float-left bold">Due In</div>
-        <div class="badge-value float-right">2d 3hr</div>
+        <div class="badge-value float-right">{{ date }}</div>
         <div class="clear-both"></div>
     </div>
 
     <div class="badge-container">
         <div class="badge-heading float-left bold">Status</div>
-        <div class="badge-value float-right badge-progress">In progress</div>
+        <div *ngIf="order.status === '0'" class="badge-value float-right badge-progress">In progress</div>
+        <div *ngIf="order.status === '1'" class="badge-value float-right badge-delivered">Delivered</div>
+        <div *ngIf="order.status === '2'" class="badge-value float-right badge-revision">In Revision</div>
         <div class="clear-both"></div>
     </div><br/>
 
-    <button class="btn btn-block btn-success">View Order</button>
+    <button class="btn btn-block btn-success" (click)="viewOrder(order)">View Order</button>
 </div>
