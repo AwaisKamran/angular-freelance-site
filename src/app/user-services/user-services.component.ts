@@ -24,7 +24,7 @@ export class UserServicesComponent implements OnInit {
   public serviceSuccess = false;
   public serviceError = false;
   public file: File;
-  public imageProfile: any = "../../assets/images/placeholder.jpg";
+  public imageProfile: any = "assets/images/placeholder.jpg";
   public url: any;
 
   public data = {
@@ -166,6 +166,6 @@ export class UserServicesComponent implements OnInit {
     this.data.minimumHours = undefined;
     this.data.categoryId = "-1";
     this.data.subCategoryId = "-1";
-    this.imageProfile = "../../assets/images/placeholder.jpg";
+    this.imageProfile = "assets/images/placeholder.jpg";
   }
 }

@@ -14,7 +14,7 @@ export class UserSettingsComponent implements OnInit {
   public stars = [];
   public userDataUpdated: boolean = false;
   public userDataUpdatedError: boolean = false;
-  public imageProfile: any = "../../assets/images/profile-pic.png";
+  public imageProfile: any = "assets/images/profile-pic.png";
   public file: File;
   public data: any = {
     aboutMe: JSON.parse(localStorage.getItem('user')).aboutMe,
@@ -30,7 +30,7 @@ export class UserSettingsComponent implements OnInit {
   ) { 
     this.imageProfile =  this.userService.getLoggedInUserImage();
     this.imageProfile = `url(${this.imageProfile})`;
-    this.imageProfile += ',url("../../assets/images/profile-pic.png")';
+    this.imageProfile += ',url("assets/images/profile-pic.png")';
   }
 
   ngOnInit() {

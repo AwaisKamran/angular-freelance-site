@@ -39,7 +39,7 @@
 }
 
 .preview-container{
-    background-image: url("../../assets/images/preview.jpg");
+    background-image: url("/assets/images/preview.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -48,7 +48,7 @@
 }
 
 .preview-logo-container{
-    background-image: url("../../assets/images/logo-alternate.png");
+    background-image: url("/assets/images/logo-alternate.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
