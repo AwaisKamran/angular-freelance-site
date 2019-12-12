@@ -9,10 +9,10 @@ export class ConstantsService {
   constructor() { }
 
   getImageUrl(id){
-    return `${this.url}uploads/service/${id}.jpg`;
+    return `${this.url}uploads/user/${id}.jpg`;
   }
 
   getServiceImageUrl(id){
-    return `${this.url}uploads/user/${id}.jpg`;
+    return `${this.url}uploads/service/${id}.jpg`;
   }
 }

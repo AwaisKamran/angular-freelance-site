@@ -1,1 +1,18 @@
-<p>comment-list works!</p>
+<div class="comment-container">
+    <textarea [(ngModel)]="commentText" class="text-area" rows="4" placeholder="Write your comment here"></textarea>
+    <button class="btn btn-block btn-success green-background" (click)="addComment()">
+        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+        Send
+    </button>
+
+    <div class="comment-list">
+        <div *ngFor="let comment of commentList" class="comment-box">
+            <div class="user-picture float-left" [ngStyle]="{ 'background-image': getUserProfileImage(comment.userId)}"></div>
+            <div class="user-comment float-left">
+                <div class="user-comment-text">{{ comment.commentText }}</div>
+                <div class="user-comment-date">{{ getFormatDate(comment.dateTime) }}</div>
+            </div>
+            <div class="clear-both"></div>
+        </div>
+    </div>
+</div>

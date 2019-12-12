@@ -25,6 +25,10 @@ export class OrderService {
     return this.http.get(`${this.url}api/order/getOrdersByUserId.php?userId=${id}`);
   }
 
+  getOrderByOrderId(userId, orderId){
+    return this.http.get(`${this.url}api/order/getOrderByOrderId.php?userId=${userId}&&orderId=${orderId}`);
+  }
+
   getOrderByStatus(status){
     return this.http.get(`${this.url}api/order/getOrdersByStatus.php?status=${status}`);
   }

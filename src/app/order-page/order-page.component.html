@@ -1,9 +1,38 @@
 <div class="order-container">
     <div class="order-detail-section">
-        <div class="order-detail-heading">Order # {{ order.id }}</div>
-        <div class="order-detail-title">Hello world</div>
-        <div class="order-detail-description">Description</div>
-        <div class="order-created"></div>
-        <div class="ordered-by">Ordered by </div>
-    </div>
+        <div class="order-detail-heading green-heading">
+            <i class="fa fa-arrow-circle-o-left green-icon" aria-hidden="true" (click)="navigateToDashboard()"></i>
+            Order # {{order.id}}
+        </div>
+        <div class="order-detail-title">{{order.service.title}}</div>
+        <div class="order-detail-description">{{order.service.description}}</div><br/>
+        
+        <div class="price-section">
+            <div [ngStyle]="{'background-image': getServiceImage(order.serviceId) }" class="float-left service-picture"></div>
+            <div class="float-left">
+                <div class="total-price"><span class="bold">Price</span> £ {{order.service.hourlyCost * order.service.minimumHours}}</div>
+                <div class="minimum-hours"><span class="bold">Hours</span> {{ order.service.minimumHours}}</div>
+                <div class="order-status">
+                    <div *ngIf="order.status === '0'" class="badge-value badge-progress">In progress</div>
+                    <div *ngIf="order.status === '1'" class="badge-value badge-delivered">Delivered</div>
+                    <div *ngIf="order.status === '2'" class="badge-value badge-revision">In Revision</div>
+                </div>
+            </div>
+            <div class="clear-both"></div>
+        </div><br/>
+
+        <div class="ordered-by">Ordered by <span class="green-highlight">{{ order.user.username }}</span> at {{ formatDate(order.orderCreated) }}</div><br/>      
+        <hr/>
+
+        <div class="delivery-section" *ngIf="order.status === '0'">
+            <div class="form-group">
+                <input type="file" class="form-control-file" id="submitFile" />
+            </div>
+            <button class="btn btn-block btn-outline-success green-border" (click)="deliverOrder()">Deliver Order</button>
+            <div class="short-note">Note: Please make sure the document uploaded are in the .doc or .pdf format. In case of there is no deliverable, make sure to upload a signed or authorized receipts.</div>
+        </div>
+        <div class="delivery-section-files" *ngIf="!order.status === '0'"></div>
+        <hr/>
+        <app-comment-list [orderId]="id"></app-comment-list>
+    </div><br/><br/>
 </div>

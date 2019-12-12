@@ -6,9 +6,107 @@
 
 
 .order-detail-section{
-    width: 80%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
-    padding: 10px;
+    padding: 15px;
     background-color: white;
+}
+
+@media only screen and (max-width: 992px) {
+    .order-detail-section{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .order-detail-section{
+        width: 90%;
+    }
+}
+
+.badge-progress{
+    background-color: #45a539;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
+.badge-delivered{
+    background-color: orangered;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
+.badge-revision{
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
+.green-icon{
+    color: #1db36d;
+    font-size: 18.5px;
+}
+
+.green-heading{
+    color: #1db36d;
+    font-size: 18.5px;
+    margin-bottom: 10px;
+}
+
+.order-detail-description{
+    width: 100%;
+}
+
+.order-detail-title{
+    font-size: 15.5px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.service-picture{
+    width: 75px;
+    height: 75px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}
+
+.price-section{
+    border: 1px solid #e0e0e0;
+    padding: 5px;
+    width: max-content;
+}
+
+.bold{
+    font-weight: 400;
+}
+
+.green-highlight{
+    color: #1db36d;
+    text-decoration: underline;
+}
+
+.green-border{
+    border-color: #1db36d !important;
+}
+
+.short-note{
+    color: gray;
+    font-size: 13px;
+    line-height:20px;
+    margin-top: 8px;
 }

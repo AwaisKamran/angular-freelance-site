@@ -1,0 +1,48 @@
+.green-icon{
+    color: #1db36d;
+    font-size: 18.5px;
+}
+
+.text-area{
+    width: 100%;
+}
+
+.user-picture{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.user-comment{
+    margin-left: 10px;
+    background-color: #efefef;
+    width: 84%;
+    min-height: 50px;
+    color: black;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.comment-box{
+    margin-top: 10px;
+}
+
+.user-comment-date{
+    color: #989494;
+    font-size: 12px;
+    float: right;
+    margin-bottom: 2px;
+    margin-right: 2px;
+}
+
+.user-comment-text{
+    font-size: 14.5px;
+}
+
+.green-background{
+    background-color: #1db36d !important;
+}
