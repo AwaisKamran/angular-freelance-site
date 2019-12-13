@@ -28,7 +28,6 @@ export class DashboardComponent implements OnInit {
   public orderCreatedError: boolean = false;
   public orderList: any = [];
 
-  
   public data = {
     categoryId: "-1",
     subCategoryId: "-1",

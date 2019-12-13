@@ -18,7 +18,7 @@
         <a class="nav-link" [routerLink]="['user-services']" href="#">Services</a>
       </li>
       <li *ngIf="isUserActive && !isUserAdmin" class="nav-item">
-        <a class="nav-link"  [routerLink]="['buyer-request']" href="#">Orders</a>
+        <a class="nav-link"  [routerLink]="['buyer-request']" href="#">Buyer Request</a>
       </li>
     </ul>
     <form *ngIf="!isUserActive" class="form-inline my-2 my-lg-0">

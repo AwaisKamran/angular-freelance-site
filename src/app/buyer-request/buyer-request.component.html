@@ -13,16 +13,51 @@
 
                 <div class="buyer-request-tab-description">
                     <span class="title">Category</span> <span class="badge badge-secondary badge-green">Food</span>
-                    <div class="description">Any delicate you how kindness horrible outlived servants. You high bed wish help call draw side. Girl quit if case mr sing as no have. At none neat am do over will. Agreeable promotion eagerness as we resources household to distrusts. Polite do object at passed it is. Small for ask shade water manor think men begin. </div><br/>
+                    <div class="description">Any delicate you how kindness horrible outlived servants. You high bed wish
+                        help call draw side. Girl quit if case mr sing as no have. At none neat am do over will.
+                        Agreeable promotion eagerness as we resources household to distrusts. Polite do object at passed
+                        it is. Small for ask shade water manor think men begin. </div><br />
                     <div class="price-tag">
                         <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> £ 400
                     </div>
                     <div class="time-required">
                         <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> 40 hours
-                    </div><br/>
-                    <button type="button" class="btn btn-outline-success">Send Your Bid</button>
+                    </div><br />
+                    <button type="button" class="btn btn-outline-success" (click)="onOpenDialog()">Send Your
+                        Bid</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="overlay" *ngIf="dialogOpened"></div>
+<div class="dialog-container" *ngIf="dialogOpened">
+    <div class="cross-icon" (click)="toggleDialog()"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+    <div *ngIf="dialogSuccess" class="alert alert-success" role="alert">
+        Congratulations! Your bid is posted is created.
+    </div>
+
+    <div *ngIf="dialogError" class="alert alert-danger" role="alert">
+        Error! There was an internal server error.
+    </div>
+
+    <div class="bid-heading">Create your bid</div><br />
+
+    <textarea [(ngModel)]="data.bidDescription" class="text-area form-control" placeholder="Pitch your services here" rows="5"></textarea><br/>
+
+    <div class="form-group">
+        <label for="timeRequired">Time Required</label>
+        <input type="text" [(ngModel)]="data.timeRequired" class="form-control" id="timeRequired" placeholder="Enter the time here">
+        <small class="form-text text-muted">The proposed time is specified in hours and should be a whole number or a decimal number.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="proposedBudget">Proposed Budget</label>
+        <input type="text" [(ngModel)]="data.proposedBudget" class="form-control" id="proposedBudget" placeholder="Enter the budget here">
+        <small class="form-text text-muted">All the budget proposed are in Sterling Pound (£).</small>
+    </div>
+
+    <button class="btn btn-block btn-outline-success btn-style" (click)="submitBid()">Submit Bid</button>
 </div>

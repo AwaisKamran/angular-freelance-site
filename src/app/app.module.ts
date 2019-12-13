@@ -24,6 +24,7 @@ import { UserOrderBadgeComponent } from './user-order-badge/user-order-badge.com
 import { OrderPageComponent } from './order-page/order-page.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
+import { BidRequestComponent } from './bid-request/bid-request.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
     UserOrderBadgeComponent,
     OrderPageComponent,
     CommentListComponent,
-    BuyerRequestComponent
+    BuyerRequestComponent,
+    BidRequestComponent
   ],
   imports: [
     NgbModule,
