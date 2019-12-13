@@ -25,6 +25,7 @@ import { OrderPageComponent } from './order-page/order-page.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
 import { BidRequestComponent } from './bid-request/bid-request.component';
+import { CreateJobComponent } from './create-job/create-job.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BidRequestComponent } from './bid-request/bid-request.component';
     OrderPageComponent,
     CommentListComponent,
     BuyerRequestComponent,
-    BidRequestComponent
+    BidRequestComponent,
+    CreateJobComponent
   ],
   imports: [
     NgbModule,

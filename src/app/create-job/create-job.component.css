@@ -1,0 +1,60 @@
+.create-job-container{
+    background-color: #fbf9f9;
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+
+.create-job-form{
+    padding: 20px;
+    background-color: white;
+    width: 65%;
+    min-height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+@media only screen and (max-width: 992px) {
+    .create-job-form{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .create-job-form{
+        width: 90%;
+    }
+}
+
+.heading-icon{
+    font-size: 18.5px;
+    margin-right: 10px;
+}
+
+.heading{
+    font-size: 18px;
+}
+
+.text-area{
+    width: 100%;
+}
+
+.green-block{
+    background-color: #1dbf73 !important;
+}
+
+
+.green-icon{
+    color: #1db36d;
+    font-size: 18.5px;
+    cursor: pointer;
+}
+
+.green-heading{
+    color: #1db36d;
+    font-size: 18.5px;
+    margin-bottom: 10px;
+}

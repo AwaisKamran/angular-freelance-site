@@ -1,0 +1,46 @@
+<div class="create-job-container">
+    <div class="create-job-form centered">
+        <div class="order-detail-heading">
+            <i class="fa fa-arrow-circle-o-left heading-icon green-icon" aria-hidden="true" (click)="navigateToDashboard()"></i>
+            <span class="heading">Create a job post</span>
+        </div><br />
+
+        <div *ngIf="orderSuccessFlag" class="alert alert-success" role="alert">
+            Congratulations! Your new job post has been created.
+        </div>
+
+        <div *ngIf="orderErrorFlag" class="alert alert-danger" role="alert">
+            Error! There was an internal server error.
+        </div>
+
+        <div class="col-md-12 col-12 form-group no-padding">
+            <label>Category</label>
+            <div>
+                <select class="form-control no-padding" [(ngModel)]="data.categoryId" (change)="categoryChanged()">
+                    <option value="-1" selected>Select Category</option>
+                    <option *ngFor="let category of categories" [value]="category.id">   
+                        {{ category.categoryName }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <textarea [(ngModel)]="data.orderInstructions" class="text-area form-control" rows="5" placeholder="Write the job description here"></textarea><br/>
+        
+        <div class="form-group">
+            <label for="exampleInputHours">Hours Required</label>
+            <input [(ngModel)]="data.hoursRequired" type="text" class="form-control" id="exampleInputHours" aria-describedby="inputHours">
+            <small id="inputHours" class="form-text text-muted">Please define the number of hours as a decimal number or a whole number.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="budgetTask">Budget</label>
+            <input [(ngModel)]="data.budget" type="email" class="form-control" id="budgetTask" aria-describedby="budgetTask2">
+            <small id="budgetTask2" class="form-text text-muted">All the payments are in Sterling Pound (£).</small>
+        </div>
+
+        <button type="button" class="btn btn-success btn-block green-block" (click)="addJob()">
+            Create
+        </button><br />
+    </div>
+</div>
