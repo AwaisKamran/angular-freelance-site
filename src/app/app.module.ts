@@ -23,6 +23,7 @@ import { UserInfoBadgeComponent } from './user-info-badge/user-info-badge.compon
 import { UserOrderBadgeComponent } from './user-order-badge/user-order-badge.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
+import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CommentListComponent } from './comment-list/comment-list.component';
     UserInfoBadgeComponent,
     UserOrderBadgeComponent,
     OrderPageComponent,
-    CommentListComponent
+    CommentListComponent,
+    BuyerRequestComponent
   ],
   imports: [
     NgbModule,

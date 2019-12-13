@@ -6,11 +6,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserServicesComponent } from './user-services/user-services.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { OrderPageComponent } from './order-page/order-page.component';
+import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'buyer-request', component: BuyerRequestComponent },
   { path: 'user-services', component: UserServicesComponent },
   { path: 'user-settings', component: UserSettingsComponent },
   { path: 'order-page/:id', component: OrderPageComponent },
