@@ -83,7 +83,7 @@ export class UserServicesComponent implements OnInit {
     .subscribe((res: any) => {
       if(res.success && res.data.length > 0){
         for (const service of res.data) {
-          service.image = this.constantsService.getImageUrl(service.id);
+          service.image = this.constantsService.getServiceImageUrl(service.id);
         }
         this.userServices = res.data;
       }

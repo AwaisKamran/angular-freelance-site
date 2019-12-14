@@ -15,12 +15,8 @@ export class BidService {
     this.url = this.constantsService.url;
   }
 
-  getUnassignedOrders(id){
-    return this.http.get(`${this.url}api/order/getOrdersByUserId.php?userId=${id}`);
-  }
-
   getBidsByOrderId(id){
-    return this.http.get(`${this.url}api/order/getBidsByOrderId.php?orderId=${id}`);
+    return this.http.get(`${this.url}api/bid/getBidsByOrderId.php?orderId=${id}`);
   }
 
   createBid(data){

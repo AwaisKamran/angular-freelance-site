@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../services/user.service";
+import { OrderService } from "../services/order.service";
+import { BidService } from "../services/bid.service";
+import { ConstantsService } from "../services/constants.service";
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,6 +14,7 @@ export class BuyerRequestComponent implements OnInit {
   public dialogOpened: boolean = false;
   public dialogSuccess: boolean = false;
   public dialogError: boolean = false;
+  public orderList: any = [];
   public data: any = {
     orderId: undefined,
     bidDescription: undefined,
@@ -22,10 +26,25 @@ export class BuyerRequestComponent implements OnInit {
   constructor(
     public router: Router,
     public route: ActivatedRoute,
-    public userService: UserService
-  ) { }
+    public userService: UserService,
+    public constantsService: ConstantsService,
+    public bidService: BidService,
+    public orderService: OrderService
+  ) {
+    this.fetchOrders();
+  }
 
   ngOnInit() {
+  }
+
+  fetchOrders(){
+    this.orderService.getUnAssignedOrders()
+    .subscribe((res: any) => {
+      if(res.success){
+        this.orderList = res.data;
+      }  
+    }, (err: any) => {
+    });
   }
 
   navigateToDashboard(){
@@ -42,6 +61,23 @@ export class BuyerRequestComponent implements OnInit {
   }
 
   submitBid(){
-    
+    this.bidService.createBid(this.data)
+    .subscribe((res: any) => {
+      if(res.success){
+        this.dialogSuccess = true;
+        this.dialogError = false;
+      }  
+      else{
+        this.dialogSuccess = false;
+        this.dialogError = true;
+      }
+    }, (err: any) => {
+      this.dialogSuccess = false;
+      this.dialogError = true;
+    });
+  }
+
+  getUserImage(id){
+    return `url(${this.constantsService.getImageUrl(id)}), url(assets/images/profile-pic.png)`;
   }
 }

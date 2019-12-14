@@ -23,10 +23,10 @@ export class UserOrderBadgeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.serviceImageProfile = `url(${this.constantsService.getImageUrl(this.order.serviceId)})`;
+    this.serviceImageProfile = `url(${this.constantsService.getServiceImageUrl(this.order.serviceId)})`;
     this.serviceImageProfile += ',url(assets/images/placeholder.jpg)';
-
-    this.imageProfile = `url(${this.constantsService.getServiceImageUrl(this.order.user.id)})`;
+    
+    this.imageProfile = `url(${this.constantsService.getImageUrl(this.order.user.id)})`;
     this.imageProfile += ',url(assets/images/profile-pic.png)';
 
     this.date = formatDistance(addHours(new Date(), this.order.service.minimumHours), new Date());

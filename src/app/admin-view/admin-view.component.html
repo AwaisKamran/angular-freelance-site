@@ -1,0 +1,25 @@
+<div class="admin-view-container">
+    <div class="admin-container">
+        <div class="open-orders">My Orders List</div>
+        <div class="service-container" *ngFor="let order of orderList">
+            <div class="buyer-request-tab-description">
+                <span class="title">Category</span> <span
+                    class="badge badge-secondary badge-green">{{ order.categoryName }}</span>
+                <div class="description">{{ order.orderInstructions }}</div><br />
+                <div class="price-tag">
+                    <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> £ {{ order.budget }}
+                </div>
+                <div class="time-required">
+                    <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> {{ order.hoursRequired }}
+                    hours
+                </div>
+                <div class="bid-section" (click)="navigateToBids(order.id)">
+                    <div class="bid-count float-left">{{ order.bidCount }}</div>
+                    <div class="float-left">Bids Available</div>
+                    <div class="clear-both"></div>
+                </div>
+            </div>
+        </div>
+        <div class="clear-both"></div>
+    </div>
+</div>

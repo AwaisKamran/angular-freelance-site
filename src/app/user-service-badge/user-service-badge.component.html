@@ -1,7 +1,7 @@
 <div class="order-container">
     <div *ngIf="buyService" class="user-details">
         <div class="float-left">
-            <div class="user-detail-image"></div>
+            <div class="user-detail-image" [ngStyle]="{'background-image': service.user.image }"></div>
         </div>
         <div class="float-left">
             <div class="user-detail-title">{{ service.user.name}}</div>

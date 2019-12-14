@@ -23,6 +23,9 @@
       <li *ngIf="isUserActive && isUserAdmin" class="nav-item">
         <a class="nav-link" [routerLink]="['create-job']" href="#">Create Job</a>
       </li>
+      <li *ngIf="isUserActive && isUserAdmin" class="nav-item">
+        <a class="nav-link" [routerLink]="['search']" href="#">Search Job</a>
+      </li>
     </ul>
     <form *ngIf="!isUserActive" class="form-inline my-2 my-lg-0">
       <button class="btn btn-outline-success btn-outline-green my-2 my-sm-0" type="button" (click)="register()">Login</button>

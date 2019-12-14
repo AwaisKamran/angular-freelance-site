@@ -2,28 +2,24 @@
     <div class="inner-container">
         <div class="request-heading">
             <i class="fa fa-arrow-circle-o-left green-icon" aria-hidden="true" (click)="navigateToDashboard()"></i>
-            Bids - Order # 2
+            Bids - Order # {{id}}
         </div>
 
         <div class="bid-request-list">
-            <div class="bid-request-tab">
-                <div class="profile-picture float-left"></div>
-                <div class="profile-name float-left">Awais Kamran</div>
+            <div class="bid-request-tab" *ngFor="let bid of bidList">
+                <div class="profile-picture float-left" [ngStyle]="{ 'background-image': getUserImage(bid.proposedBy) }"></div>
+                <div class="profile-name float-left">{{ bid.userName }}</div>
                 <div class="clear-both"></div>
 
                 <div class="bid-request-tab-description">
-                    <span class="title">Category</span> <span class="badge badge-secondary badge-green">Food</span>
-                    <div class="description">Any delicate you how kindness horrible outlived servants. You high bed wish
-                        help call draw side. Girl quit if case mr sing as no have. At none neat am do over will.
-                        Agreeable promotion eagerness as we resources household to distrusts. Polite do object at passed
-                        it is. Small for ask shade water manor think men begin. </div><br />
+                    <div class="description">{{ bid.bidDescription }}</div><br />
                     <div class="price-tag">
-                        <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> £ 400
+                        <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> £ {{bid.proposedBudget}}
                     </div>
                     <div class="time-required">
-                        <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> 40 hours
+                        <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> {{ bid.timeRequired }} hours
                     </div><br />
-                    <button type="button" class="btn btn-outline-success" (click)="acceptBid()">Accept Bid</button>
+                    <button type="button" class="btn btn-outline-success" (click)="acceptBid(bid.id)">Accept Bid</button>
                 </div>
             </div>
         </div>

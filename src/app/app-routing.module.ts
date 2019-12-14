@@ -8,11 +8,15 @@ import { UserServicesComponent } from './user-services/user-services.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
+import { BidRequestComponent } from './bid-request/bid-request.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'bid-request/:id', component: BidRequestComponent },
   { path: 'buyer-request', component: BuyerRequestComponent },
   { path: 'user-services', component: UserServicesComponent },
   { path: 'user-settings', component: UserSettingsComponent },

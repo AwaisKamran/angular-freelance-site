@@ -1,0 +1,81 @@
+<div class="search-outer-container"> 
+    <div class="search-container container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-2 no-padding-right">
+            <select class="form-control no-padding" [(ngModel)]="data.categoryId" (click)="closeDropDown()"
+                (change)="categoryChanged()">
+                <option value="-1" selected>Select Category</option>
+                <option *ngFor="let category of categories" [value]="category.id">
+                    {{ category.categoryName }}
+                </option>
+            </select>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-2">
+            <select class="form-control no-padding" [(ngModel)]="data.subCategoryId" (click)="closeDropDown()">
+                <option value="-1" selected>Select Sub-Category</option>
+                <option *ngFor="let subcategory of filteredSubcategories" [value]="subcategory.id">
+                    {{ subcategory.subCategoryName }}
+                </option>
+            </select>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-2 mb-2">
+            <button class="btn btn-block btn-success green" type="button" (click)="fetchServices()">
+                <span *ngIf="searching" class="spinner-border spinner-border-sm" role="status"
+                    aria-hidden="true"></span>
+                Search
+            </button>
+        </div>
+    </div>
+
+    <div class="row padding-20">
+        <div *ngIf="services.length === 0" class="no-data-available">No services available.</div>
+        <div *ngIf="services.length > 0" class="service-container">
+            <div class="row">
+                <div *ngFor="let service of services" class="order-wrapper col-lg-4">
+                    <app-user-service-badge (openDialog)="onOpenDialog($event)" [service]="service" [buyService]="true">
+                    </app-user-service-badge>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay" *ngIf="dialogOpened"></div>
+<div class="dialog-container" *ngIf="dialogOpened">
+    <div class="cross-icon" (click)="toggleDialog()"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+    <div *ngIf="orderCreatedSuccess" class="alert alert-success" role="alert">
+        Congratulations! Your order is created.
+    </div>
+
+    <div *ngIf="orderCreatedError" class="alert alert-danger" role="alert">
+        Error! There was an internal server error.
+    </div>
+
+    <div class="user-details">
+        <div class="float-left">
+            <div class="user-detail-image"></div>
+        </div>
+        <div class="float-left">
+            <div class="user-detail-name">{{ dialogData.user.name }}</div>
+            <div class="user-detail-email">{{ dialogData.user.email }}</div>
+        </div>
+        <div class="clear-both"></div>
+    </div><br /><br />
+
+    <div class="service-detail">
+        <div class="service-detail-name">{{ dialogData.title }}</div>
+        <div class="service-cover-image">{{ dialogData.name }}</div>
+        <div class="service-detail-description">{{ dialogData.description }}</div><br />
+        <div class="service-detail-hourly-rate"><span class="bold">Hourly Cost</span> {{ dialogData.hourlyCost }}/hr
+        </div>
+        <div class="service-detail-minimum-hours"><span class="bold">Minimum Hours</span> {{ dialogData.minimumHours }}
+            hours</div>
+        <div class="user-detail-travel-radius"><span class="bold">Travel Radius</span>
+            {{ dialogData.user.travelRadius }}</div>
+    </div><br />
+
+    <button class="btn btn-block btn-outline-success" (click)="buyOrder()">Buy Order</button>
+</div>

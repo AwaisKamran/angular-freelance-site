@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../services/category.service';
 import { OrderService } from '../services/order.service';
+import { UserService } from '../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -18,14 +19,16 @@ export class CreateJobComponent implements OnInit {
     hoursRequired: undefined,
     budget: undefined,
     orderInstructions: undefined,
-    serviceId: null
+    serviceId: null,
+    orderCreatedBy: this.userService.getUserObject().id
   };
 
   constructor(
     public router: Router,
     public route: ActivatedRoute,
     public categoryService: CategoryService,
-    public orderService: OrderService
+    public orderService: OrderService,
+    public userService: UserService
   ) { 
     this.getCategories();
   }
@@ -53,11 +56,13 @@ export class CreateJobComponent implements OnInit {
       hoursRequired: undefined,
       budget: undefined,
       orderInstructions: undefined,
-      serviceId: null
+      serviceId: null,
+      orderCreatedBy: null
     };
   }
 
   addJob(){
+    if(this.data.categoryId === "-1") this.data.categoryId = undefined;
     this.orderService.createOrder(this.data)
       .subscribe((res: any) => {
         if(res.success){
@@ -74,5 +79,4 @@ export class CreateJobComponent implements OnInit {
         this.orderErrorFlag = true;
       });
   }
-
 }
