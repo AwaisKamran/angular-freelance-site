@@ -1,11 +1,49 @@
 <div class="admin-view-container">
+    <div class="row mb-2 mt-2">
+        <div class="col-lg-2 col-md-3 col-sm-7 col-7 chart-container">
+            <div class="inner-chart-container progress-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">In Progress</div>
+                    <i class="fa fa-check card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number">
+                    3
+                </div>
+                <div class="clear-both"></div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-7 col-7 chart-container">
+            <div class="inner-chart-container revision-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">Revisions</div>
+                    <i class="fa fa-hourglass-start card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number">
+                    3
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-7 col-7 chart-container">
+            <div class="inner-chart-container delivered-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">Delivered</div>
+                    <i class="fa fa-check card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number">
+                    3
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="admin-container">
-        <div class="open-orders">My Orders List</div>
+        <div class="open-orders">My Orders List ({{ orderList.length }})</div>
         <div class="service-container" *ngFor="let order of orderList">
             <div class="buyer-request-tab-description">
+                <div class="order-tab"> Order # {{order.id }}</div>
                 <span class="title">Category</span> <span
                     class="badge badge-secondary badge-green">{{ order.categoryName }}</span>
-                <div class="description">{{ order.orderInstructions }}</div><br />
+                <div *ngIf="order.orderInstructions" class="description">{{ order.orderInstructions }}</div><br />
                 <div class="price-tag">
                     <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> £ {{ order.budget }}
                 </div>
@@ -13,13 +51,20 @@
                     <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> {{ order.hoursRequired }}
                     hours
                 </div>
-                <div class="bid-section" (click)="navigateToBids(order.id)">
+                <div *ngIf="order.bidCount > 0 && order.status === '-1'" class="bid-section"
+                    (click)="navigateToBids(order.id)">
                     <div class="bid-count float-left">{{ order.bidCount }}</div>
                     <div class="float-left">Bids Available</div>
                     <div class="clear-both"></div>
                 </div>
+                <div *ngIf="order.status !== '-1'">
+                    <div *ngIf="order.status === '0'" class="badge-value badge-progress">In progress</div>
+                    <div *ngIf="order.status === '1'" class="badge-value badge-delivered">Delivered</div>
+                    <div *ngIf="order.status === '2'" class="badge-value badge-revision">In Revision</div>
+                </div>
             </div>
         </div>
+        <div *ngIf="orderList.length === 0" class="no-data-available mt-2">No Orders Available</div>
         <div class="clear-both"></div>
     </div>
 </div>

@@ -97,3 +97,98 @@
 .bid-section{
     cursor: pointer;
 }
+
+.no-data-available{
+    color: black;
+    background-color: #e0e0e0;
+    width: 100%;
+    text-align: center;
+    padding: 2.5%;
+    margin-bottom: 20px;
+}
+
+.badge-progress{
+    background-color: #45a539;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
+.badge-delivered{
+    background-color: orangered;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
+.badge-revision{
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
+.order-tab{
+    font-size: 16.5px;
+    color: #1db36d;
+    cursor: pointer;
+}
+
+.order-tab:hover{
+   text-decoration: underline; 
+}
+
+.inner-chart-container{
+    background-color: red;
+    height: 100px;
+    margin-bottom: 8px;
+}
+
+.progress-container{
+    background-color: #45a539;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.revision-container{
+    background-color: #dc3545;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.delivered-container{
+    background-color: orangered;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.card-item{
+    margin-right: 15px;
+}
+
+.card-icons{
+    font-size: 35px;
+}
+
+.card-number{
+    font-size: 50px;
+    font-weight: 100;
+    margin-top: 4px;
+}
+
+.chart-title{
+    font-weight: 100;
+    margin-bottom: 4px;
+}

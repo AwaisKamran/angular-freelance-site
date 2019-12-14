@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../services/user.service";
 import { BidService } from "../services/bid.service";
+import { OrderService } from "../services/order.service";
 import { ConstantsService } from "../services/constants.service";
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -12,12 +13,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class BidRequestComponent implements OnInit {
   public bidList = [];
   public id: string = undefined;
+  public bidSuccess: boolean = false;
+  public bidError: boolean = false;
 
   constructor(
     public router: Router,
     public route: ActivatedRoute,
     public userService: UserService,
     public bidService: BidService,
+    public orderService: OrderService,
     public constantsService: ConstantsService
   ) { }
 
@@ -47,12 +51,44 @@ export class BidRequestComponent implements OnInit {
     return `url(${this.constantsService.getImageUrl(id)}), url(assets/images/profile-pic.png)`;
   }
 
-  acceptBid(id){
-    this.bidService.acceptBid(id)
+  getServiceImage(id){
+    return `url(${this.constantsService.getServiceImageUrl(id)}), url(assets/images/placeholder.jpg)`;
+  }
+
+  acceptBid(bid){
+    let data = {
+      bidId: bid.id
+    };
+
+    this.bidService.acceptBid(data)
     .subscribe((res: any) => {
       if(res.success){
+        this.updateOrderById(bid.serviceId, bid.orderId, 0)
       }  
     }, (err: any) => {
+    });
+  }
+
+  updateOrderById(serviceId, orderId, status){
+    let data = {
+      serviceId: serviceId,
+      orderId: orderId,
+      status: status
+    };
+
+    this.orderService.updateOrderById(data)
+    .subscribe((res: any) => {
+      if(res.success){
+        this.bidSuccess = true;
+        this.bidError = false;
+      }  
+      else{
+        this.bidSuccess = false;
+        this.bidError = true;
+      }
+    }, (err: any) => {
+      this.bidSuccess = false;
+      this.bidError = true;
     });
   }
 }

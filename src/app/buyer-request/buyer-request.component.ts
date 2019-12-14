@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from "../services/user.service";
 import { OrderService } from "../services/order.service";
 import { BidService } from "../services/bid.service";
+import { ServicesService } from "../services/services.service";
 import { ConstantsService } from "../services/constants.service";
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -14,9 +15,13 @@ export class BuyerRequestComponent implements OnInit {
   public dialogOpened: boolean = false;
   public dialogSuccess: boolean = false;
   public dialogError: boolean = false;
+  public loadingServices: boolean = false;
   public orderList: any = [];
+  public services: any = [];
   public data: any = {
     orderId: undefined,
+    categoryId: undefined,
+    serviceId: "-1",
     bidDescription: undefined,
     timeRequired: undefined,
     proposedBudget: undefined,
@@ -29,7 +34,8 @@ export class BuyerRequestComponent implements OnInit {
     public userService: UserService,
     public constantsService: ConstantsService,
     public bidService: BidService,
-    public orderService: OrderService
+    public orderService: OrderService,
+    public servicesService: ServicesService
   ) {
     this.fetchOrders();
   }
@@ -51,9 +57,23 @@ export class BuyerRequestComponent implements OnInit {
     this.router.navigate([`/dashboard`]);
   }
 
-  onOpenDialog(id){
+  onOpenDialog(id, categoryId){
+    this.loadingServices = true;
     this.data.orderId = id;
+    this.data.categoryId = categoryId;
+    this.getServicesByCatgeoryId(categoryId);
     this.dialogOpened = true;
+  }
+
+  getServicesByCatgeoryId(id){
+    this.servicesService.getUserServicesByCategoryId(id)
+    .subscribe((res: any) => {
+      if(res.success){
+        this.loadingServices = false;
+        this.services = res.data;
+      }  
+    }, (err: any) => {
+    });
   }
 
   toggleDialog(){

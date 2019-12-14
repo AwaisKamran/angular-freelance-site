@@ -4,6 +4,24 @@
     <img src="assets/images/logo-header.png" class="navbar-logo" alt="Freelance Services" />
   </a>
 
+  <div *ngIf="isUserActive" class="dropdown show form-inline dropdown-style">
+    <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div class="profile-pic" [ngStyle]="{'background-image': userImagePath }"></div>
+    </a>
+
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+      <div class="dropdown-item" (click)="navigateToSettings()">
+        <i class="fa fa-cog menu-icon" aria-hidden="true"></i> Settings
+      </div>
+      <div *ngIf="!isUserAdmin" class="dropdown-item" (click)="navigateToUserServices()">
+        <i class="fa fa-address-book-o menu-icon" aria-hidden="true"></i> My Profile
+      </div>
+      <div class="dropdown-item pointer-cursor" (click)="logout()">
+        <i class="fa fa-power-off menu-icon" aria-hidden="true"></i> Logout
+      </div>
+    </div>
+  </div>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -24,30 +42,12 @@
         <a class="nav-link" [routerLink]="['create-job']" href="#">Create Job</a>
       </li>
       <li *ngIf="isUserActive && isUserAdmin" class="nav-item">
-        <a class="nav-link" [routerLink]="['search']" href="#">Search Job</a>
+        <a class="nav-link" (click)="navigateToPlainSearch()">Search Job</a>
       </li>
     </ul>
     <form *ngIf="!isUserActive" class="form-inline my-2 my-lg-0">
       <button class="btn btn-outline-success btn-outline-green my-2 my-sm-0" type="button" (click)="register()">Login</button>
     </form>
-  </div>
-
-  <div *ngIf="isUserActive" class="dropdown show form-inline">
-    <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <div class="profile-pic" [ngStyle]="{'background-image': userImagePath }"></div>
-    </a>
-
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-      <div class="dropdown-item" (click)="navigateToSettings()">
-        <i class="fa fa-cog menu-icon" aria-hidden="true"></i> Settings
-      </div>
-      <div *ngIf="!isUserAdmin" class="dropdown-item" (click)="navigateToUserServices()">
-        <i class="fa fa-address-book-o menu-icon" aria-hidden="true"></i> My Profile
-      </div>
-      <div class="dropdown-item pointer-cursor" (click)="logout()">
-        <i class="fa fa-power-off menu-icon" aria-hidden="true"></i> Logout
-      </div>
-    </div>
   </div>
 </nav>
 <!-- Header End -->
@@ -60,13 +60,13 @@
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showFood">
       <div class="col-lg-6 col-md-6 col-6 no-padding">
-        <a class="dropdown-item" href="#">Butler Services</a>
-        <a class="dropdown-item" href="#">Cake baking</a>
-        <a class="dropdown-item" href="#">Food shopping</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Butler Services</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Cake baking</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Food shopping</a>
       </div>
       <div class="col-lg-6 col-md-6 col-6 no-padding">
-        <a class="dropdown-item" href="#">Preparing meals</a>
-        <a class="dropdown-item" href="#">Waiting services</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Preparing meals</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Waiting services</a>
       </div>
     </div>
   </div>
@@ -77,29 +77,29 @@
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showCleaning">
       <div class="col-lg-6 col-md-6 col-6 no-padding">
-        <a class="dropdown-item" href="#">Air conditioners</a>
-        <a class="dropdown-item" href="#">Furnace air filters</a>
-        <a class="dropdown-item" href="#">Bathroom cleaning</a>
-        <a class="dropdown-item" href="#">Car washing</a>
-        <a class="dropdown-item" href="#">Cleaning blinds</a>
-        <a class="dropdown-item" href="#">Cleaning refrigerator</a>
-        <a class="dropdown-item" href="#">Dishwashing</a>
-        <a class="dropdown-item" href="#">Garage cleaning</a>
-        <a class="dropdown-item" href="#">House cleaning</a>
-        <a class="dropdown-item" href="#">Kitchen cleaning</a>
-        <a class="dropdown-item" href="#">Laundry</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Air conditioners</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Furnace air filters</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Bathroom cleaning</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Car washing</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Cleaning blinds</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Cleaning refrigerator</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Dishwashing</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Garage cleaning</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">House cleaning</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Kitchen cleaning</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Laundry</a>
       </div>
       <div class="col-lg-6 col-md-6 col-6 no-padding">
-        <a class="dropdown-item" href="#">Machine cleaning</a>
-        <a class="dropdown-item" href="#">Mopping floors</a>
-        <a class="dropdown-item" href="#">Pool cleaning</a>
-        <a class="dropdown-item" href="#">Shampooing carpets</a>
-        <a class="dropdown-item" href="#">Sweeping</a>
-        <a class="dropdown-item" href="#">Taking out trash</a>
-        <a class="dropdown-item" href="#">Vaccuming curtains</a>
-        <a class="dropdown-item" href="#">Vaccuming</a>
-        <a class="dropdown-item" href="#">Waste collection</a>
-        <a class="dropdown-item" href="#">Window cleaning</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Machine cleaning</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Mopping floors</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Pool cleaning</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Shampooing carpets</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Sweeping</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Taking out trash</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Vaccuming curtains</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Vaccuming</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Waste collection</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Window cleaning</a>
       </div>
     </div>
   </div>
@@ -110,27 +110,27 @@
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showMaintenance">
       <div class="col-lg-6 col-md-6 col-6 no-padding">
-        <a class="dropdown-item" href="#">Construction</a>
-        <a class="dropdown-item" href="#">Decorating</a>
-        <a class="dropdown-item" href="#">DIY fixing</a>
-        <a class="dropdown-item" href="#">Garden fencing</a>
-        <a class="dropdown-item" href="#">Fence maintenance</a>
-        <a class="dropdown-item" href="#">Gardening</a>
-        <a class="dropdown-item" href="#">Garden maintenance</a>
-        <a class="dropdown-item" href="#">Interior designing</a>
-        <a class="dropdown-item" href="#">Lawn maintenance</a>
-        <a class="dropdown-item" href="#">Mowing the lawn</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Construction</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Decorating</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">DIY fixing</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Garden fencing</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Fence maintenance</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Gardening</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Garden maintenance</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Interior designing</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Lawn maintenance</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Mowing the lawn</a>
       </div>
       <div class="col-lg-6 col-md-6 col-6 no-padding">
-        <a class="dropdown-item" href="#">Painting</a>
-        <a class="dropdown-item" href="#">Plumbing</a>
-        <a class="dropdown-item" href="#">Window fixing</a>
-        <a class="dropdown-item" href="#">Tree surgery</a>
-        <a class="dropdown-item" href="#">Tree pruning</a>
-        <a class="dropdown-item" href="#">Panels</a>
-        <a class="dropdown-item" href="#">Partition the wall</a>
-        <a class="dropdown-item" href="#">Watering plants</a>
-        <a class="dropdown-item" href="#">Weeding the garden</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Painting</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Plumbing</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Window fixing</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Tree surgery</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Tree pruning</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Panels</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Partition the wall</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Watering plants</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Weeding the garden</a>
       </div>
     </div>
   </div>
@@ -141,17 +141,17 @@
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showManagement">
       <div class="col-lg-6 col-md-6 col-6 no-padding">
-        <a class="dropdown-item" href="#">Accountancy</a>
-        <a class="dropdown-item" href="#">Administration</a>
-        <a class="dropdown-item" href="#">Chauffeur</a>
-        <a class="dropdown-item" href="#">Event planning</a>
-        <a class="dropdown-item" href="#">Health management</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Accountancy</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Administration</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Chauffeur</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Event planning</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Health management</a>
       </div>
       <div class="col-lg-6 col-md-6 col-6 no-padding">
-        <a class="dropdown-item" href="#">Home sitting</a>
-        <a class="dropdown-item" href="#">House removals</a>
-        <a class="dropdown-item" href="#">Personal assistant</a>
-        <a class="dropdown-item" href="#">Security</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Home sitting</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">House removals</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Personal assistant</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Security</a>
       </div>
     </div>
   </div>
@@ -162,11 +162,11 @@
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showPets">
       <div class="col-lg-12 col-md-12 col-12 no-padding">
-        <a class="dropdown-item" href="#">Bathing pet</a>
-        <a class="dropdown-item" href="#">Feeding pet</a>
-        <a class="dropdown-item" href="#">Pampering pet</a>
-        <a class="dropdown-item" href="#">Pet sitting</a>
-        <a class="dropdown-item" href="#">Vet visit</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Bathing pet</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Feeding pet</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Pampering pet</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Pet sitting</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Vet visit</a>
       </div>
     </div>
   </div>
@@ -177,10 +177,10 @@
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showChildren">
       <div class="col-lg-12 col-md-12 col-12 no-padding">
-        <a class="dropdown-item" href="#">Babysitting</a>
-        <a class="dropdown-item" href="#">School run</a>
-        <a class="dropdown-item" href="#">Tutoring</a>
-        <a class="dropdown-item" href="#">Homework support</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Babysitting</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">School run</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Tutoring</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Homework support</a>
       </div>
     </div>
   </div>
@@ -191,10 +191,10 @@
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showElderly">
       <div class="col-lg-12 col-md-12 col-12 no-padding">
-        <a class="dropdown-item" href="#">Care</a>
-        <a class="dropdown-item" href="#">Companionship</a>
-        <a class="dropdown-item" href="#">Daily activities</a>
-        <a class="dropdown-item" href="#">Nursing</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Care</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Companionship</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Daily activities</a>
+        <a class="dropdown-item" (click)="navigateToSearch($event)">Nursing</a>
       </div>
     </div>
   </div>
@@ -205,12 +205,12 @@
       </div>
       <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showLifestyle">
         <div class="col-lg-12 col-md-12 col-12 no-padding">
-          <a class="dropdown-item" href="#">Hair & beauty</a>
-          <a class="dropdown-item" href="#">Massage therapy</a>
-          <a class="dropdown-item" href="#">Personal trainer</a>
-          <a class="dropdown-item" href="#">Photography</a>
-          <a class="dropdown-item" href="#">Private lessons</a>
-          <a class="dropdown-item" href="#">Therapies</a>
+          <a class="dropdown-item" (click)="navigateToSearch($event)">Hair & beauty</a>
+          <a class="dropdown-item" (click)="navigateToSearch($event)">Massage therapy</a>
+          <a class="dropdown-item" (click)="navigateToSearch($event)">Personal trainer</a>
+          <a class="dropdown-item" (click)="navigateToSearch($event)">Photography</a>
+          <a class="dropdown-item" (click)="navigateToSearch($event)">Private lessons</a>
+          <a class="dropdown-item" (click)="navigateToSearch($event)">Therapies</a>
         </div>
       </div>
     </div>
@@ -236,11 +236,11 @@
 
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#footerAccordion">
       <div class="card-body">
-        <a class="dropdown-item" href="#">Butler Services</a>
-        <a class="dropdown-item" href="#">Cake baking</a>
-        <a class="dropdown-item" href="#">Food shopping</a>
-        <a class="dropdown-item" href="#">Preparing meals</a>
-        <a class="dropdown-item" href="#">Waiting services</a>
+        <a class="dropdown-item">Butler Services</a>
+        <a class="dropdown-item">Cake baking</a>
+        <a class="dropdown-item">Food shopping</a>
+        <a class="dropdown-item">Preparing meals</a>
+        <a class="dropdown-item">Waiting services</a>
       </div>
     </div>
   </div>

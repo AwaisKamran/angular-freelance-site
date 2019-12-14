@@ -16,6 +16,8 @@ export class SearchComponent implements OnInit {
   public subcategories = [];
   public filteredSubcategories = [];
   public categories = [];
+  public categoryId: any = undefined;
+  public subCategoryId: any = undefined;
   public dialogData: any = undefined;
   public dialogOpened: boolean = false;
   public orderCreatedSuccess: boolean = false;
@@ -119,12 +121,12 @@ export class SearchComponent implements OnInit {
   buyOrder(){
     let data = {
       serviceId: this.dialogData.id,
-      hourRequired : null,
-      budget : null,
+      hoursRequired : this.dialogData.minimumHours,
+      budget : parseFloat(this.dialogData.hourlyCost) * parseFloat(this.dialogData.minimumHours),
       orderInstructions : null,
-      categoryId : null,
+      categoryId : this.dialogData.categoryId,
       subCategoryId : null,
-      status : null,
+      status : 0,
       type : null,
       orderCreatedBy: this.userService.getUserObject().id
     };

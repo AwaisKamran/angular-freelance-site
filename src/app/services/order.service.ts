@@ -40,4 +40,12 @@ export class OrderService {
   updateOrder(data){
     return this.http.post(`${this.url}api/order/assignOrder.php`, { "data": data });
   }
+
+  updateOrderById(data){
+    return this.http.post(`${this.url}api/order/updateStatusByOrderId.php`, { "data": data });
+  }
+
+  getUserOrderListHistory(id){
+    return this.http.get(`${this.url}api/order/getUserOrderListHistory.php?userId=${id}`);
+  }
 }

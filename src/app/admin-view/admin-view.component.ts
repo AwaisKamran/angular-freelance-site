@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from "../services/order.service";
 import { ConstantsService } from "../services/constants.service";
+import { UserService } from "../services/user.service";
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +14,7 @@ export class AdminViewComponent implements OnInit {
   constructor(
     public orderService: OrderService,
     public constantsService: ConstantsService,
+    public userService: UserService,
     public router: Router
   ) { 
     this.fetchOrders();
@@ -22,7 +24,7 @@ export class AdminViewComponent implements OnInit {
   }
 
   fetchOrders(){
-    this.orderService.getUnAssignedOrders()
+    this.orderService.getUserOrderListHistory(this.userService.getUserObject().id)
     .subscribe((res: any) => {
       if(res.success){
         this.orderList = res.data;

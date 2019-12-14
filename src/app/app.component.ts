@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from "./services/user.service";
 import { DropdownService } from "./services/dropdown.service";
 import { Router } from '@angular/router';
+import { resolve } from 'url';
 
 @Component({
   selector: 'app-root',
@@ -49,5 +50,23 @@ export class AppComponent {
 
   register() {
     this.router.navigate([`/register`]);
+  }
+
+  navigateToSearch(event){
+    let container = this;
+    let eventObj = event;
+    new Promise(function(resolve, reject){
+      localStorage.setItem("searchItem", eventObj.srcElement.innerText);
+      container.dropDownService.resetDropdowns();
+      resolve();
+    }).then(function(){
+      container.router.navigate([`/search`]);
+    })
+  }
+
+  navigateToPlainSearch(){
+    localStorage.removeItem("searchItemParent");
+    localStorage.removeItem("searchItem");
+    this.router.navigate([`/search`]);
   }
 }

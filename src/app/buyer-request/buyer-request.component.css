@@ -137,3 +137,9 @@
 .bid-heading{
     font-size: 15.5px;
 }
+
+.spinner-small{
+    margin-left: 5px;
+    margin-top: 5px;
+    color: #1db36d !important;
+}

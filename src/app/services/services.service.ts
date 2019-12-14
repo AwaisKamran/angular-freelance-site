@@ -23,6 +23,10 @@ export class ServicesService {
     return this.http.get(`${this.url}api/service/getUserServicesById.php?userId=${id}`);
   }
 
+  getUserServicesByCategoryId(id){
+    return this.http.get(`${this.url}api/service/getUserServicesByCategoryId.php?categoryId=${id}`);
+  }
+  
   getFilteredUserServices(data){
     return this.http.post(`${this.url}api/service/getFilteredUserServices.php`, {"data": data });
   }

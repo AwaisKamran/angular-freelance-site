@@ -33,7 +33,7 @@
         <div *ngIf="services.length === 0" class="no-data-available">No services available.</div>
         <div *ngIf="services.length > 0" class="service-container">
             <div class="row">
-                <div *ngFor="let service of services" class="order-wrapper col-lg-4">
+                <div *ngFor="let service of services" class="order-wrapper">
                     <app-user-service-badge (openDialog)="onOpenDialog($event)" [service]="service" [buyService]="true">
                     </app-user-service-badge>
                 </div>
@@ -46,11 +46,11 @@
 <div class="dialog-container" *ngIf="dialogOpened">
     <div class="cross-icon" (click)="toggleDialog()"><i class="fa fa-times" aria-hidden="true"></i></div>
 
-    <div *ngIf="orderCreatedSuccess" class="alert alert-success" role="alert">
+    <div *ngIf="orderCreatedSuccess" class="alert alert-success margin-right-style" role="alert">
         Congratulations! Your order is created.
     </div>
 
-    <div *ngIf="orderCreatedError" class="alert alert-danger" role="alert">
+    <div *ngIf="orderCreatedError" class="alert alert-danger margin-right-style" role="alert">
         Error! There was an internal server error.
     </div>
 

@@ -20,6 +20,7 @@ export class CreateJobComponent implements OnInit {
     budget: undefined,
     orderInstructions: undefined,
     serviceId: null,
+    status: "-1",
     orderCreatedBy: this.userService.getUserObject().id
   };
 
@@ -57,7 +58,8 @@ export class CreateJobComponent implements OnInit {
       budget: undefined,
       orderInstructions: undefined,
       serviceId: null,
-      orderCreatedBy: null
+      orderCreatedBy: null,
+      status: "-1"
     };
   }
 

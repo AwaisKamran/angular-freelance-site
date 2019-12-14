@@ -1,5 +1,14 @@
 <div class="bid-request-container">
     <div class="inner-container">
+        <div *ngIf="bidSuccess" class="alert alert-success" role="alert">
+            Congratulations! Your order has been placed.
+        </div>
+
+        <div *ngIf="bidError" class="alert alert-danger" role="alert">
+            Error! There was an internal server error.
+        </div>
+
+                
         <div class="request-heading">
             <i class="fa fa-arrow-circle-o-left green-icon" aria-hidden="true" (click)="navigateToDashboard()"></i>
             Bids - Order # {{id}}
@@ -11,15 +20,23 @@
                 <div class="profile-name float-left">{{ bid.userName }}</div>
                 <div class="clear-both"></div>
 
+                <div class="bid-details">
+                    <div class="float-left service-image" [ngStyle]="{ 'background-image': getServiceImage(bid.serviceId) }"></div>
+                    <div class="float-left bid-info">
+                        <div class="bid-title">{{bid.serviceName}}</div>
+                        <div class="price-tag">
+                            <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> £ {{bid.proposedBudget}}
+                        </div>
+                        <div class="time-required">
+                            <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> {{ bid.timeRequired }} hours
+                        </div>
+                    </div>
+                </div>
+                <div class="clear-both"></div>
+
                 <div class="bid-request-tab-description">
                     <div class="description">{{ bid.bidDescription }}</div><br />
-                    <div class="price-tag">
-                        <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> £ {{bid.proposedBudget}}
-                    </div>
-                    <div class="time-required">
-                        <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> {{ bid.timeRequired }} hours
-                    </div><br />
-                    <button type="button" class="btn btn-outline-success" (click)="acceptBid(bid.id)">Accept Bid</button>
+                    <button type="button" class="btn btn-outline-success" (click)="acceptBid(bid)">Accept Bid</button>
                 </div>
             </div>
         </div>
