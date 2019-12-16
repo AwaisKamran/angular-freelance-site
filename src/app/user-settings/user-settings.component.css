@@ -84,3 +84,30 @@
 .green-block{
     background-color: #1dbf73 !important;
 }
+
+.profile-heading{
+    font-size: 16.5px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.green-icon{
+    color: #1dbf73;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+.dashboard-container{
+    background-color: #fbf9f9;
+}
+
+.create-order {
+    background-color: white;
+    padding: 15px;
+}
+
+.text-center{
+    width: 100%;
+    text-align: center;
+    color: gray;
+}

@@ -90,4 +90,8 @@ export class UserSettingsComponent implements OnInit {
         this.userDataUpdatedError = true;
       });
   }
+
+  navigateToDashboard(){
+    this.router.navigate(["/dashboard"]);
+  }
 }

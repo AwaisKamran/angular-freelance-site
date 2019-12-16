@@ -69,3 +69,12 @@
 .bold{
     font-weight: 400;
 }
+
+.no-data-available{
+    color: black;
+    background-color: #e0e0e0;
+    width: 100%;
+    text-align: center;
+    padding: 2.5%;
+    margin-bottom: 20px;
+}

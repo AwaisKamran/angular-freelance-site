@@ -6,6 +6,10 @@
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                 <div class="create-order padding-10 margin-20">
+                    <div class="profile-heading">
+                        <i class="fa fa-arrow-circle-o-left heading-icon green-icon" aria-hidden="true" (click)="navigateToDashboard()"></i>
+                        <span>User Settings</span>
+                    </div>
                     <div *ngIf="userDataUpdated" class="alert alert-success" role="alert">
                         Congratulations! Your new service has been created.
                     </div>
@@ -14,9 +18,14 @@
                         Error! There was an internal server error.
                     </div>
 
+                    <div class="alert alert-primary" role="alert">
+                       Note - User can change their profile picture and password and other relevant details under this section. Please make sure that you provide authenticated bank account details.
+                    </div>
+
                     <input #fileDiv class="hide" type="file" (change)="onFileChanged($event)" />
                     <div class="centered">
-                        <div [ngStyle]="{ 'background-image': imageProfile }" title="click to change profile picture" class="image-style" (click)="openFileExplorer()"></div><br />
+                        <div [ngStyle]="{ 'background-image': imageProfile }" title="click to change profile picture" class="image-style" (click)="openFileExplorer()"></div>
+                        <div class="text-center mb-5">Click to change your picture</div>
                     </div>
 
                     <div class="form-group">
