@@ -7,7 +7,7 @@
                     <i class="fa fa-check card-icons" aria-hidden="true"></i>
                 </div>
                 <div class="float-left card-number">
-                    3
+                    {{ progress }}
                 </div>
                 <div class="clear-both"></div>
             </div>
@@ -19,7 +19,7 @@
                     <i class="fa fa-hourglass-start card-icons" aria-hidden="true"></i>
                 </div>
                 <div class="float-left card-number">
-                    3
+                    {{ revised }}
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                     <i class="fa fa-check card-icons" aria-hidden="true"></i>
                 </div>
                 <div class="float-left card-number">
-                    3
+                    {{ delivered }}
                 </div>
             </div>
         </div>
@@ -40,7 +40,16 @@
         <div class="open-orders">My Orders List ({{ orderList.length }})</div>
         <div class="service-container" *ngFor="let order of orderList">
             <div class="buyer-request-tab-description">
-                <div class="order-tab"> Order # {{order.id }}</div>
+                <div class="order-tab"> 
+                    <div class="float-left" (click)="navigateToOrderPage(order)">Order # {{order.id }} </div>
+                    <div *ngIf="order.status !== '-1'" class="float-right">
+                        <div class="float-left date-time">{{ formatDate(order.orderCreated) }}</div>
+                        <div *ngIf="order.status === '0'" class="badge-value badge-progress float-left"> In progress</div>
+                        <div *ngIf="order.status === '1'" class="badge-value badge-delivered float-left"> Delivered</div>
+                        <div *ngIf="order.status === '2'" class="badge-value badge-revision float-left"> In Revision</div>
+                    </div>
+                    <div class="clear-both"></div>
+                </div>
                 <span class="title">Category</span> <span
                     class="badge badge-secondary badge-green">{{ order.categoryName }}</span>
                 <div *ngIf="order.orderInstructions" class="description">{{ order.orderInstructions }}</div><br />
@@ -56,11 +65,6 @@
                     <div class="bid-count float-left">{{ order.bidCount }}</div>
                     <div class="float-left">Bids Available</div>
                     <div class="clear-both"></div>
-                </div>
-                <div *ngIf="order.status !== '-1'">
-                    <div *ngIf="order.status === '0'" class="badge-value badge-progress">In progress</div>
-                    <div *ngIf="order.status === '1'" class="badge-value badge-delivered">Delivered</div>
-                    <div *ngIf="order.status === '2'" class="badge-value badge-revision">In Revision</div>
                 </div>
             </div>
         </div>

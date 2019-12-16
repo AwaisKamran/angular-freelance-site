@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { format, addHours, addDays, formatDistance } from 'date-fns'
 import { ConstantsService } from '../services/constants.service';
+import { UserService } from '../services/user.service';
 import { OrderService } from '../services/order.service';
 import { Router } from '@angular/router';
 
@@ -17,6 +18,7 @@ export class UserOrderBadgeComponent implements OnInit {
 
   constructor(
     public constantsService: ConstantsService,
+    public userService: UserService,
     public orderService: OrderService,
     public router: Router
   ) { }
@@ -34,6 +36,6 @@ export class UserOrderBadgeComponent implements OnInit {
 
   viewOrder(order){
     this.orderService.clickedOrder = this.order;
-    this.router.navigate([`order-page/${order.id}`]);
+    this.router.navigate([`order-page/${order.id}/${this.userService.getUserObject().id}`]);
   }
 }

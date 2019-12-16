@@ -58,6 +58,7 @@
 .green-icon{
     color: #1db36d;
     font-size: 18.5px;
+    cursor: pointer;
 }
 
 .green-heading{
@@ -109,4 +110,28 @@
     font-size: 13px;
     line-height:20px;
     margin-top: 8px;
+}
+
+.green-icon{
+    color: #1db36d
+}
+
+.gray-text{
+    color:gray;
+    margin-left: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.gray-text:hover{
+    text-decoration: underline;
+}
+
+.no-padding-right{
+    padding-right: 0px;
+}
+
+.green-large-icon{
+    font-size: 20px;
+    color: #1db36d;
 }

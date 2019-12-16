@@ -24,14 +24,48 @@
         <div class="ordered-by">Ordered by <span class="green-highlight">{{ order.user.username }}</span> at {{ formatDate(order.orderCreated) }}</div><br/>      
         <hr/>
 
-        <div class="delivery-section" *ngIf="order.status === '0'">
+        <div class="delivery-section" *ngIf="(order.status === '0' || order.status === '1')  && !isAdmin()">
             <div class="form-group">
-                <input type="file" class="form-control-file" id="submitFile" />
+                <input type="file" class="form-control-file" id="fileToUpload" name="fileToUpload" (change)="onFileSelect($event)" />
             </div>
-            <button class="btn btn-block btn-outline-success green-border" (click)="deliverOrder()">Deliver Order</button>
+            <button class="btn btn-block btn-outline-success green-border" (click)="deliverOrder(order.id, 2)">Deliver Order</button>
             <div class="short-note">Note: Please make sure the document uploaded are in the .doc or .pdf format. In case of there is no deliverable, make sure to upload a signed or authorized receipts.</div>
         </div>
-        <div class="delivery-section-files" *ngIf="!order.status === '0'"></div>
+
+        <div class="delivery-section-container" *ngIf="order.status === '2' && !isAdmin()">
+            <div class="message box">
+                <i class="fa fa-check-square green-large-icon" aria-hidden="true"></i> Please wait while your deliverable is reviewed.
+            </div>
+        </div>
+
+        <div class="delivery-section-container" *ngIf="(order.status === '1')  && isAdmin()">
+            <div class="message box">
+                <i class="fa fa-check-square green-large-icon" aria-hidden="true"></i> Please wait while your deliverable is reviewed.
+            </div>
+        </div>
+
+        <div class="delivery-section-container" *ngIf="(order.status === '0')  && isAdmin()">
+            <div class="message box">
+                <i class="fa fa-history green-large-icon" aria-hidden="true"></i> Please wait, your deliverable is in progress.
+            </div>
+        </div>
+
+        <div class="admin-section" *ngIf="(order.status === '2') && isAdmin()">
+            <div class="attached-file mb-1">
+                <i class="fa fa-paperclip green-icon" aria-hidden="true"></i> 
+                <span class="gray-text">Download the attachment</span>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 no-padding-right">
+                    <button class="btn btn-block btn-outline-success green-border mb-1 btn-width" (click)="updateOrder(order.id, 3)">Accept Order</button>
+                </div>
+                <div class="col-lg-5 no-padding-right">
+                    <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="updateOrder(order.id, 1)">Submit Revision</button>
+                </div>
+            </div>
+            <div class="short-note">Note: Accepting the order can not be reverted, please make sure that you have receieved the right version of the deliverable before proceeding any further.</div>
+        </div>
+
         <hr/>
         <app-comment-list [orderId]="id"></app-comment-list>
     </div><br/><br/>

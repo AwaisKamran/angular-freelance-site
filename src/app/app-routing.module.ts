@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'user-services', component: UserServicesComponent },
   { path: 'user-settings', component: UserSettingsComponent },
   { path: 'create-job', component: CreateJobComponent },
-  { path: 'order-page/:id', component: OrderPageComponent },
+  { path: 'order-page/:id/:userId', component: OrderPageComponent },
   {
     path: '',
     redirectTo: '/login',

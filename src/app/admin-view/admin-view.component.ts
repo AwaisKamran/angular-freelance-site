@@ -3,6 +3,7 @@ import { OrderService } from "../services/order.service";
 import { ConstantsService } from "../services/constants.service";
 import { UserService } from "../services/user.service";
 import { Router } from '@angular/router';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-admin-view',
@@ -11,6 +12,10 @@ import { Router } from '@angular/router';
 })
 export class AdminViewComponent implements OnInit {
   public orderList: any = [];
+  public revised: number = 0;
+  public delivered: number = 0;
+  public progress: number = 0;
+
   constructor(
     public orderService: OrderService,
     public constantsService: ConstantsService,
@@ -28,9 +33,18 @@ export class AdminViewComponent implements OnInit {
     .subscribe((res: any) => {
       if(res.success){
         this.orderList = res.data;
+        this.processOrders();
       }  
     }, (err: any) => {
     });
+  }
+
+  processOrders(){
+    for(let i=0; i<this.orderList.length; i++){
+      if(this.orderList[i].status === '0') this.progress++;
+      else if(this.orderList[i].status === '1') this.revised++
+      else if(this.orderList[i].status === '2') this.delivered++;
+    }
   }
 
   getUserImage(id){
@@ -39,5 +53,15 @@ export class AdminViewComponent implements OnInit {
 
   navigateToBids(id){
     this.router.navigate([`/bid-request/${id}`]);
+  }
+
+  formatDate(date){
+    return format(new Date(date), 'MM/dd/yyyy');
+  }
+
+  navigateToOrderPage(order){
+    if(order.serviceId){
+      this.router.navigate([`/order-page/${order.id}/${order.freelancerId}`]);
+    }
   }
 }

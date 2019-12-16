@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <div class="admin-container container">
+    <div class="admin-container container" *ngIf="!userView">
         <app-admin-view></app-admin-view>
     </div>
 </div>
