@@ -1,0 +1,42 @@
+.yellow{
+    color: yellow !important;
+}
+
+.gray{
+    color: #e0e0e0;;
+}
+
+.rate-value:hover{
+    color: yellow;
+}
+
+.profile-picture{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.star{
+    font-size: 28px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.star-wrap{
+    width: max-content;
+}
+
+.headline-text{
+    color: gray;
+    width: 100%;
+    text-align: center;;
+}

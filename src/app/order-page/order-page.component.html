@@ -78,8 +78,13 @@
         </div>
 
         <div class="admin-section" *ngIf="(order.status === '3')">
-            <div class="message box">
-                <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been accepted.
+            <div *ngIf="order.rated">
+                <div class="message box">
+                    <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been accepted.
+                </div>
+            </div>
+            <div *ngIf="!order.rated">
+                <app-rating [display]="false" [orderCreatedBy]="order.user.id" [freelancerId]="order.freelancerId"></app-rating>
             </div>
         </div>
 

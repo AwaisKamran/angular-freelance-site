@@ -50,6 +50,10 @@ export class UserService {
     return `${this.url}uploads/user/${this.user.id}.jpg`;
   }
 
+  submitReview(data){
+    return this.http.post(`${this.url}api/user/updateRating.php`, { "data": data });
+  }
+
   storeUserInfo(data){
     let container = this;
     return new Promise(function(resolve, reject){   

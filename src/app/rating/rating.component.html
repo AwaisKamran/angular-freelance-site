@@ -1,0 +1,18 @@
+<div class="rating-container">
+    <div *ngIf="display">
+        <div [ngStyle]="{'background-image': userImage }" class="profile-picture centered"></div>
+        <div class="centered star-wrap">
+           <i *ngFor="let value of rating" class="fa fa-star yellow star" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <div *ngIf="!display">
+        <div [ngStyle]="{'background-image': userImage }" class="profile-picture centered"></div>
+        <div class="centered star-wrap">
+            <i *ngFor="let value of ratingValue; let i = index" class="fa fa-star gray rate-value star" [ngClass]="{'yellow': value}" (click)="getRating(i)" aria-hidden="true"></i>
+         </div>      
+         <div class="headline-text"> How would you rate your experience? </div>
+
+         <button class="btn btn-block btn-outline-success mb-4 mt-4" (click)="submitRating()">Submit Rating</button>
+    </div>
+</div>

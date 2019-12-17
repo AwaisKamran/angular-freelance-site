@@ -28,6 +28,7 @@ import { BidRequestComponent } from './bid-request/bid-request.component';
 import { CreateJobComponent } from './create-job/create-job.component';
 import { SearchComponent } from './search/search.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
     BidRequestComponent,
     CreateJobComponent,
     SearchComponent,
-    AdminViewComponent
+    AdminViewComponent,
+    RatingComponent
   ],
   imports: [
     NgbModule,
