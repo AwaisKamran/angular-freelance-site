@@ -33,10 +33,17 @@ export class AppComponent {
     else if (this.isUserActive && (evt.constructor.name === 'LoginComponent')) {
       this.router.navigate([`/dashboard`]);
     }
+  
+  }
+
+  clearStorage(){
+    localStorage.removeItem("searchItem");
+    localStorage.removeItem("searchParentItem");
   }
 
   logout() {
     this.userService.logout();
+    this.clearStorage();
     this.router.navigate([`/login`]);
   }
 
@@ -60,7 +67,10 @@ export class AppComponent {
       container.dropDownService.resetDropdowns();
       resolve();
     }).then(function(){
-      container.router.navigate([`/search`]);
+      container.router.navigate([`/search`])
+      .then(() => {
+        window.location.reload();
+      });
     })
   }
 

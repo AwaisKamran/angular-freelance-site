@@ -14,6 +14,8 @@ export class UserSettingsComponent implements OnInit {
   public stars = [];
   public userDataUpdated: boolean = false;
   public userDataUpdatedError: boolean = false;
+  public passwordChangedSuccess: boolean = false;
+  public passwordChangedError: boolean = false;
   public imageProfile: any = "assets/images/profile-pic.png";
   public file: File;
   public data: any = {
@@ -22,6 +24,11 @@ export class UserSettingsComponent implements OnInit {
     bankAccountNumber: JSON.parse(localStorage.getItem('user')).bankAccountNumber,
     id: JSON.parse(localStorage.getItem('user')).id
   };
+
+  public userData: any = {
+    password: undefined,
+    confirmPassword: undefined
+  }
 
   constructor(
     public userService: UserService,
@@ -93,5 +100,14 @@ export class UserSettingsComponent implements OnInit {
 
   navigateToDashboard(){
     this.router.navigate(["/dashboard"]);
+  }
+
+  updateUserPassword(){
+    if(this.userData.password === this.userData.confirmPassword){
+
+    }
+    else{
+      this.passwordChangedError = true;
+    }
   }
 }
