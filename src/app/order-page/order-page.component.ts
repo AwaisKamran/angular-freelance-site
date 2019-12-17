@@ -36,11 +36,17 @@ export class OrderPageComponent implements OnInit {
       container.id = params['id'];
       container.getDownloadFileUrl(container.id);
       container.userId = params["userId"];
-      if (!container.order) container.getUserOrder(container.userId, container.id);
+      if (!container.order) {
+        container.getUserOrder(container.userId, container.id);
+      }
+      else{
+        this.order.freelancerRated = JSON.parse(this.order.freelancerRated);
+        this.order.adminRated = JSON.parse(this.order.adminRated);
+      }
     });
   }
 
-  getDownloadFileUrl(id){
+  getDownloadFileUrl(id) {
     this.orderService.getFileName(id)
       .subscribe((res: any) => {
         if (res.success) {
@@ -75,6 +81,8 @@ export class OrderPageComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.success) {
           this.order = res.data;
+          this.order.freelancerRated = JSON.parse(this.order.freelancerRated);
+          this.order.adminRated = JSON.parse(this.order.adminRated);
         }
       }, (err: any) => {
       });
@@ -89,39 +97,60 @@ export class OrderPageComponent implements OnInit {
     formData.append('fileToUpload', this.file);
 
     this.orderService.deliverOrder(formData, id, status)
-    .subscribe(
-      (res: any) => {
-        if (res.success) {
-          this.changeOrderStatus(id, 2);
+      .subscribe(
+        (res: any) => {
+          if (res.success) {
+            this.changeOrderStatus(id, 2);
+          }
+          else {
+          }
+        }, (error) => {
         }
-        else {
-        }
-      }, (error) => {
-      }
-    );
+      );
   }
 
-  changeOrderStatus(id, status){
+  handleRatedEvent($event) {
+    if ($event) {
+      this.orderService.changeOrderRatedStatus(this.id, true, this.userService.isUserAdmin())
+        .subscribe(
+          (res: any) => {
+            if (res.success) {
+              if(this.userService.isUserAdmin()){
+                this.order.adminRated = true;
+              }
+              else{
+                this.order.freelancerRated = true;
+              }
+            }
+            else {
+            }
+          }, (error) => {
+          }
+        );
+    }
+  }
+
+  changeOrderStatus(id, status) {
     let data = {
       "orderId": id,
       "status": status
     };
 
     this.orderService.changeOrderStatus(data)
-    .subscribe(
-      (res: any) => {
-        if (res.success) {
-          this.orderStatusSuccess = true;
-          this.orderStatusError = false;
-        }
-        else {
+      .subscribe(
+        (res: any) => {
+          if (res.success) {
+            this.orderStatusSuccess = true;
+            this.orderStatusError = false;
+          }
+          else {
+            this.orderStatusSuccess = false;
+            this.orderStatusError = true;
+          }
+        }, (error) => {
           this.orderStatusSuccess = false;
           this.orderStatusError = true;
         }
-      }, (error) => {
-        this.orderStatusSuccess = false;
-        this.orderStatusError = true;
-      }
-    );
+      );
   }
 }

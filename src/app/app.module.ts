@@ -29,6 +29,7 @@ import { CreateJobComponent } from './create-job/create-job.component';
 import { SearchComponent } from './search/search.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { RatingComponent } from './rating/rating.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { RatingComponent } from './rating/rating.component';
     CreateJobComponent,
     SearchComponent,
     AdminViewComponent,
-    RatingComponent
+    RatingComponent,
+    ReviewComponent
   ],
   imports: [
     NgbModule,

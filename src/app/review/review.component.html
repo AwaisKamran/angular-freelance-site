@@ -1,0 +1,15 @@
+<div class="review-container">
+    <div *ngIf="reviewList.length > 0">
+        <div *ngFor="let review of reviewList">
+            <div class="review-container">
+                <div class="user-profile"></div>
+                <div class="user-review-stars"></div>
+                <div class="user-review-comments"></div>
+                <div class="user-review-date"></div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="reviewList.length === 0">
+        <div class="no-data-available mt-2"></div>
+    </div>
+</div>

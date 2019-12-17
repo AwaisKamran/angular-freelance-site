@@ -1,4 +1,12 @@
 <div class="rating-container">
+    <div *ngIf="ratingSubmittedSuccess" class="alert alert-success" role="alert">
+        Order status has been updated.
+    </div>
+
+    <div *ngIf="ratingSubmittedError" class="alert alert-danger" role="alert">
+        Error! There was an internal server error.
+    </div>
+
     <div *ngIf="display">
         <div [ngStyle]="{'background-image': userImage }" class="profile-picture centered"></div>
         <div class="centered star-wrap">
@@ -13,6 +21,9 @@
          </div>      
          <div class="headline-text"> How would you rate your experience? </div>
 
-         <button class="btn btn-block btn-outline-success mb-4 mt-4" (click)="submitRating()">Submit Rating</button>
+         <textarea [(ngModel)]="ratingComments" class="text-area mb-3 mt-3" rows="3" placeholder="Please write your review here"></textarea>
+         <button class="btn btn-block btn-outline-success" (click)="submitRating()">
+            Submit Review
+         </button>
     </div>
 </div>

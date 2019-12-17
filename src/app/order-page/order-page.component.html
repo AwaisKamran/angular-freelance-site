@@ -77,14 +77,25 @@
             <div class="short-note">Note: Accepting the order can not be reverted, please make sure that you have receieved the right version of the deliverable before proceeding any further.</div>
         </div>
 
-        <div class="admin-section" *ngIf="(order.status === '3')">
-            <div *ngIf="order.rated">
+        <div class="admin-section" *ngIf="(order.status === '3') && isAdmin()">
+            <div *ngIf="order.adminRated">
                 <div class="message box">
                     <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been accepted.
                 </div>
             </div>
-            <div *ngIf="!order.rated">
-                <app-rating [display]="false" [orderCreatedBy]="order.user.id" [freelancerId]="order.freelancerId"></app-rating>
+            <div *ngIf="!order.adminRated">
+                <app-rating (rated)="handleRatedEvent($event)" [display]="false" [orderId]="order.id" [orderCreatedBy]="order.user.id" [freelancerId]="order.freelancerId"></app-rating>
+            </div>
+        </div>
+
+        <div class="admin-section" *ngIf="(order.status === '3') && !isAdmin()">
+            <div *ngIf="order.freelancerRated">
+                <div class="message box">
+                    <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been accepted.
+                </div>
+            </div>
+            <div *ngIf="!order.freelancerRated">
+                <app-rating (rated)="handleRatedEvent($event)" [display]="false" [orderId]="order.id" [orderCreatedBy]="order.user.id" [freelancerId]="order.freelancerId"></app-rating>
             </div>
         </div>
 
