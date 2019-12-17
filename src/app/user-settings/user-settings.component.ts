@@ -27,7 +27,8 @@ export class UserSettingsComponent implements OnInit {
 
   public userData: any = {
     password: undefined,
-    confirmPassword: undefined
+    confirmPassword: undefined,
+    userId: JSON.parse(localStorage.getItem('user')).id
   }
 
   constructor(
@@ -104,10 +105,24 @@ export class UserSettingsComponent implements OnInit {
 
   updateUserPassword(){
     if(this.userData.password === this.userData.confirmPassword){
-
+      this.userService.updateUserPassword(this.userData)
+      .subscribe((res: any) => {
+        if(res.success){
+          this.passwordChangedError = false;
+          this.passwordChangedSuccess = true;
+        }  
+        else{
+          this.passwordChangedError = true;
+          this.passwordChangedSuccess = false;
+        }
+      }, (err: any) => {
+        this.passwordChangedError = true;
+        this.passwordChangedSuccess = false;
+      });
     }
     else{
       this.passwordChangedError = true;
+      this.passwordChangedSuccess = false;
     }
   }
 }

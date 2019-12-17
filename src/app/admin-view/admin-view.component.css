@@ -137,6 +137,16 @@
     width: max-content;
 }
 
+.badge-accepted{
+    background-color: yellowgreen;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
 .order-tab{
     font-size: 16.5px;
     color: #1db36d;

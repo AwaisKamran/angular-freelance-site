@@ -41,6 +41,10 @@ export class OrderService {
     return this.http.get(`${this.url}api/order/getOrdersByStatus.php?status=${status}`);
   }
 
+  getFileName(id){
+    return this.http.get(`${this.url}api/order/getFileName.php?orderId=${id}`);
+  }
+
   updateOrder(data){
     return this.http.post(`${this.url}api/order/assignOrder.php`, { "data": data });
   }
@@ -51,5 +55,9 @@ export class OrderService {
 
   getUserOrderListHistory(id){
     return this.http.get(`${this.url}api/order/getUserOrderListHistory.php?userId=${id}`);
+  }
+
+  changeOrderStatus(data){
+    return this.http.post(`${this.url}api/order/changeOrderStatus.php`, { "data": data });
   }
 }

@@ -55,6 +55,16 @@
     margin-top: 2px;
 }
 
+.badge-accepted{
+    background-color: yellowgreen;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
 .bold{
     font-weight: 500;
 }

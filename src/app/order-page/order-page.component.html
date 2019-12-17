@@ -1,5 +1,13 @@
 <div class="order-container">
     <div class="order-detail-section">
+        <div *ngIf="orderStatusSuccess" class="alert alert-success" role="alert">
+            Order status has been updated.
+        </div>
+
+        <div *ngIf="orderStatusError" class="alert alert-danger" role="alert">
+            Error! There was an internal server error.
+        </div>
+
         <div class="order-detail-heading green-heading">
             <i class="fa fa-arrow-circle-o-left green-icon" aria-hidden="true" (click)="navigateToDashboard()"></i>
             Order # {{order.id}}
@@ -14,8 +22,9 @@
                 <div class="minimum-hours"><span class="bold">Hours</span> {{ order.service.minimumHours}}</div>
                 <div class="order-status">
                     <div *ngIf="order.status === '0'" class="badge-value badge-progress">In progress</div>
-                    <div *ngIf="order.status === '1'" class="badge-value badge-delivered">Delivered</div>
-                    <div *ngIf="order.status === '2'" class="badge-value badge-revision">In Revision</div>
+                    <div *ngIf="order.status === '1'" class="badge-value badge-revision">In Revision</div>
+                    <div *ngIf="order.status === '2'" class="badge-value badge-delivered">Delivered</div>
+                    <div *ngIf="order.status === '3'" class="badge-value badge-accepted">Accepted</div>
                 </div>
             </div>
             <div class="clear-both"></div>
@@ -52,18 +61,26 @@
 
         <div class="admin-section" *ngIf="(order.status === '2') && isAdmin()">
             <div class="attached-file mb-1">
-                <i class="fa fa-paperclip green-icon" aria-hidden="true"></i> 
-                <span class="gray-text">Download the attachment</span>
+                <a class="download-link" [href]="downloadLink" download>
+                    <i class="fa fa-paperclip green-icon" aria-hidden="true"></i> 
+                    <span class="gray-text">Download the attachment</span>
+                </a>
             </div>
             <div class="row">
                 <div class="col-lg-5 no-padding-right">
-                    <button class="btn btn-block btn-outline-success green-border mb-1 btn-width" (click)="updateOrder(order.id, 3)">Accept Order</button>
+                    <button class="btn btn-block btn-outline-success green-border mb-1 btn-width" (click)="changeOrderStatus(order.id, 3)">Accept Order</button>
                 </div>
                 <div class="col-lg-5 no-padding-right">
-                    <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="updateOrder(order.id, 1)">Submit Revision</button>
+                    <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="changeOrderStatus(order.id, 1)">Submit Revision</button>
                 </div>
             </div>
             <div class="short-note">Note: Accepting the order can not be reverted, please make sure that you have receieved the right version of the deliverable before proceeding any further.</div>
+        </div>
+
+        <div class="admin-section" *ngIf="(order.status === '3')">
+            <div class="message box">
+                <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been accepted.
+            </div>
         </div>
 
         <hr/>

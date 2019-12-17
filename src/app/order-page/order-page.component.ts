@@ -15,6 +15,10 @@ export class OrderPageComponent implements OnInit {
   public userId: string = null;
   public order: any = undefined;
   public file: File;
+  public fileName: string;
+  public orderStatusSuccess: Boolean = false;
+  public orderStatusError: Boolean = false;
+  public downloadLink: string;
 
   constructor(
     public router: Router,
@@ -30,9 +34,21 @@ export class OrderPageComponent implements OnInit {
     this.order = this.orderService.clickedOrder;
     this.route.params.subscribe(params => {
       container.id = params['id'];
+      container.getDownloadFileUrl(container.id);
       container.userId = params["userId"];
       if (!container.order) container.getUserOrder(container.userId, container.id);
     });
+  }
+
+  getDownloadFileUrl(id){
+    this.orderService.getFileName(id)
+      .subscribe((res: any) => {
+        if (res.success) {
+          this.fileName = res.data;
+          this.downloadLink = this.constantService.getFileNameUrl(this.fileName);
+        }
+      }, (err: any) => {
+      });
   }
 
   onFileSelect(event) {
@@ -76,10 +92,35 @@ export class OrderPageComponent implements OnInit {
     .subscribe(
       (res: any) => {
         if (res.success) {
+          this.changeOrderStatus(id, 2);
         }
         else {
         }
       }, (error) => {
+      }
+    );
+  }
+
+  changeOrderStatus(id, status){
+    let data = {
+      "orderId": id,
+      "status": status
+    };
+
+    this.orderService.changeOrderStatus(data)
+    .subscribe(
+      (res: any) => {
+        if (res.success) {
+          this.orderStatusSuccess = true;
+          this.orderStatusError = false;
+        }
+        else {
+          this.orderStatusSuccess = false;
+          this.orderStatusError = true;
+        }
+      }, (error) => {
+        this.orderStatusSuccess = false;
+        this.orderStatusError = true;
       }
     );
   }

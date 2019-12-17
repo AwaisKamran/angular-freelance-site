@@ -34,6 +34,10 @@ export class UserService {
     return this.http.post(`${this.url}api/user/updateUserInfo.php`, { "data": data });
   }
 
+  updateUserPassword(data){
+    return this.http.post(`${this.url}api/user/updatePassword.php`, { "data": data });
+  }
+
   isUserLoggedIn(){
     return localStorage.getItem('user')? true: false;
   }

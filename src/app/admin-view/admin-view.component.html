@@ -45,8 +45,9 @@
                     <div *ngIf="order.status !== '-1'" class="float-right">
                         <div class="float-left date-time">{{ formatDate(order.orderCreated) }}</div>
                         <div *ngIf="order.status === '0'" class="badge-value badge-progress float-left"> In progress</div>
-                        <div *ngIf="order.status === '1'" class="badge-value badge-delivered float-left"> Delivered</div>
-                        <div *ngIf="order.status === '2'" class="badge-value badge-revision float-left"> In Revision</div>
+                        <div *ngIf="order.status === '1'" class="badge-value badge-revision float-left"> In Revision</div>
+                        <div *ngIf="order.status === '2'" class="badge-value badge-delivered float-left"> Delivered</div>
+                        <div *ngIf="order.status === '3'" class="badge-value badge-accepted float-left">Accepted</div>
                     </div>
                     <div class="clear-both"></div>
                 </div>

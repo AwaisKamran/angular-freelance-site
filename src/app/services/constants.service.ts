@@ -15,4 +15,8 @@ export class ConstantsService {
   getServiceImageUrl(id){
     return `${this.url}uploads/service/${id}.jpg`;
   }
+
+  getFileNameUrl(file){
+    return `${this.url}uploads/order/${file}`;
+  }
 }
