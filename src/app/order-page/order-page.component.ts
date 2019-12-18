@@ -142,6 +142,7 @@ export class OrderPageComponent implements OnInit {
           if (res.success) {
             this.orderStatusSuccess = true;
             this.orderStatusError = false;
+            this.navigateToDashboard();
           }
           else {
             this.orderStatusSuccess = false;

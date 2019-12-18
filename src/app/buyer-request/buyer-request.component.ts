@@ -86,6 +86,7 @@ export class BuyerRequestComponent implements OnInit {
       if(res.success){
         this.dialogSuccess = true;
         this.dialogError = false;
+        this.resetFields();
       }  
       else{
         this.dialogSuccess = false;
@@ -99,5 +100,15 @@ export class BuyerRequestComponent implements OnInit {
 
   getUserImage(id){
     return `url(${this.constantsService.getImageUrl(id)}), url(assets/images/profile-pic.png)`;
+  }
+
+  resetFields(){
+      this.data.orderId= undefined,
+      this.data.categoryId= undefined,
+      this.data.serviceId= "-1",
+      this.data.bidDescription= undefined,
+      this.data.timeRequired= undefined,
+      this.data.proposedBudget= undefined,
+      this.data.proposedBy= this.userService.getUserObject().id  
   }
 }
