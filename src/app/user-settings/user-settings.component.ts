@@ -86,6 +86,7 @@ export class UserSettingsComponent implements OnInit {
           let user = {...this.userService.user};
           user.aboutMe = this.data.aboutMe;
           user.bankName = this.data.bankName;
+          user.bankCode = this.data.bankCode;
           user.bankAccountNumber = this.data.bankAccountNumber;
           this.userService.storeUserInfo(user);
           window.location.reload();
