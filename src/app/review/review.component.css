@@ -6,3 +6,49 @@
     padding: 2.5%;
     margin-bottom: 20px;
 }
+
+.user-profile{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.yellow{
+    color: yellow !important;
+}
+
+.star{
+    font-size: 16px;
+    margin-right: 4px;
+}
+
+.user-review-date{
+    color: gray;
+    font-size: 14px;
+}
+
+.user-review-comments{
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.clear-both{
+    clear: both;
+}
+
+.user-name{
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10px;
+}
+
+.review-container{
+    padding: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+}

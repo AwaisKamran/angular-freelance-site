@@ -2,10 +2,14 @@
     <div *ngIf="reviewList.length > 0">
         <div *ngFor="let review of reviewList">
             <div class="review-container">
-                <div class="user-profile"></div>
-                <div class="user-review-stars"></div>
-                <div class="user-review-comments"></div>
-                <div class="user-review-date"></div>
+                <div class="user-profile float-left" [ngStyle]="{ 'background-image': review.reviewerImage}"></div>
+                <div class="float-left user-name">{{ review.userName }}</div>
+                <div class="clear-both"></div>
+                <div class="user-review-stars">
+                    <i *ngFor="let value of review.rating" class="fa fa-star yellow star" aria-hidden="true"></i>
+                </div>
+                <div class="user-review-comments">{{ review.ratingComments }}</div>
+                <div class="user-review-date">{{ review.dateTime | date: 'medium' }}</div>
             </div>
         </div>
     </div>
