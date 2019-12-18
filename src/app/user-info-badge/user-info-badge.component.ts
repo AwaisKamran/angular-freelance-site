@@ -52,7 +52,6 @@ export class UserInfoBadgeComponent implements OnInit {
 
   ngOnInit() {
     let count = 5 - parseInt(this.user.rating);
-    if(parseInt(this.user.rating) > 0) this.stars = new Array(this.user.rating);
     this.starsCount = new Array(count);
   }
 
