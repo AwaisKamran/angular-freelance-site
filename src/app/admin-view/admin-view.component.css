@@ -127,6 +127,16 @@
     width: max-content;
 }
 
+.badge-new{
+    background-color: lightseagreen;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
 .badge-revision{
     background-color: red;
     color: white;
@@ -179,6 +189,13 @@
 
 .delivered-container{
     background-color: orangered;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.new-container{
+    background-color: lightseagreen;
     color: white;
     border-radius: 5px;
     padding: 10px;

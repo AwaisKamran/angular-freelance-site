@@ -12,6 +12,7 @@
                 <div class="clear-both"></div>
             </div>
         </div>
+
         <div class="col-lg-2 col-md-3 col-sm-7 col-7 chart-container">
             <div class="inner-chart-container revision-container">
                 <div class="float-left card-item">
@@ -23,6 +24,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-lg-2 col-md-3 col-sm-7 col-7 chart-container">
             <div class="inner-chart-container delivered-container">
                 <div class="float-left card-item">
@@ -34,6 +36,18 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-7 col-7 chart-container">
+            <div class="inner-chart-container new-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">New Orders</div>
+                    <i class="fa fa-archive card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number">
+                    {{ new }}
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="admin-container mb-4">
@@ -42,8 +56,9 @@
             <div class="buyer-request-tab-description">
                 <div class="order-tab"> 
                     <div class="float-left" (click)="navigateToOrderPage(order)">Order # {{order.id }} </div>
-                    <div *ngIf="order.status !== '-1'" class="float-right">
+                    <div class="float-right">
                         <div class="float-left date-time">{{ formatDate(order.orderCreated) }}</div>
+                        <div *ngIf="order.status === '-1'" class="badge-value badge-new float-left">New</div>
                         <div *ngIf="order.status === '0'" class="badge-value badge-progress float-left"> In progress</div>
                         <div *ngIf="order.status === '1'" class="badge-value badge-revision float-left"> In Revision</div>
                         <div *ngIf="order.status === '2'" class="badge-value badge-delivered float-left"> Delivered</div>
