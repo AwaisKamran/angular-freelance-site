@@ -25,4 +25,8 @@ export class RatingService {
   getOrderRating(userId, orderId){
     return this.http.get(`${this.url}api/rating/getRating.php?userId=${userId}&&orderId=${orderId}`);
   }
+
+  getAverageRating(id){
+    return this.http.get(`${this.url}api/rating/getUserAverageRating.php?userId=${id}`);
+  }
 }

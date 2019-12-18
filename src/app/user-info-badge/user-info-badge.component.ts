@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CountryService } from '../services/country.service';
+import { RatingService } from '../services/rating.service';
 
 @Component({
   selector: 'app-user-info-badge',
@@ -8,16 +9,38 @@ import { CountryService } from '../services/country.service';
   styleUrls: ['./user-info-badge.component.css']
 })
 export class UserInfoBadgeComponent implements OnInit {
-  public stars = [];
   public starsCount = [];
   public user: any = undefined;
   public userImage: string = "assets/images/profile-pic.png";
 
   constructor(
     public userService: UserService,
-    public countryService: CountryService
+    public countryService: CountryService,
+    public ratingService: RatingService
   ) { 
+    this.starsCount = new Array(5).fill(false);
+    this.fetchUserAverageRating(this.userService.getUserObject().id);
     this.fetchDetails();
+  }
+
+  fetchUserAverageRating(id){
+    return new Promise((resolve, reject)=>{
+      this.ratingService.getAverageRating(id)
+      .subscribe((res: any) => {
+        if(res.success){
+          this.userService.userRating = parseInt(res.data);
+          for(let i=0; i< this.userService.userRating; i++ ){
+            this.starsCount[i] = true;
+          }
+          resolve();
+        }  
+        else{
+          reject();
+        }
+      }, (err: any) => {
+        reject();
+      });
+    });
   }
 
   fetchDetails(){

@@ -9,6 +9,8 @@ import { CountryService } from './country.service';
 export class UserService {
   public url: string;
   public user: any;
+  public userRating: number; 
+
   constructor(
     public http: HttpClient,
     public constantsService: ConstantsService,

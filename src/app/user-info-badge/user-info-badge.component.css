@@ -22,7 +22,7 @@
 }
 
 .yellow{
-    color: yellow;
+    color: yellow !important;
 }
 
 .green{

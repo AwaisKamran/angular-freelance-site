@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from "../services/user.service";
 import { ConstantsService } from '../services/constants.service';
 import { OrderService } from '../services/order.service';
+import { RatingService } from '../services/rating.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,14 +17,15 @@ export class DashboardComponent implements OnInit {
   constructor(
     public userService: UserService,
     public orderService: OrderService,
-    public constantsService: ConstantsService
+    public constantsService: ConstantsService,
+    public ratingService: RatingService
   ) { 
     this.url = this.constantsService.url;
   }
 
   ngOnInit() {
     this.userView = this.isUserView();
-    if(this.userView) this.getUserOrderList(this.userService.getUserObject().id);
+    if(this.userView) this.getUserOrderList(this.userService.getUserObject().id);  
   }
 
   isUserView(){

@@ -2,8 +2,8 @@
     <div class="profile-badge">
         <div [ngStyle]="{'background-image': userImage }" class="profile-picture centered"></div>
         <div class="badge-rating">
-            <i *ngFor="let star of stars" class="fa fa-star yellow" aria-hidden="true"></i>
-            <i *ngFor="let star of starsCount" class="fa fa-star gray" aria-hidden="true"></i>
+            <i *ngFor="let star of starsCount" class="fa fa-star gray" [ngClass]="{ 'yellow': star }" aria-hidden="true"></i>
+            ({{ userService.userRating }})
         </div>
         <div class="badge-name">{{ user.name }}</div>
         <div class="badge-position">{{ user.position }}</div>
