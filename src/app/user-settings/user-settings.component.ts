@@ -22,6 +22,7 @@ export class UserSettingsComponent implements OnInit {
     aboutMe: JSON.parse(localStorage.getItem('user')).aboutMe,
     bankName: JSON.parse(localStorage.getItem('user')).bankName,
     bankAccountNumber: JSON.parse(localStorage.getItem('user')).bankAccountNumber,
+    bankCode: JSON.parse(localStorage.getItem('user')).bankCode,
     id: JSON.parse(localStorage.getItem('user')).id
   };
 
