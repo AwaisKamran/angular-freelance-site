@@ -15,6 +15,7 @@ export class RegisterComponent {
   public registerError: boolean = false;
   public isFreelancer: boolean = true;
   public isRegister: boolean = false;
+  public buttonDisabled: boolean = true;
 
   public loginSuccess: boolean = false;
   public loginError: boolean = false;
@@ -118,6 +119,10 @@ export class RegisterComponent {
 
   toggleRegisterForm(){
     this.isRegister = !this.isRegister;
+  }
+
+  agreeToTerms(){
+    this.buttonDisabled = !this.buttonDisabled;
   }
 
   login() {

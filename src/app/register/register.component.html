@@ -89,7 +89,12 @@
                 reach you within the stated region.</small>
         </div>
 
-        <button type="button" class="btn dark-theme-background btn-block" (click)="register()">
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="register-checkbox" (change)="agreeToTerms()">
+            <label class="form-check-label" for="register-checkbox">I agree to the <a href="../../assets/documents/terms-and-conditions.pdf" class="green">Terms and Conditions</a>and <a href="../../assets/documents/privacy-policy.pdf" class="green">the Privacy Policy</a>.</label>
+        </div>
+
+        <button [disabled]="buttonDisabled" type="button" class="btn dark-theme-background btn-block" (click)="register()">
             <span *ngIf="regsiterLoading" class="spinner-border spinner-border-sm" role="status"
                 aria-hidden="true"></span>
             Register
