@@ -39,10 +39,10 @@
         <a class="nav-link"  [routerLink]="['buyer-request']" href="#">Buyer Request</a>
       </li>
       <li *ngIf="isUserActive && isUserAdmin" class="nav-item">
-        <a class="nav-link" [routerLink]="['create-job']" href="#">Create Job</a>
+        <a class="nav-link" [routerLink]="['create-job']" href="#">Search Services</a>
       </li>
       <li *ngIf="isUserActive && isUserAdmin" class="nav-item">
-        <a class="nav-link" (click)="navigateToPlainSearch()">Search Job</a>
+        <a class="nav-link" (click)="navigateToPlainSearch()">Search Freelancers</a>
       </li>
     </ul>
     <form *ngIf="!isUserActive" class="form-inline my-2 my-lg-0">
