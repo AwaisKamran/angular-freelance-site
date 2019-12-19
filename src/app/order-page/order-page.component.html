@@ -21,9 +21,9 @@
                 <div class="total-price"><span class="bold">Price</span> £ {{order.service.hourlyCost * order.service.minimumHours}}</div>
                 <div class="minimum-hours"><span class="bold">Hours</span> {{ order.service.minimumHours}}</div>
                 <div class="order-status">
-                    <div *ngIf="order.status === '0'" class="badge-value badge-progress">In progress</div>
+                    <div *ngIf="order.status === '0'" class="badge-value badge-progress">Scheduled</div>
                     <div *ngIf="order.status === '1'" class="badge-value badge-revision">In Revision</div>
-                    <div *ngIf="order.status === '2'" class="badge-value badge-delivered">Delivered</div>
+                    <div *ngIf="order.status === '2'" class="badge-value badge-delivered">Completed</div>
                     <div *ngIf="order.status === '3'" class="badge-value badge-accepted">Accepted</div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
 
         <div class="delivery-section-container" *ngIf="(order.status === '0')  && isAdmin()">
             <div class="message box">
-                <i class="fa fa-history green-large-icon" aria-hidden="true"></i> Please wait, your deliverable is in progress.
+                <i class="fa fa-history green-large-icon" aria-hidden="true"></i> Please wait, your deliverable is scheduled.
             </div>
         </div>
 

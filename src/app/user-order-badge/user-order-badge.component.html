@@ -23,9 +23,9 @@
 
     <div class="badge-container">
         <div class="badge-heading float-left bold">Status</div>
-        <div *ngIf="order.status === '0'" class="badge-value float-right badge-progress">In progress</div>
+        <div *ngIf="order.status === '0'" class="badge-value float-right badge-progress">Scheduled</div>
         <div *ngIf="order.status === '1'" class="badge-value float-right badge-revision">In Revision</div>
-        <div *ngIf="order.status === '2'" class="badge-value float-right badge-delivered">Delivered</div>
+        <div *ngIf="order.status === '2'" class="badge-value float-right badge-delivered">Completed</div>
         <div *ngIf="order.status === '3'" class="badge-value float-right badge-accepted">Accepted</div>
         <div class="clear-both"></div>
     </div><br/>
