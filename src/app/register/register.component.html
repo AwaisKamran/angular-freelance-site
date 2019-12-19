@@ -91,7 +91,7 @@
 
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="register-checkbox" (change)="agreeToTerms()">
-            <label class="form-check-label" for="register-checkbox">I agree to the <a href="../../assets/documents/terms-and-conditions.pdf" class="green">Terms and Conditions</a>and <a href="../../assets/documents/privacy-policy.pdf" class="green">the Privacy Policy</a>.</label>
+            <label class="form-check-label" for="register-checkbox">I agree to the <a target="_blank" href="../../assets/documents/terms-and-conditions.pdf" class="green">Terms and Conditions</a> and the <a target="_blank" href="../../assets/documents/privacy-policy.pdf" class="green">Privacy Policy</a>.</label>
         </div>
 
         <button [disabled]="buttonDisabled" type="button" class="btn dark-theme-background btn-block" (click)="register()">
