@@ -6,7 +6,6 @@ import { DropdownService } from "../services/dropdown.service";
 import { UserService } from "../services/user.service";
 import { ServicesService } from "../services/services.service";
 import { ConstantsService } from '../services/constants.service';
-import { resolve } from 'url';
 
 @Component({
   selector: 'app-search',
@@ -169,7 +168,7 @@ export class SearchComponent implements OnInit {
       orderInstructions: null,
       categoryId: this.dialogData.categoryId,
       subCategoryId: null,
-      status: 0,
+      status: -1,
       type: null,
       orderCreatedBy: this.userService.getUserObject().id
     };

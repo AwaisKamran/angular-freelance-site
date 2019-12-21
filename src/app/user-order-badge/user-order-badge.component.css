@@ -28,6 +28,15 @@
     color: yellow;
 }
 
+.badge-new{
+    background-color: lightseagreen;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
 .badge-progress{
     background-color: #45a539;
     color: white;

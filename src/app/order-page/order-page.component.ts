@@ -39,7 +39,7 @@ export class OrderPageComponent implements OnInit {
       if (!container.order) {
         container.getUserOrder(container.userId, container.id);
       }
-      else{
+      else {
         this.order.freelancerRated = JSON.parse(this.order.freelancerRated);
         this.order.adminRated = JSON.parse(this.order.adminRated);
       }
@@ -115,10 +115,10 @@ export class OrderPageComponent implements OnInit {
         .subscribe(
           (res: any) => {
             if (res.success) {
-              if(this.userService.isUserAdmin()){
+              if (this.userService.isUserAdmin()) {
                 this.order.adminRated = true;
               }
-              else{
+              else {
                 this.order.freelancerRated = true;
               }
             }
@@ -128,6 +128,32 @@ export class OrderPageComponent implements OnInit {
           }
         );
     }
+  }
+
+  declineOrderByOrderId(id, status) {
+    let data = {
+      "orderId": id,
+      "status": status
+    };
+
+    this.orderService.declineOrderByOrderId(data)
+      .subscribe(
+        (res: any) => {
+          if (res.success) {
+            this.orderStatusSuccess = true;
+            this.orderStatusError = false;
+            this.navigateToDashboard();
+          }
+          else {
+            this.orderStatusSuccess = false;
+            this.orderStatusError = true;
+          }
+        }, (error) => {
+          this.orderStatusSuccess = false;
+          this.orderStatusError = true;
+        }
+      );
+
   }
 
   changeOrderStatus(id, status) {

@@ -121,6 +121,8 @@ export class RegisterComponent {
     this.isRegister = !this.isRegister;
   }
 
+  toggleForgotPassword(){}
+
   agreeToTerms(){
     this.buttonDisabled = !this.buttonDisabled;
   }

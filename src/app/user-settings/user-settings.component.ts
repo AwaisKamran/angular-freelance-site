@@ -19,6 +19,8 @@ export class UserSettingsComponent implements OnInit {
   public imageProfile: any = "assets/images/profile-pic.png";
   public file: File;
   public data: any = {
+    email: JSON.parse(localStorage.getItem('user')).email,
+    city: JSON.parse(localStorage.getItem('user')).city,
     aboutMe: JSON.parse(localStorage.getItem('user')).aboutMe,
     bankName: JSON.parse(localStorage.getItem('user')).bankName,
     bankAccountNumber: JSON.parse(localStorage.getItem('user')).bankAccountNumber,
@@ -58,6 +60,10 @@ export class UserSettingsComponent implements OnInit {
     reader.readAsDataURL(this.file);
   }
 
+  isAdmin(){
+    return this.userService.isUserAdmin();
+  }
+  
   saveServiceImage(serviceId){
     const formData = new FormData();
     formData.append('fileToUpload', this.file);
@@ -85,6 +91,8 @@ export class UserSettingsComponent implements OnInit {
 
           let user = {...this.userService.user};
           user.aboutMe = this.data.aboutMe;
+          user.email = this.data.email;
+          user.city = this.data.city;
           user.bankName = this.data.bankName;
           user.bankCode = this.data.bankCode;
           user.bankAccountNumber = this.data.bankAccountNumber;

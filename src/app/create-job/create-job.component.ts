@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../services/category.service';
+import { SubCategoryService } from '../services/sub-category.service';
 import { OrderService } from '../services/order.service';
 import { UserService } from '../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,11 +12,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CreateJobComponent implements OnInit {
   public categories: any = [];
+  public subcategories:any = [];
+  public filteredSubcategories = [];
   public orderSuccessFlag: boolean = false;
   public orderErrorFlag: boolean = false;
 
   public data = {
     categoryId: "-1",
+    subCategoryId: "-1",
     hoursRequired: undefined,
     budget: undefined,
     orderInstructions: undefined,
@@ -28,10 +32,12 @@ export class CreateJobComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public categoryService: CategoryService,
+    public subCategoryService: SubCategoryService,
     public orderService: OrderService,
     public userService: UserService
   ) { 
     this.getCategories();
+    this.getSubCategories();
   }
 
   ngOnInit() { 
@@ -51,9 +57,27 @@ export class CreateJobComponent implements OnInit {
       });
   }
 
+  getSubCategories(){
+    this.subCategoryService.getSubCategories()
+    .subscribe((res: any) => {
+      if(res.success){
+        this.subcategories = res.data;
+      }  
+    }, (err: any) => {
+    });
+  }
+
+  categoryChanged(){
+    let container = this;
+    this.filteredSubcategories = this.subcategories.filter(function(element){
+      return element.category.id === container.data.categoryId;
+    });
+  }
+
   resetFields(){
     this.data = {
       categoryId: "-1",
+      subCategoryId: "-1",
       hoursRequired: undefined,
       budget: undefined,
       orderInstructions: undefined,
@@ -65,6 +89,7 @@ export class CreateJobComponent implements OnInit {
 
   addJob(){
     if(this.data.categoryId === "-1") this.data.categoryId = undefined;
+    if(this.data.subCategoryId === "-1") this.data.subCategoryId = undefined;
     this.orderService.createOrder(this.data)
       .subscribe((res: any) => {
         if(res.success){

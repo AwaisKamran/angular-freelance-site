@@ -1,5 +1,9 @@
 <div class="resgiter-container no-overflow">
     <div *ngIf="isRegister" class="form col-lg-5 col-md-5 col-sm-12 col-12">
+        <div class="back-icon" (click)="toggleRegisterForm()">
+            <i class="fa fa-arrow-circle-o-left green-icon" aria-hidden="true"></i>
+            Back to Login
+        </div>
         <br/>
         <div *ngIf="registerSuccess" class="alert alert-success" role="alert">
             Congratulations! user has been registered!
@@ -123,7 +127,9 @@
                     <div class="form-group">
                         <input type="password" [(ngModel)]="userData.password" class="form-control" placeholder="Password">
                     </div>
+
                     <div class="form-group form-check">
+                        <label class="form-check-label" for="exampleCheck1"><span class="green" (click)="toggleForgotPassword()"><i class="fa fa-question-circle" aria-hidden="true"></i> Forgot your password?</span></label><br/>
                         <label class="form-check-label" for="exampleCheck1">Not a member yet? <span class="green" (click)="toggleRegisterForm()">Register Now!</span></label>
                     </div>
     

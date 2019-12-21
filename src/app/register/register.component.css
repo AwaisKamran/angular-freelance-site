@@ -53,6 +53,20 @@
     cursor: pointer;
 }
 
+.green-icon{
+    color: #1dbf73;
+    cursor: pointer;
+}
+
+.back-icon{
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.green:hover{
+    text-decoration: underline;
+}
+
 .selectType{
     margin-bottom: 25px;
     height: 65px;

@@ -25,6 +25,18 @@
             </div>
         </div>
 
+        <div class="col-md-12 col-12 form-group no-padding">
+            <label>Sub-Category</label>
+            <div>
+                <select class="form-control no-padding" [(ngModel)]="data.subCategoryId">
+                    <option value="-1" selected>Select Sub-Category</option>
+                    <option *ngFor="let subcategory of filteredSubcategories" [value]="subcategory.id">   
+                        {{ subcategory.subCategoryName }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
         <textarea [(ngModel)]="data.orderInstructions" class="text-area form-control" rows="5" placeholder="Write the job description here"></textarea><br/>
         
         <div class="form-group">

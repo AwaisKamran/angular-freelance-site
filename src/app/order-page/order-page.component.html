@@ -53,9 +53,27 @@
             </div>
         </div>
 
-        <div class="delivery-section-container" *ngIf="(order.status === '0')  && isAdmin()">
+        <div class="delivery-section-container" *ngIf="(order.status === '0') && isAdmin()">
             <div class="message box">
                 <i class="fa fa-history green-large-icon" aria-hidden="true"></i> Please wait, your deliverable is scheduled.
+            </div>
+        </div>
+
+        <div class="delivery-section-container" *ngIf="(order.status === '-1')  && isAdmin()">
+            <div class="message box">
+                <i class="fa fa-rocket green-large-icon" aria-hidden="true"></i> Please wait while you receive the bids on your job.
+            </div>
+        </div>
+
+        <div class="delivery-section-container" *ngIf="(order.status === '-1')  && !isAdmin()">
+            <div class="row">
+                <div class="col-lg-5 no-padding-right">
+                    <button class="btn btn-block btn-outline-success green-border mb-1 btn-width" (click)="changeOrderStatus(order.id, 0)">Accept Request</button>
+                </div>
+                <div class="col-lg-5 no-padding-right">
+                    <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="declineOrderByOrderId(order.id, -1)">Decline Request</button>
+                </div>
+                <div class="short-note">Note - Please respond to the buyer's request to accept or decline the order. In case you fail to respond to the order, the order will be cancelled within three days of time.</div>
             </div>
         </div>
 

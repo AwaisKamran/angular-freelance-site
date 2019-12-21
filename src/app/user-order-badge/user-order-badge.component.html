@@ -23,6 +23,7 @@
 
     <div class="badge-container">
         <div class="badge-heading float-left bold">Status</div>
+        <div *ngIf="order.status === '-1'" class="badge-value float-right badge-new">New</div>
         <div *ngIf="order.status === '0'" class="badge-value float-right badge-progress">Scheduled</div>
         <div *ngIf="order.status === '1'" class="badge-value float-right badge-revision">In Revision</div>
         <div *ngIf="order.status === '2'" class="badge-value float-right badge-delivered">Completed</div>

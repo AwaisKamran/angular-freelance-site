@@ -61,6 +61,10 @@ export class OrderService {
     return this.http.post(`${this.url}api/order/changeOrderStatus.php`, { "data": data });
   }
 
+  declineOrderByOrderId(data){
+    return this.http.post(`${this.url}api/order/declineOrderByOrderId.php`, { "data": data });
+  }
+
   changeOrderRatedStatus(id, value, isAdmin){
     let data = {
       orderId: id,
