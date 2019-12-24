@@ -30,6 +30,7 @@ import { SearchComponent } from './search/search.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { RatingComponent } from './rating/rating.component';
 import { ReviewComponent } from './review/review.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ReviewComponent } from './review/review.component';
     SearchComponent,
     AdminViewComponent,
     RatingComponent,
-    ReviewComponent
+    ReviewComponent,
+    ProfileComponent
   ],
   imports: [
     NgbModule,
