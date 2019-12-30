@@ -215,3 +215,13 @@
     position: absolute;
     right: 15px;
 }
+
+.copyright-footer{
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: #363636;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: 200;
+}

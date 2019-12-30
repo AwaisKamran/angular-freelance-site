@@ -1,10 +1,10 @@
 <div class="resgiter-container no-overflow">
-    <div *ngIf="isRegister" class="form col-lg-5 col-md-5 col-sm-12 col-12">
-        <div class="back-icon" (click)="toggleRegisterForm()">
+    <div *ngIf="isRegister && !isForgotPasswordView" class="form col-lg-5 col-md-5 col-sm-12 col-12">
+        <div class="back-icon" (click)="backToLogin()">
             <i class="fa fa-arrow-circle-o-left green-icon" aria-hidden="true"></i>
             Back to Login
         </div>
-        <br/>
+        <br />
         <div *ngIf="registerSuccess" class="alert alert-success" role="alert">
             Congratulations! user has been registered!
         </div>
@@ -17,13 +17,15 @@
             Warning! Please fill in all the fields.
         </div>
 
-        <img src="assets/images/logo.png" width="250" class="img-fluid centered" /><br/>
+        <img src="assets/images/logo.png" width="250" class="img-fluid centered" /><br />
 
         <div class="selectType">
-            <div [ngClass]="{ 'greenBlock': isFreelancer === true }" class="typeContainer margin-right-10" (click)="selectType(true)">Become freelancer</div>
-            <div [ngClass]="{ 'greenBlock': isFreelancer === false }" class="typeContainer" (click)="selectType(false)">Hire freelancers</div>
+            <div [ngClass]="{ 'greenBlock': isFreelancer === true }" class="typeContainer margin-right-10"
+                (click)="selectType(true)">Become freelancer</div>
+            <div [ngClass]="{ 'greenBlock': isFreelancer === false }" class="typeContainer" (click)="selectType(false)">
+                Hire freelancers</div>
         </div>
-        
+
         <div class="form-group">
             <label for="exampleInputEmail1">Username<span class="red">*</span></label>
             <input [(ngModel)]="data.name" type="text" class="form-control" placeholder="Enter username">
@@ -76,7 +78,8 @@
 
                 <div class="col-md-8 col-8 form-group no-padding-left">
                     <label for="exampleInputEmail1">Phone number<span class="red">*</span></label>
-                    <input [(ngModel)]="data.phone" type="text" class="form-control" placeholder="Enter your phone number">
+                    <input [(ngModel)]="data.phone" type="text" class="form-control"
+                        placeholder="Enter your phone number">
                 </div>
             </div>
         </div>
@@ -95,57 +98,66 @@
 
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="register-checkbox" (change)="agreeToTerms()">
-            <label class="form-check-label" for="register-checkbox">I agree to the <a target="_blank" href="../../assets/documents/terms-and-conditions.pdf" class="green">Terms and Conditions</a> and the <a target="_blank" href="../../assets/documents/privacy-policy.pdf" class="green">Privacy Policy</a>.</label>
+            <label class="form-check-label" for="register-checkbox">I agree to the <a target="_blank"
+                    href="../../assets/documents/terms-and-conditions.pdf" class="green">Terms and Conditions</a> and
+                the <a target="_blank" href="../../assets/documents/privacy-policy.pdf" class="green">Privacy
+                    Policy</a>.</label>
         </div>
 
-        <button [disabled]="buttonDisabled" type="button" class="btn dark-theme-background btn-block" (click)="register()">
+        <button [disabled]="buttonDisabled" type="button" class="btn dark-theme-background btn-block"
+            (click)="register()">
             <span *ngIf="regsiterLoading" class="spinner-border spinner-border-sm" role="status"
                 aria-hidden="true"></span>
             Register
         </button><br />
     </div>
 
-    <div *ngIf="!isRegister">
+    <div *ngIf="!isRegister && !isForgotPasswordView">
         <div class="row">
             <div class="col-md-5 col-sm-11 col-11 margin-top-style no-padding form login-form">
                 <div class="login-wrapper">
                     <div *ngIf="loginSuccess" class="alert alert-success" role="alert">
                         Congratulations! your action has been successful!
                     </div>
-    
+
                     <div *ngIf="loginError" class="alert alert-danger" role="alert">
                         Error! Invalid username or password!
                     </div>
-    
+
                     <img src="assets/images/logo.png" width="250" class="img-fluid margin-bottom-5 centered" />
-    
+
                     <div class="form-group email-field-margin">
-                        <input type="email" [(ngModel)]="userData.email" class="form-control" aria-describedby="emailHelp"
-                            placeholder="Email">
-                    </div>
-    
-                    <div class="form-group">
-                        <input type="password" [(ngModel)]="userData.password" class="form-control" placeholder="Password">
+                        <input type="email" [(ngModel)]="userData.email" class="form-control"
+                            aria-describedby="emailHelp" placeholder="Email">
                     </div>
 
-                    <div class="form-group form-check">
-                        <label class="form-check-label" for="exampleCheck1"><span class="green" (click)="toggleForgotPassword()"><i class="fa fa-question-circle" aria-hidden="true"></i> Forgot your password?</span></label><br/>
-                        <label class="form-check-label" for="exampleCheck1">Not a member yet? <span class="green" (click)="toggleRegisterForm()">Register Now!</span></label>
+                    <div class="form-group">
+                        <input type="password" [(ngModel)]="userData.password" class="form-control"
+                            placeholder="Password">
                     </div>
-    
+
+                    <div class="form-group form-check no-padding-left">
+                        <label class="form-check-label" for="exampleCheck1">
+                            <span class="green" (click)="toggleForgotPassword()">Forgot your password?</span> Or
+                            <span class="green" (click)="toggleRegisterForm()">Register Now!</span>
+                        </label>
+                    </div>
+
                     <button type="button" class="btn dark-theme-background btn-block" (click)="login()">
                         <span *ngIf="loginLoading" class="spinner-border spinner-border-sm" role="status"
                             aria-hidden="true"></span>
                         Login
                     </button>
-    
+
                     <div class="social-login row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 no-padding padding-button-right margin-bottom-button">
+                        <div
+                            class="col-lg-6 col-md-6 col-sm-12 col-12 no-padding padding-button-right margin-bottom-button">
                             <button type="button" class="btn btn-block facebook">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                             </button>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 no-padding padding-button-left margin-bottom-button">
+                        <div
+                            class="col-lg-6 col-md-6 col-sm-12 col-12 no-padding padding-button-left margin-bottom-button">
                             <button type="button" class="btn btn-block gmail">
                                 <i class="fa fa-google" aria-hidden="true"></i>
                             </button>
@@ -155,5 +167,31 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
+
+    <div *ngIf="!isRegister && isForgotPasswordView">
+        <div class="row">
+            <div class="col-md-5 col-sm-11 col-11 margin-top-style no-padding form login-form">
+                <div class="login-wrapper">
+                    <div class="back-icon" (click)="backToLogin()">
+                        <i class="fa fa-arrow-circle-o-left green-icon" aria-hidden="true"></i>
+                        Back to Login
+                    </div>
+                    <br />  
+                    
+                    <img src="assets/images/logo.png" width="250" class="img-fluid margin-bottom-5 centered" />
+                    
+                    <div class="form-group">
+                        <input type="email" [(ngModel)]="forgotPasswordData.email" class="form-control"
+                            placeholder="Enter your email address">
+                    </div>
+
+                    <button type="button" class="btn dark-theme-background btn-block" (click)="forgotPassword()">
+                    Submit email
+                    </button>
+                </div>
+                <div class="clear-both"></div>
+            </div>
+        </div>
+    </div>
 </div>

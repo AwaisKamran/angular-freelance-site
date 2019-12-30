@@ -15,6 +15,7 @@ export class RegisterComponent {
   public registerError: boolean = false;
   public isFreelancer: boolean = true;
   public isRegister: boolean = false;
+  public isForgotPasswordView: boolean = false;
   public buttonDisabled: boolean = true;
 
   public loginSuccess: boolean = false;
@@ -119,9 +120,17 @@ export class RegisterComponent {
 
   toggleRegisterForm(){
     this.isRegister = !this.isRegister;
+    this.isForgotPasswordView = false;
   }
 
-  toggleForgotPassword(){}
+  backToLogin(){
+    this.isRegister = false;
+    this.isForgotPasswordView = false;
+  }
+
+  toggleForgotPassword(){
+    this.isForgotPasswordView = !this.isForgotPasswordView;
+  }
 
   agreeToTerms(){
     this.buttonDisabled = !this.buttonDisabled;
