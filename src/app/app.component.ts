@@ -51,6 +51,10 @@ export class AppComponent {
     this.router.navigate([`/user-services`]);
   }
 
+  navigateToUserProfile(){
+    this.router.navigate([`/user-profile`]);
+  }
+
   navigateToSettings() {
     this.router.navigate([`/user-settings`]);
   }

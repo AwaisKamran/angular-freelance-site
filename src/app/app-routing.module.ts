@@ -10,6 +10,7 @@ import { OrderPageComponent } from './order-page/order-page.component';
 import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
 import { BidRequestComponent } from './bid-request/bid-request.component';
 import { SearchComponent } from './search/search.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'bid-request/:id', component: BidRequestComponent },
   { path: 'buyer-request', component: BuyerRequestComponent },
   { path: 'user-services', component: UserServicesComponent },
+  { path: 'user-profile', component: ProfileComponent },
   { path: 'user-settings', component: UserSettingsComponent },
   { path: 'create-job', component: CreateJobComponent },
   { path: 'order-page/:id/:userId', component: OrderPageComponent },

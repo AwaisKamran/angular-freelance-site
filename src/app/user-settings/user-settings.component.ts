@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { ImageService } from '../services/image.service';
+import { QualificationService } from '../services/qualification.service';
+import { ExperienceService } from '../services/experience.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,10 +14,15 @@ export class UserSettingsComponent implements OnInit {
   @ViewChild('fileDiv', { static: true}) fileDiv: ElementRef<HTMLElement>;
   
   public stars = [];
+  public qualifications = [];
   public userDataUpdated: boolean = false;
   public userDataUpdatedError: boolean = false;
   public passwordChangedSuccess: boolean = false;
   public passwordChangedError: boolean = false;
+  public qualificationAddedSuccess: boolean = false;
+  public qualificationAddedError: boolean = false;
+  public experienceAddedSuccess: boolean = false;
+  public experienceAddedError: boolean = false;
   public imageProfile: any = "assets/images/profile-pic.png";
   public file: File;
   public data: any = {
@@ -28,6 +35,21 @@ export class UserSettingsComponent implements OnInit {
     id: JSON.parse(localStorage.getItem('user')).id
   };
 
+  public qualification: any = {
+    title: undefined,
+    institute: undefined,
+    score: undefined,
+    userId: JSON.parse(localStorage.getItem('user')).id
+  };
+
+  public experience: any = {
+    title: undefined,
+    companyName: undefined,
+    startYear: undefined,
+    endYear: undefined,
+    userId: JSON.parse(localStorage.getItem('user')).id
+  };
+
   public userData: any = {
     password: undefined,
     confirmPassword: undefined,
@@ -37,6 +59,8 @@ export class UserSettingsComponent implements OnInit {
   constructor(
     public userService: UserService,
     public imageService: ImageService,
+    public experienceService :ExperienceService,
+    public qualificationService: QualificationService,
     public router: Router
   ) { 
     this.imageProfile =  this.userService.getLoggedInUserImage();
@@ -46,6 +70,44 @@ export class UserSettingsComponent implements OnInit {
 
   ngOnInit() {
     this.stars = new Array(5);
+  }
+
+  submitQualification(){
+    this.qualificationService.addQualification(this.qualification)
+    .subscribe((res: any) => {
+      if(res.success){
+        this.qualificationAddedSuccess = true;
+        this.qualificationAddedError = false;
+      }  
+      else{
+        this.qualificationAddedSuccess = false;
+        this.qualificationAddedError = true;
+        console.log("Error uploading qualification.");
+      }
+    }, (err: any) => {
+      this.qualificationAddedSuccess = false;
+        this.qualificationAddedError = true;
+      console.log("Error uploading qualification.");
+    });
+  }
+
+  submitExperience(){
+    this.experienceService.addExperience(this.experience)
+    .subscribe((res: any) => {
+      if(res.success){
+        this.experienceAddedSuccess = true;
+        this.experienceAddedError = false;
+      }  
+      else{
+        this.experienceAddedSuccess = false;
+        this.experienceAddedError = true;
+        console.log("Error uploading experience.");
+      }
+    }, (err: any) => {
+      this.experienceAddedSuccess = false;
+        this.experienceAddedError = true;
+      console.log("Error uploading experience.");
+    });
   }
 
   openFileExplorer(){

@@ -1,1 +1,121 @@
-<p>profile works!</p>
+<div class="dashboard-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                <app-user-info-badge></app-user-info-badge>
+            </div>
+
+            <div *ngIf="IsServiceView" class="col-lg-8 col-md-8 col-sm-12 col-12">
+                <div class="order-list padding-10 margin-20 no-padding-left no-margin-left no-padding-top">
+                    <div *ngIf="!isUserAdmin()" class="container">
+                        <div class="row">
+                            <div *ngFor="let service of userServices" class="order-wrapper col-lg-4">
+                                <app-user-service-badge [service]="service" [buyService]="false"></app-user-service-badge>
+                            </div>
+
+                            <!-- <div class="order-wrapper col-lg-4">
+                                <div class="order-container">
+                                    <div class="add-container" (click)="addService()">
+                                        <i class="fa fa-plus-square-o green" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="qualification-container conatiner">
+                    <app-qualifications></app-qualifications>
+                </div><br/>
+
+                <div class="experience-container conatiner">
+                    <app-experience></app-experience>
+                </div><br/>
+
+                <div class="review-container container">
+                    <app-review></app-review>
+                </div>
+                <br/><br/>
+            </div>
+
+            <div *ngIf="!IsServiceView" class="col-lg-8 col-md-8 col-sm-12 col-12">
+                <div class="create-order padding-10 margin-20">
+                    <div class="back-button" (click)="addService()">
+                        <span class="green">
+                            <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                            Back
+                        </span>
+                    </div>
+
+                    <div *ngIf="serviceSuccess" class="alert alert-success" role="alert">
+                        Congratulations! Your new service has been created.
+                    </div>
+        
+                    <div *ngIf="serviceError" class="alert alert-danger" role="alert">
+                        Error! There was an internal server error.
+                    </div>
+
+                    <div *ngIf="missingField" class="alert alert-warning" role="alert">
+                        Warning! You are missing some fields.
+                    </div>
+
+                    <div class="centered">
+                        <img [src]="imageProfile" class="image-style" (click)="openFileExplorer()" /><br/>
+                    </div>
+                            
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Your service name</label>
+                        <input [(ngModel)]="data.title" type="text" class="form-control" placeholder="Service name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Describe your service</label>
+                        <textarea [(ngModel)]="data.description" rows="3" class="form-control" placeholder="Describe service, what is included, what is not included, if you have your own equipment and what needs to be provided to you"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Hourly Cost</label>
+                        <input [(ngModel)]="data.hourlyCost" type="text" class="form-control" placeholder="Hourly cost">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Minimum Hours</label>
+                        <input [(ngModel)]="data.minimumHours" type="text" class="form-control" placeholder="Minimum Hours">
+                    </div>
+
+                    <div class="col-md-12 col-12 form-group no-padding">
+                        <label>Category</label>
+                        <div>
+                            <select class="form-control no-padding" [(ngModel)]="data.categoryId" (change)="categoryChanged()">
+                                <option value="-1" selected>Select Category</option>
+                                <option *ngFor="let category of categories" [value]="category.id">   
+                                    {{ category.categoryName }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-12 form-group no-padding">
+                        <label>Sub Category</label>
+                        <div>
+                            <select class="form-control no-padding" [(ngModel)]="data.subCategoryId">
+                                <option value="-1" selected>Select Sub-Category</option>
+                                <option *ngFor="let subcategory of filteredSubcategories" [value]="subcategory.id">
+                                    {{ subcategory.subCategoryName }}
+                                </option>
+                            </select>
+                        </div>
+                    </div><br/>
+
+                    <input #fileDiv class="hide" type="file" (change)="onFileChanged($event)" />
+
+                    <button type="button" class="btn btn-success btn-block green-block" (click)="createService()">
+                        <span *ngIf="serviceLoading" class="spinner-border spinner-border-sm" role="status"
+                            aria-hidden="true"></span>
+                        Create
+                    </button><br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="qualifiaction-container">
+    <div class="qualification-heading">User Qualifications</div>
+    
+    <div *ngFor="let qualification of qualifications" class="qualification-section">
+        <div class="title">{{ qualification.title }}</div>
+        <div class="institute">{{ qualification.institute }}</div>
+        <div class="score">{{ qualification.score }}</div>
+    </div>
+
+    <div *ngIf="qualifications.length === 0">
+        <div class="no-data-available">No qualifications added.</div>
+    </div>
+</div>

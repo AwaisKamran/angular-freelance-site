@@ -21,7 +21,7 @@
 
                     <div class="alert alert-success" role="alert">
                         Note - User can change their profile picture and password and other relevant details under this
-                        section. Please make sure that you provide authenticated bank account details.
+                        section. <span *ngIf="!isAdmin()">Please make sure that you provide authenticated bank account details.</span>
                     </div>
 
                     <input #fileDiv class="hide" type="file" (change)="onFileChanged($event)" />
@@ -39,14 +39,12 @@
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input [(ngModel)]="data.email" type="text" class="form-control"
-                            placeholder="Email" />
+                        <input [(ngModel)]="data.email" type="text" class="form-control" placeholder="Email" />
                     </div>
 
                     <div class="form-group">
                         <label>City</label>
-                        <input [(ngModel)]="data.city" type="text" class="form-control"
-                            placeholder="City" />
+                        <input [(ngModel)]="data.city" type="text" class="form-control" placeholder="City" />
                     </div>
 
                     <div *ngIf="!isAdmin()">
@@ -81,6 +79,7 @@
                     <div class="profile-heading">
                         <span>Reset Password</span>
                     </div>
+
                     <div *ngIf="passwordChangedSuccess" class="alert alert-success" role="alert">
                         Congratulations! Your Password has been set successfully.
                     </div>
@@ -107,6 +106,93 @@
                         Reset Password
                     </button>
                 </div>
+
+                <div class="create-order padding-10 margin-20">
+                    <div class="profile-heading">
+                        <span>Add Qualifications</span>
+                    </div>
+
+                    <div *ngIf="qualificationAddedSuccess" class="alert alert-success" role="alert">
+                        Congratulations! Your qualifications have been added successfully.
+                    </div>
+
+                    <div *ngIf="qualificationAddedError" class="alert alert-danger" role="alert">
+                        Error! There was an internal server error.
+                    </div>
+
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input [(ngModel)]="qualification.title" type="text" class="form-control"
+                            placeholder="Enter your qualification title" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Qualification Institute</label>
+                        <input [(ngModel)]="qualification.institute" type="text" class="form-control"
+                            placeholder="Enter the Institute" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Qualification Score</label>
+                        <input [(ngModel)]="qualification.score" type="text" class="form-control"
+                            placeholder="Enter your qualification score" />
+                    </div>
+
+                    <button type="button" class="btn btn-success btn-block green-block" (click)="submitQualification()">
+                        Submit
+                    </button><br/>
+
+                    <hr/>
+                    
+                    <app-qualifications></app-qualifications>
+                </div>
+            
+                <div class="create-order padding-10 margin-20">
+                    <div class="profile-heading">
+                        <span>Add Work Experience</span>
+                    </div>
+
+                    <div *ngIf="experienceAddedSuccess" class="alert alert-success" role="alert">
+                        Congratulations! Your experience have been added successfully.
+                    </div>
+
+                    <div *ngIf="experienceAddedError" class="alert alert-danger" role="alert">
+                        Error! There was an internal server error.
+                    </div>
+
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <input [(ngModel)]="experience.title" type="text" class="form-control"
+                            placeholder="Enter your job title" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input [(ngModel)]="experience.companyName" type="text" class="form-control"
+                            placeholder="Enter the company name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Start Year</label>
+                        <input [(ngModel)]="experience.startYear" type="text" class="form-control"
+                            placeholder="Enter your employment start Year" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>End Year</label>
+                        <input [(ngModel)]="experience.endYear" type="text" class="form-control"
+                            placeholder="Enter your employment end Year" />
+                    </div>
+
+                    <button type="button" class="btn btn-success btn-block green-block" (click)="submitExperience()">
+                        Submit
+                    </button><br/>
+
+                    <hr/>
+                    
+                    <app-experience></app-experience>
+                </div>
             </div>
         </div>
     </div>
+</div>

@@ -30,6 +30,8 @@ import { SearchComponent } from './search/search.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { RatingComponent } from './rating/rating.component';
 import { ReviewComponent } from './review/review.component';
+import { QualificationsComponent } from './qualifications/qualifications.component';
+import { ExperienceComponent } from './experience/experience.component';
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
@@ -53,6 +55,8 @@ import { ProfileComponent } from './profile/profile.component';
     AdminViewComponent,
     RatingComponent,
     ReviewComponent,
+    QualificationsComponent,
+    ExperienceComponent,
     ProfileComponent
   ],
   imports: [

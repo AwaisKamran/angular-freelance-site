@@ -111,3 +111,32 @@
     text-align: center;
     color: gray;
 }
+
+.title{
+    font-weight: 400;;
+}
+
+.institute{
+    font-weight: 200;
+}
+
+.score{
+    font-weight: 100;
+}
+
+.qualification-section{
+    border-left: 3px solid #1dbf73;
+    padding-left: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #f5f5f5;
+}
+
+.no-data-available{
+    color: black;
+    background-color: #e0e0e0;
+    width: 100%;
+    text-align: center;
+    padding: 2.5%;
+    margin-bottom: 20px;
+}
