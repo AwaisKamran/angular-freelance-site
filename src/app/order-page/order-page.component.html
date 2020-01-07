@@ -24,13 +24,13 @@
                     <div *ngIf="order.status === '0'" class="badge-value badge-progress">Scheduled</div>
                     <div *ngIf="order.status === '1'" class="badge-value badge-revision">In Revision</div>
                     <div *ngIf="order.status === '2'" class="badge-value badge-delivered">Completed</div>
-                    <div *ngIf="order.status === '3'" class="badge-value badge-accepted">Accepted</div>
+                    <div *ngIf="order.status === '3'" class="badge-value badge-accepted">Paid</div>
                 </div>
             </div>
             <div class="clear-both"></div>
         </div><br/>
 
-        <div class="ordered-by">Ordered by <span class="green-highlight">{{ order.user.username }}</span> at {{ formatDate(order.orderCreated) }}</div><br/>      
+        <div class="ordered-by">Ordered by <span class="green-highlight cursor-pointer" (click)="navigateToUserProfile(order.user.id)">{{ order.user.username }}</span> at {{ formatDate(order.orderCreated) }}</div><br/>      
         <hr/>
 
         <div class="delivery-section" *ngIf="(order.status === '0' || order.status === '1')  && !isAdmin()">
@@ -43,19 +43,19 @@
 
         <div class="delivery-section-container" *ngIf="order.status === '2' && !isAdmin()">
             <div class="message box">
-                <i class="fa fa-check-square green-large-icon" aria-hidden="true"></i> Please wait while your deliverable is reviewed.
+                <i class="fa fa-check-square green-large-icon" aria-hidden="true"></i> Please wait while your order is reviewed.
             </div>
         </div>
 
         <div class="delivery-section-container" *ngIf="(order.status === '1')  && isAdmin()">
             <div class="message box">
-                <i class="fa fa-check-square green-large-icon" aria-hidden="true"></i> Please wait while your deliverable is reviewed.
+                <i class="fa fa-check-square green-large-icon" aria-hidden="true"></i> Please wait while your order is reviewed.
             </div>
         </div>
 
         <div class="delivery-section-container" *ngIf="(order.status === '0') && isAdmin()">
             <div class="message box">
-                <i class="fa fa-history green-large-icon" aria-hidden="true"></i> Please wait, your deliverable is scheduled.
+                <i class="fa fa-history green-large-icon" aria-hidden="true"></i> Please wait, your order is scheduled.
             </div>
         </div>
 

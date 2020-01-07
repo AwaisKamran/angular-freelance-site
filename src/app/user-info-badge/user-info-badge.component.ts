@@ -9,6 +9,7 @@ import { RatingService } from '../services/rating.service';
   styleUrls: ['./user-info-badge.component.css']
 })
 export class UserInfoBadgeComponent implements OnInit {
+  @Input() userId: string;
   public starsCount = [];
   public user: any = undefined;
   public userImage: string = "assets/images/profile-pic.png";
@@ -18,9 +19,6 @@ export class UserInfoBadgeComponent implements OnInit {
     public countryService: CountryService,
     public ratingService: RatingService
   ) { 
-    this.starsCount = new Array(5).fill(false);
-    this.fetchUserAverageRating(this.userService.getUserObject().id);
-    this.fetchDetails();
   }
 
   fetchUserAverageRating(id){
@@ -50,9 +48,30 @@ export class UserInfoBadgeComponent implements OnInit {
     this.userImage += ',url(assets/images/profile-pic.png)';
   }
 
+  fetchDetailsByUserId(id){
+    this.userService.getUserById(id)
+      .subscribe((res: any) => {
+        if(res.success){
+          this.user = res.data;
+          console.log(this.user);
+        }
+      }, (err: any) => {
+      });
+  }
+
   ngOnInit() {
-    let count = 5 - parseInt(this.user.rating);
-    this.starsCount = new Array(count);
+    if(this.userId){
+      this.fetchUserAverageRating(this.userId);
+      this.fetchDetailsByUserId(this.userId);
+    }
+    else {
+      this.fetchUserAverageRating(this.userService.getUserObject().id);
+      this.fetchDetails();
+      
+      this.starsCount = new Array(5).fill(false);
+      let count = 5 - parseInt(this.user.rating);
+      this.starsCount = new Array(count);
+    }
   }
 
   getCountryName(){

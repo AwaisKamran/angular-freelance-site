@@ -9,6 +9,7 @@
         <div *ngFor="let comment of commentList" class="comment-box">
             <div class="user-picture float-left" [ngStyle]="{ 'background-image': getUserProfileImage(comment.userId)}"></div>
             <div class="user-comment float-left">
+                <div class="user-comment-text bold">{{ comment.userName }}</div>
                 <div class="user-comment-text">{{ comment.commentText }}</div>
                 <div class="user-comment-date">{{ getFormatDate(comment.dateTime) }}</div>
             </div>

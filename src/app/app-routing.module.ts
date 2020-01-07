@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'buyer-request', component: BuyerRequestComponent },
   { path: 'user-services', component: UserServicesComponent },
   { path: 'user-profile', component: ProfileComponent },
+  { path: 'user-profile/:id', component: ProfileComponent },
   { path: 'user-settings', component: UserSettingsComponent },
   { path: 'create-job', component: CreateJobComponent },
   { path: 'order-page/:id/:userId', component: OrderPageComponent },

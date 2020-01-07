@@ -17,6 +17,11 @@
     background-position: center;
 }
 
+.bold{
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
 .user-comment{
     margin-left: 10px;
     background-color: #efefef;

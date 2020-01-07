@@ -58,7 +58,7 @@ export class AdminViewComponent implements OnInit {
   }
 
   formatDate(date){
-    return format(new Date(date), 'MM/dd/yyyy');
+    return format(new Date(date), 'dd/MM/yyyy');
   }
 
   navigateToOrderPage(order){

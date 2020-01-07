@@ -55,6 +55,10 @@
     width: max-content;
 }
 
+.cursor-pointer{
+    cursor: pointer;
+}
+
 .badge-accepted{
     background-color: yellowgreen;
     color: white;

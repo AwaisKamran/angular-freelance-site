@@ -107,7 +107,7 @@
                     </button>
                 </div>
 
-                <div class="create-order padding-10 margin-20">
+                <div *ngIf="!isAdmin()" class="create-order padding-10 margin-20">
                     <div class="profile-heading">
                         <span>Add Qualifications</span>
                     </div>

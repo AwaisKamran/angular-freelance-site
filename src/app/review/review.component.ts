@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from "../services/user.service";
 import { ConstantsService } from "../services/constants.service";
 import { RatingService } from "../services/rating.service";
@@ -10,13 +10,22 @@ import { RatingService } from "../services/rating.service";
 })
 export class ReviewComponent implements OnInit {
   public reviewList:any = [];
+  @Input() user: string; 
 
   constructor(
     public userService: UserService,
     public constantsService: ConstantsService,
     public ratingService: RatingService,
-  ) { 
-    this.ratingService.getUserRatings(this.userService.getUserObject().id)
+  ) {  
+  }
+
+  ngOnInit(){
+    if(this.user) this.fetchRatings(this.user);
+    else this.fetchRatings(this.userService.user.id);
+  }
+
+  fetchRatings(id){
+    this.ratingService.getUserRatings(id)
     .subscribe(
       (res: any) => {
         if (res.success) {
@@ -30,8 +39,4 @@ export class ReviewComponent implements OnInit {
       }
     );
   }
-
-  ngOnInit() {
-  }
-
 }

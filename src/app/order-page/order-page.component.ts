@@ -46,6 +46,10 @@ export class OrderPageComponent implements OnInit {
     });
   }
 
+  navigateToUserProfile(id){
+    this.router.navigate([`/user-profile/${id}`]);
+  }
+
   getDownloadFileUrl(id) {
     this.orderService.getFileName(id)
       .subscribe((res: any) => {
