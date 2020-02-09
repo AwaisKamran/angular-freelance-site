@@ -124,6 +124,10 @@
     font-weight: 100;
 }
 
+.label-text{
+    font-weight: 100;
+}
+
 .qualification-section{
     border-left: 3px solid #1dbf73;
     padding-left: 15px;
@@ -138,5 +142,24 @@
     width: 100%;
     text-align: center;
     padding: 2.5%;
+    margin-bottom: 20px;
+}
+
+.gray-text{
+    color:gray;
+    margin-left: 2px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.gray-text:hover{
+    color:gray !important;
+    margin-left: 2px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.download-link:hover{
+    color:gray !important;
     margin-bottom: 20px;
 }

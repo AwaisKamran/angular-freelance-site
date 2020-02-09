@@ -24,7 +24,8 @@
                     <div *ngIf="order.status === '0'" class="badge-value badge-progress">Scheduled</div>
                     <div *ngIf="order.status === '1'" class="badge-value badge-revision">In Revision</div>
                     <div *ngIf="order.status === '2'" class="badge-value badge-delivered">Completed</div>
-                    <div *ngIf="order.status === '3'" class="badge-value badge-accepted">Paid</div>
+                    <div *ngIf="order.status === '3'" class="badge-value badge-delivered">Completed</div>
+                    <!-- badge-accepted -->
                 </div>
             </div>
             <div class="clear-both"></div>
@@ -37,7 +38,7 @@
             <div class="form-group">
                 <input type="file" class="form-control-file" id="fileToUpload" name="fileToUpload" (change)="onFileSelect($event)" />
             </div>
-            <button class="btn btn-block btn-outline-success green-border" (click)="deliverOrder(order.id, 2)">Deliver Order</button>
+            <button class="btn btn-block btn-outline-success green-border" (click)="deliverOrder(order.id, 2)">Complete Order</button>
             <div class="short-note">Note: Please make sure the document uploaded are in the .doc or .pdf format. In case of there is no deliverable, make sure to upload a signed or authorized receipts.</div>
         </div>
 
@@ -98,7 +99,7 @@
         <div class="admin-section" *ngIf="(order.status === '3') && isAdmin()">
             <div *ngIf="order.adminRated">
                 <div class="message box">
-                    <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been accepted.
+                    <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been completed.
                 </div>
             </div>
             <div *ngIf="!order.adminRated">
@@ -109,7 +110,7 @@
         <div class="admin-section" *ngIf="(order.status === '3') && !isAdmin()">
             <div *ngIf="order.freelancerRated">
                 <div class="message box">
-                    <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been accepted.
+                    <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been completed.
                 </div>
             </div>
             <div *ngIf="!order.freelancerRated">

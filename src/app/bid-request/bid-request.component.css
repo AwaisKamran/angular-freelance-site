@@ -54,6 +54,10 @@
     background-position: center;
 }
 
+.price-tag{
+    margin-left: 5px;
+}
+
 .profile-name{
     height: 30px;
     line-height: 30px;
@@ -86,8 +90,8 @@
 }
 
 .service-image{
-    height: 75px;
-    width: 75px;
+    height: 95px;
+    width: 110px;
     border-radius: 4px;
     background-size:  cover;
     background-repeat: no-repeat;
@@ -105,7 +109,7 @@
     border: 1px solid #e0e0e0;
     padding: 4px;
     width: max-content;
-    height: 85.5px;
+    height: 105.5px
 }
 
 .bid-details{

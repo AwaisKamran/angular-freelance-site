@@ -20,7 +20,7 @@
                     <app-qualifications [user]="userId"></app-qualifications>
                 </div><br/>
 
-                <div class="experience-container conatiner">
+                <div *ngIf="showExperience" class="experience-container conatiner">
                     <app-experience [user]="userId"></app-experience>
                 </div><br/>
 

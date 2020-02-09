@@ -62,8 +62,9 @@
                         <div *ngIf="order.status === '0'" class="badge-value badge-progress float-left"> Scheduled </div>
                         <div *ngIf="order.status === '1'" class="badge-value badge-revision float-left"> In Revision</div>
                         <div *ngIf="order.status === '2'" class="badge-value badge-delivered float-left"> Completed</div>
-                        <div *ngIf="order.status === '3'" class="badge-value badge-accepted float-left">Paid</div>
+                        <div *ngIf="order.status === '3'" class="badge-value badge-delivered float-left">Completed</div>
                     </div>
+                    <!-- badge-accepted  -->
                     <div class="clear-both"></div>
                 </div>
                 <span class="title">Category</span> <span

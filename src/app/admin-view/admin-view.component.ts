@@ -44,7 +44,7 @@ export class AdminViewComponent implements OnInit {
     for(let i=0; i<this.orderList.length; i++){
       if(this.orderList[i].status === '0') this.progress++;
       else if(this.orderList[i].status === '1') this.revised++
-      else if(this.orderList[i].status === '2') this.delivered++;
+      else if(this.orderList[i].status === '2' || this.orderList[i].status === '3') this.delivered++;
       else if(this.orderList[i].status === '-1') this.new++;
     }
   }

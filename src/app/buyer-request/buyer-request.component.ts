@@ -48,6 +48,7 @@ export class BuyerRequestComponent implements OnInit {
     .subscribe((res: any) => {
       if(res.success){
         this.orderList = res.data;
+        console.log(this.orderList);
       }  
     }, (err: any) => {
     });

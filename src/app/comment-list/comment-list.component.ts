@@ -52,8 +52,7 @@ export class CommentListComponent implements OnInit {
   }
 
   getFormatDate(date){
-    console.log(format(new Date(date), 'mm/dd/yyyy h:mm aa'));
-    return format(new Date(date), 'MM/dd/yyyy h:mm aa');
+    return format(new Date(date), 'dd/MM/yyyy h:mm aa');
   }
 
   getUserProfileImage(id){

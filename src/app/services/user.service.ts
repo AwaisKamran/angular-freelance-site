@@ -44,6 +44,14 @@ export class UserService {
     return localStorage.getItem('user')? true: false;
   }
 
+  hasWorkPermit(){
+    return JSON.parse(localStorage.getItem('user')).hasWorkPermit === "1"? true: false;
+  }
+
+  hasLicense(){
+    return JSON.parse(localStorage.getItem('user')).hasLicense === "1"? true: false;
+  }
+
   isUserAdmin(){
     return parseInt(this.user.type) === 0? true: false;
   }
@@ -58,6 +66,14 @@ export class UserService {
 
   getUserById(id){
     return this.http.get(`${this.url}api/user/getUserById.php?userId=${id}`);
+  }
+
+  updateUserLicense(data){
+    return this.http.post(`${this.url}api/user/updateUserLicense.php`, { "data": data });
+  }
+
+  updateWorkPermit(data){
+    return this.http.post(`${this.url}api/user/updateWorkPermit.php`, { "data": data });
   }
 
   storeUserInfo(data){

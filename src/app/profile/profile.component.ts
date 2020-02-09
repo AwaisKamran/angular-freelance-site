@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   public url: any;
   public userId: string;
   public showQualifications: boolean = true;
+  public showExperience: boolean = true;
 
   public data = {
     userId: JSON.parse(localStorage.getItem("user")).id
@@ -49,10 +50,14 @@ export class ProfileComponent implements OnInit {
       container.userId = params['id'];
       if(params['id']){
         this.showQualifications = true;
+        this.showExperience = true;
         this.getUserServices(container.userId);
       }
       else{
-        if(this.isUserAdmin()) this.showQualifications = false;
+        if(this.isUserAdmin()) {
+          this.showQualifications = false;
+          this.showExperience = false;
+        }
         this.getUserServices(this.data.userId);
       }
     });
