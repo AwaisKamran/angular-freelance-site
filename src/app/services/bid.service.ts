@@ -26,4 +26,8 @@ export class BidService {
   acceptBid(data){
     return this.http.post(`${this.url}api/bid/acceptBid.php`, { "data": data});
   }
+
+  deleteBids(data){
+    return this.http.post(`${this.url}api/bid/deleteBids.php`, { "data": data});
+  }
 }

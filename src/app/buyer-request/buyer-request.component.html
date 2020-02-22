@@ -20,7 +20,7 @@
                     <div class="time-required">
                         <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> {{ order.hoursRequired }} hours
                     </div><br />
-                    <button type="button" class="btn btn-outline-success" (click)="onOpenDialog(order.id, order.categoryId)">Send Your
+                    <button [disabled]='order.bidUser && order.bidUser !== "0"' type="button" class="btn btn-outline-success" (click)="onOpenDialog(order.id, order.categoryId)">Send Your
                         Bid</button>
                 </div>
             </div>
@@ -71,7 +71,7 @@
     <div class="form-group">
         <label for="proposedBudget">Proposed Budget</label>
         <input type="text" [(ngModel)]="data.proposedBudget" class="form-control" id="proposedBudget" placeholder="Enter the budget here">
-        <small class="form-text text-muted">All the budget proposed are in Sterling Pound (£).</small>
+        <small class="form-text text-muted">All the budget proposed are in {{ currency }} Pound ({{ currencySymbol }}).</small>
     </div>
 
     <button class="btn btn-block btn-outline-success btn-style" (click)="submitBid()">Submit Bid</button>

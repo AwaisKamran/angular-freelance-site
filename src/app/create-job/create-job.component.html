@@ -48,7 +48,7 @@
         <div class="form-group">
             <label for="budgetTask">Budget</label>
             <input [(ngModel)]="data.budget" type="email" class="form-control" id="budgetTask" aria-describedby="budgetTask2">
-            <small id="budgetTask2" class="form-text text-muted">All the payments are in Sterling Pound (£).</small>
+            <small id="budgetTask2" class="form-text text-muted">All the payments are in {{ currency }} ({{ currencySymbol }}).</small>
         </div>
 
         <button type="button" class="btn btn-success btn-block green-block" (click)="addJob()">

@@ -29,8 +29,8 @@ export class OrderService {
     return this.http.post(`${this.url}api/order/deleteOrder.php`, { "data": data });
   }
 
-  getUnAssignedOrders(){
-    return this.http.get(`${this.url}api/order/getUnAssignedOrders.php`);
+  getUnAssignedOrders(userId){
+    return this.http.get(`${this.url}api/order/getUnAssignedOrders.php?userId=${userId}`);
   }
 
   getOrderByUserId(id){

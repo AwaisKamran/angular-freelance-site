@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   public userId: string = undefined;
   public showQualifications: boolean = true;
   public showExperience: boolean = true;
+  public showReportFlag: boolean = false;
 
   public data = {
     userId: JSON.parse(localStorage.getItem("user")).id
@@ -51,6 +52,7 @@ export class ProfileComponent implements OnInit {
       container.userId = params['id'];
       if(params['id']){
         this.getUserById(container.userId);
+        this.showReportFlag = true;
       }
       else{
         if(this.isUserAdmin()) {
@@ -59,6 +61,7 @@ export class ProfileComponent implements OnInit {
         }
         this.userId = this.data.userId;
         this.getUserServices(this.data.userId);
+        this.showReportFlag = false;
       }
     });
   }

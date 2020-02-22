@@ -48,6 +48,7 @@
                 <input type="file" class="form-control-file" id="fileToUpload" name="fileToUpload" (change)="onFileSelect($event)" />
             </div>
             <button class="btn btn-block btn-outline-success green-border" (click)="deliverOrder(order.id, 2)">Complete Order</button>
+            <button class="btn btn-block btn-outline-danger" (click)="declineOrderByOrderId(order.id, -1)">Cancel Order</button>
             <div class="short-note">Note: If you need to upload a document, please make sure it is in a .doc or .pdf format.</div>
         </div>
 

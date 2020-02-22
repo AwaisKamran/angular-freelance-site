@@ -84,3 +84,11 @@
 .clear-both{
     clear: both;
 }
+
+.report-user{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: underline;
+    color: #1dbf73;
+}

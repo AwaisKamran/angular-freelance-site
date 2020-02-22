@@ -16,6 +16,8 @@ export class CreateJobComponent implements OnInit {
   public filteredSubcategories = [];
   public orderSuccessFlag: boolean = false;
   public orderErrorFlag: boolean = false;
+  public currency: string;
+  public currencySymbol: string;
 
   public data = {
     categoryId: "-1",
@@ -38,6 +40,8 @@ export class CreateJobComponent implements OnInit {
   ) { 
     this.getCategories();
     this.getSubCategories();
+    this.currency = this.userService.getUserObject().currency;
+    this.currencySymbol = this.userService.getUserObject().currencySymbol;
   }
 
   ngOnInit() { 

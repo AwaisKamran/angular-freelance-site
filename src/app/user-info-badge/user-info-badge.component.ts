@@ -11,6 +11,8 @@ import { ConstantsService } from '../services/constants.service';
 })
 export class UserInfoBadgeComponent implements OnInit {
   @Input() userId: string;
+  @Input() showReportFlag: boolean;
+
   public starsCount = [];
   public user: any = undefined;
   public userImage: string = "assets/images/profile-pic.png";
@@ -41,6 +43,12 @@ export class UserInfoBadgeComponent implements OnInit {
         reject();
       });
     });
+  }
+
+  reportUser(){
+    if(confirm("Are you sure you want to report this user?")){
+      
+    }
   }
 
   fetchDetails(){

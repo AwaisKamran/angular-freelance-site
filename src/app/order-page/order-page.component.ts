@@ -120,6 +120,10 @@ export class OrderPageComponent implements OnInit {
     }
   }
 
+  deleteOrder(){
+    
+  }
+
   handleRatedEvent($event) {
     if ($event) {
       this.orderService.changeOrderRatedStatus(this.id, true, this.userService.isUserAdmin())
@@ -147,7 +151,8 @@ export class OrderPageComponent implements OnInit {
       "status": status
     };
 
-    this.orderService.declineOrderByOrderId(data)
+    if(confirm("Are you sure you want to cancel the order?")){
+     this.orderService.declineOrderByOrderId(data)
       .subscribe(
         (res: any) => {
           if (res.success) {
@@ -164,7 +169,7 @@ export class OrderPageComponent implements OnInit {
           this.orderStatusError = true;
         }
       );
-
+    }
   }
 
   changeOrderStatus(id, status) {

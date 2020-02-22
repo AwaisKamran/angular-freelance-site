@@ -24,7 +24,7 @@ export class BidRequestComponent implements OnInit {
     public bidService: BidService,
     public orderService: OrderService,
     public constantsService: ConstantsService
-  ) { 
+  ) {
     this.currencySymbol = JSON.parse(localStorage.getItem('user')).currencySymbol;
   }
 
@@ -36,48 +36,55 @@ export class BidRequestComponent implements OnInit {
     });
   }
 
-  navigateToDashboard(){
+  navigateToDashboard() {
     this.router.navigate([`/dashboard`]);
   }
 
-  getBidsByOrderId(id){
+  getBidsByOrderId(id) {
     this.bidService.getBidsByOrderId(id)
-    .subscribe((res: any) => {
-      if(res.success){
-        this.bidList = res.data;
-      }  
-    }, (err: any) => {
-    });
+      .subscribe((res: any) => {
+        if (res.success) {
+          this.bidList = res.data;
+        }
+      }, (err: any) => {
+      });
   }
 
-  getUserImage(id){
+  getUserImage(id) {
     return `url(${this.constantsService.getImageUrl(id)}), url(assets/images/profile-pic.png)`;
   }
 
-  getServiceImage(id){
+  getServiceImage(id) {
     return `url(${this.constantsService.getServiceImageUrl(id)}), url(assets/images/placeholder.jpg)`;
   }
 
-  acceptBid(bid){
+  acceptBid(bid) {
     let data = {
       bidId: bid.id
     };
 
     this.bidService.acceptBid(data)
-    .subscribe((res: any) => {
-      if(res.success){
-        this.updateOrderById(bid.serviceId, bid.orderId, 0)
-      }  
-    }, (err: any) => {
-    });
+      .subscribe((res: any) => {
+        if (res.success) {
+          this.updateOrderById(bid.serviceId, bid.orderId, 0)
+        }
+      }, (err: any) => {
+      });
   }
 
-  
-  navigateToUserProfile(id){
+
+  navigateToUserProfile(id) {
     this.router.navigate([`/user-profile/${id}`]);
   }
 
-  updateOrderById(serviceId, orderId, status){
+  deleteBids(orderId) {
+    this.bidService.deleteBids({"orderId": orderId })
+      .subscribe((res: any) => {
+      }, (err: any) => {
+      });
+  }
+
+  updateOrderById(serviceId, orderId, status) {
     let data = {
       serviceId: serviceId,
       orderId: orderId,
@@ -85,18 +92,20 @@ export class BidRequestComponent implements OnInit {
     };
 
     this.orderService.updateOrderById(data)
-    .subscribe((res: any) => {
-      if(res.success){
-        this.bidSuccess = true;
-        this.bidError = false;
-      }  
-      else{
+      .subscribe((res: any) => {
+        if (res.success) {
+          this.bidSuccess = true;
+          this.bidError = false;
+          this.deleteBids(orderId);
+          this.navigateToDashboard();
+        }
+        else {
+          this.bidSuccess = false;
+          this.bidError = true;
+        }
+      }, (err: any) => {
         this.bidSuccess = false;
         this.bidError = true;
-      }
-    }, (err: any) => {
-      this.bidSuccess = false;
-      this.bidError = true;
-    });
+      });
   }
 }

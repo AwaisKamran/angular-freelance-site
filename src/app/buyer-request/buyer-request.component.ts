@@ -17,6 +17,7 @@ export class BuyerRequestComponent implements OnInit {
   public dialogError: boolean = false;
   public loadingServices: boolean = false;
   public currencySymbol: string;
+  public currency: string;
   public orderList: any = [];
   public services: any = [];
   public data: any = {
@@ -38,15 +39,16 @@ export class BuyerRequestComponent implements OnInit {
     public orderService: OrderService,
     public servicesService: ServicesService
   ) {
-    this.fetchOrders();
+    this.fetchOrders(this.userService.getUserObject().id);
     this.currencySymbol = JSON.parse(localStorage.getItem('user')).currencySymbol;
+    this.currency = JSON.parse(localStorage.getItem('user')).currency;
   }
 
   ngOnInit() {
   }
 
-  fetchOrders(){
-    this.orderService.getUnAssignedOrders()
+  fetchOrders(userId){
+    this.orderService.getUnAssignedOrders(userId)
     .subscribe((res: any) => {
       if(res.success){
         this.orderList = res.data;
@@ -93,6 +95,7 @@ export class BuyerRequestComponent implements OnInit {
         this.dialogSuccess = true;
         this.dialogError = false;
         this.resetFields();
+        this.fetchOrders(this.userService.getUserObject().id);
       }  
       else{
         this.dialogSuccess = false;
