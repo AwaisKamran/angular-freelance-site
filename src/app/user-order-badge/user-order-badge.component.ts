@@ -15,13 +15,16 @@ export class UserOrderBadgeComponent implements OnInit {
   public imageProfile = null;
   public serviceImageProfile = null;
   public date = null;
+  public currencySymbol: string;
 
   constructor(
     public constantsService: ConstantsService,
     public userService: UserService,
     public orderService: OrderService,
     public router: Router
-  ) { }
+  ) { 
+    this.currencySymbol = JSON.parse(localStorage.getItem('user')).currencySymbol;
+  }
 
   ngOnInit() {
 

@@ -15,6 +15,7 @@ export class BidRequestComponent implements OnInit {
   public id: string = undefined;
   public bidSuccess: boolean = false;
   public bidError: boolean = false;
+  public currencySymbol: string;
 
   constructor(
     public router: Router,
@@ -23,7 +24,9 @@ export class BidRequestComponent implements OnInit {
     public bidService: BidService,
     public orderService: OrderService,
     public constantsService: ConstantsService
-  ) { }
+  ) { 
+    this.currencySymbol = JSON.parse(localStorage.getItem('user')).currencySymbol;
+  }
 
   ngOnInit() {
     let container = this;
@@ -67,6 +70,11 @@ export class BidRequestComponent implements OnInit {
       }  
     }, (err: any) => {
     });
+  }
+
+  
+  navigateToUserProfile(id){
+    this.router.navigate([`/user-profile/${id}`]);
   }
 
   updateOrderById(serviceId, orderId, status){

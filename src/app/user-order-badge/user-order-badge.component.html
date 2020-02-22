@@ -11,12 +11,13 @@
     <hr/>
     <div class="badge-container">
         <div class="badge-heading float-left bold">Price</div>
-        <div class="badge-value float-right">£ {{ order.service.hourlyCost * order.service.minimumHours}}</div>
+        <!-- <div class="badge-value float-right">£ {{ order.service.hourlyCost * order.service.minimumHours}}</div> -->
+        <div class="badge-value float-right">{{ currencySymbol }} {{ order.budget}}</div>
         <div class="clear-both"></div>
     </div>
 
     <div class="badge-container">
-        <div class="badge-heading float-left bold">Due In</div>
+        <div class="badge-heading float-left bold">Duration</div>
         <div class="badge-value float-right">{{ date }}</div>
         <div class="clear-both"></div>
     </div>

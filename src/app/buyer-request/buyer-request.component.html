@@ -7,15 +7,15 @@
 
         <div class="buyer-request-list">
             <div class="buyer-request-tab" *ngFor="let order of orderList">
-                <div class="profile-picture float-left" [ngStyle]="{ 'background-image': getUserImage(order.orderCreatedBy)}"></div>
-                <div class="profile-name float-left">{{ order.userName }}</div>
+                <div class="profile-picture float-left" (click)="navigateToUserProfile(order.orderCreatedBy)" [ngStyle]="{ 'background-image': getUserImage(order.orderCreatedBy)}"></div>
+                <div class="profile-name float-left" (click)="navigateToUserProfile(order.orderCreatedBy)">{{ order.userName }}</div>
                 <div class="clear-both"></div>
 
                 <div class="buyer-request-tab-description">
                     <span class="title">Category</span> <span class="badge badge-secondary badge-green">{{ order.categoryName }}</span>
                     <div class="description">{{ order.orderInstructions }}</div><br />
                     <div class="price-tag">
-                        <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> £ {{ order.budget }}
+                        <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> {{ currencySymbol }} {{ order.budget }}
                     </div>
                     <div class="time-required">
                         <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> {{ order.hoursRequired }} hours

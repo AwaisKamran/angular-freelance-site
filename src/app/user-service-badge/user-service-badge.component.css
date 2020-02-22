@@ -95,3 +95,8 @@
     margin-top: 5px;
     cursor: pointer;
 }
+
+.trash-icon{
+    color: #ec6767;
+    cursor: pointer;
+}

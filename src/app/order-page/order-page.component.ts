@@ -19,6 +19,7 @@ export class OrderPageComponent implements OnInit {
   public orderStatusSuccess: Boolean = false;
   public orderStatusError: Boolean = false;
   public downloadLink: string;
+  public currencySymbol: string;
 
   constructor(
     public router: Router,
@@ -27,6 +28,7 @@ export class OrderPageComponent implements OnInit {
     public userService: UserService,
     public constantService: ConstantsService
   ) {
+    this.currencySymbol = JSON.parse(localStorage.getItem('user')).currencySymbol;
   }
 
   ngOnInit() {
@@ -46,7 +48,7 @@ export class OrderPageComponent implements OnInit {
     });
   }
 
-  navigateToUserProfile(id){
+  navigateToUserProfile(id) {
     this.router.navigate([`/user-profile/${id}`]);
   }
 
@@ -97,20 +99,25 @@ export class OrderPageComponent implements OnInit {
   }
 
   deliverOrder(id, status) {
-    const formData = new FormData();
-    formData.append('fileToUpload', this.file);
+    if (this.file) {
+      const formData = new FormData();
+      formData.append('fileToUpload', this.file);
 
-    this.orderService.deliverOrder(formData, id, status)
-      .subscribe(
-        (res: any) => {
-          if (res.success) {
-            this.changeOrderStatus(id, 2);
+      this.orderService.deliverOrder(formData, id, status)
+        .subscribe(
+          (res: any) => {
+            if (res.success) {
+              this.changeOrderStatus(id, 2);
+            }
+            else {
+            }
+          }, (error) => {
           }
-          else {
-          }
-        }, (error) => {
-        }
-      );
+        );
+    }
+    else {
+      this.changeOrderStatus(id, 2);
+    }
   }
 
   handleRatedEvent($event) {

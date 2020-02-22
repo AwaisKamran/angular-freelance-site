@@ -4,7 +4,12 @@
     </div>
 
     <div *ngIf="ratingSubmittedError" class="alert alert-danger" role="alert">
-        Error! There was an internal server error.
+        Error! Please make sure you have rate 
+    </div>
+
+    
+    <div *ngIf="ratingSubmittedFieldsMissingError" class="alert alert-warning" role="alert">
+        Warning! Please make sure you rate the review.
     </div>
 
     <div *ngIf="display">

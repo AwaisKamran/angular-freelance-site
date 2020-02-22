@@ -57,12 +57,13 @@
                 <div class="order-tab"> 
                     <div class="float-left" (click)="navigateToOrderPage(order)">Order # {{order.id }} </div>
                     <div class="float-right">
+                        <div *ngIf="order.status === '-1'" class="float-left mr-2 mt-1 red-color" (click)="deleteOrder(order.id)">Delete Request</div>
                         <div class="float-left date-time">{{ formatDate(order.orderCreated) }}</div>
                         <div *ngIf="order.status === '-1'" class="badge-value badge-new float-left">New</div>
                         <div *ngIf="order.status === '0'" class="badge-value badge-progress float-left"> Scheduled </div>
                         <div *ngIf="order.status === '1'" class="badge-value badge-revision float-left"> In Revision</div>
                         <div *ngIf="order.status === '2'" class="badge-value badge-delivered float-left"> Completed</div>
-                        <div *ngIf="order.status === '3'" class="badge-value badge-delivered float-left">Completed</div>
+                        <div *ngIf="order.status === '3'" class="badge-value badge-accepted float-left">Confirmed</div>
                     </div>
                     <!-- badge-accepted  -->
                     <div class="clear-both"></div>
@@ -71,7 +72,7 @@
                     class="badge badge-secondary badge-green">{{ order.categoryName }}</span>
                 <div *ngIf="order.orderInstructions" class="description">{{ order.orderInstructions }}</div><br />
                 <div class="price-tag">
-                    <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> £ {{ order.budget }}
+                    <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> {{currencySymbol}} {{ order.budget }}
                 </div>
                 <div class="time-required">
                     <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> {{ order.hoursRequired }}

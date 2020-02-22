@@ -33,6 +33,7 @@ import { ReviewComponent } from './review/review.component';
 import { QualificationsComponent } from './qualifications/qualifications.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminAccountListComponent } from './admin-account-list/admin-account-list.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ProfileComponent } from './profile/profile.component';
     ReviewComponent,
     QualificationsComponent,
     ExperienceComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminAccountListComponent
   ],
   imports: [
     NgbModule,

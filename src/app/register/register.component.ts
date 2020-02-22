@@ -34,7 +34,9 @@ export class RegisterComponent {
     city: undefined,
     phone: undefined,
     type: undefined,
-    travelRadius: undefined
+    travelRadius: undefined,
+    currency: undefined,
+    currencySymbol: undefined
   };
 
   public userData: any = {
@@ -57,6 +59,8 @@ export class RegisterComponent {
         this.countries = res;
         this.data.country = 238;
         this.data.code = this.countries[238].callingCodes[0];
+        this.data.currency = this.countries[238].currencies[0].name;
+        this.data.currencySymbol = this.countries[238].currencies[0].symbol;
         this.flag = this.countries[238].flag;
       }, (error) => {
       }

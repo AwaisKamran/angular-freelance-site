@@ -16,6 +16,7 @@ export class AdminViewComponent implements OnInit {
   public delivered: number = 0;
   public progress: number = 0;
   public new: number = 0;
+  public currencySymbol: string;
 
   constructor(
     public orderService: OrderService,
@@ -23,6 +24,7 @@ export class AdminViewComponent implements OnInit {
     public userService: UserService,
     public router: Router
   ) { 
+    this.currencySymbol = JSON.parse(localStorage.getItem('user')).currencySymbol;
     this.fetchOrders();
   }
 
@@ -64,6 +66,18 @@ export class AdminViewComponent implements OnInit {
   navigateToOrderPage(order){
     if(order.serviceId){
       this.router.navigate([`/order-page/${order.id}/${order.freelancerId}`]);
+    }
+  }
+
+  deleteOrder(id){
+    if(confirm("Are you sure you want to delete your order request?")){
+      this.orderService.deleteOrder({ "orderId": id })
+      .subscribe((res: any) => {
+        if(res.success){
+          this.fetchOrders();
+        }  
+      }, (err: any) => {
+      });
     }
   }
 }

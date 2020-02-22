@@ -36,6 +36,7 @@ export class CommentListComponent implements OnInit {
     .subscribe((res: any) => { 
       if(res.success){
         this.commentList.unshift(data);
+        this.commentText = "";
       }
     }, (err: any) => {
     });

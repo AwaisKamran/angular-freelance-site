@@ -52,12 +52,14 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .profile-name{
     height: 30px;
     line-height: 30px;
     font-size: 16.5px;
+    cursor: pointer;
 }
 
 .buyer-request-tab{

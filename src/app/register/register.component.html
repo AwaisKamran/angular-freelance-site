@@ -104,6 +104,11 @@
                     Policy</a>.</label>
         </div>
 
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="age-checkbox" (change)="agreeToAge()">
+            <label class="form-check-label" for="age-checkbox">I confirm that I am at least 18 years</label>
+        </div>
+
         <button [disabled]="buttonDisabled" type="button" class="btn dark-theme-background btn-block"
             (click)="register()">
             <span *ngIf="regsiterLoading" class="spinner-border spinner-border-sm" role="status"
@@ -149,7 +154,7 @@
                         Login
                     </button>
 
-                    <div class="social-login row">
+                    <!-- <div class="social-login row">
                         <div
                             class="col-lg-6 col-md-6 col-sm-12 col-12 no-padding padding-button-right margin-bottom-button">
                             <button type="button" class="btn btn-block facebook">
@@ -162,7 +167,7 @@
                                 <i class="fa fa-google" aria-hidden="true"></i>
                             </button>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="clear-both"></div>
                 </div>
             </div>

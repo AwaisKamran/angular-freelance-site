@@ -3,7 +3,7 @@
         <div *ngFor="let review of reviewList">
             <div class="review-container">
                 <div class="user-profile float-left" [ngStyle]="{ 'background-image': review.reviewerImage}"></div>
-                <div class="float-left user-name">{{ review.userName }}</div>
+                <div class="float-left user-name">Anonymous</div>
                 <div class="clear-both"></div>
                 <div class="user-review-stars">
                     <i *ngFor="let value of review.rating" class="fa fa-star yellow star" aria-hidden="true"></i>

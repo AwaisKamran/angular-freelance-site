@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="input-group mb-3 mt-3">
+        <input type="text" class="form-control" placeholder="Find by username" aria-label="Find by username"
+            aria-describedby="button-addon2" />
+        <div class="input-group-append">
+            <button class="btn green-outline" type="button">Search</button>
+        </div>
+    </div>
+
+    <div *ngFor="let user of userList" class="row user-account-container mb-3">
+        <div class="float-left">
+            <div class="profile-picture float-left ml-4 margin-top-pic"></div>
+            <div class="profile-name float-left">Awais Kamran</div>
+        </div>
+
+        <div class="profile-active-btn float-right">
+            <span class="red-color">Activate</span> | <span class="green-color">Deactivate</span>
+        </div>
+    </div>
+</div>

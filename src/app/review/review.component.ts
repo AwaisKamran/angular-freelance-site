@@ -32,7 +32,8 @@ export class ReviewComponent implements OnInit {
           this.reviewList = res.data;
           for(let i=0; i<this.reviewList.length; i++){
             this.reviewList[i].rating = new Array(parseInt(this.reviewList[i].rating));
-            this.reviewList[i].reviewerImage = `url(${this.constantsService.getImageUrl(this.reviewList[i].userId)}), url(assets/images/profile-pic.png)`;
+            this.reviewList[i].reviewerImage = `url(assets/images/profile-pic.png)`;
+            //url(${this.constantsService.getImageUrl(this.reviewList[i].userId)}), 
           }
         }
       }, (error) => {

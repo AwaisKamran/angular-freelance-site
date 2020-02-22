@@ -52,6 +52,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
 }
 
 .price-tag{
@@ -62,6 +63,7 @@
     height: 30px;
     line-height: 30px;
     font-size: 16.5px;
+    cursor: pointer;
 }
 
 .bid-request-tab{

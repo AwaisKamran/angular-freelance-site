@@ -233,3 +233,10 @@
 .chart-container{
     padding-right: 0px;
 }
+
+.red-color{
+    color: red;
+    font-size: 12.5px;
+    text-decoration: underline;
+    cursor: pointer;
+}

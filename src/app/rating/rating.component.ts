@@ -20,6 +20,7 @@ export class RatingComponent implements OnInit {
   public userImage: any;
   public ratingSubmittedSuccess: boolean = false;
   public ratingSubmittedError: boolean = false;
+  public ratingSubmittedFieldsMissingError: boolean = false;
   public ratingComments: string;
   public ratingDigit;
 
@@ -59,20 +60,27 @@ export class RatingComponent implements OnInit {
       data.userId = this.orderCreatedBy;
     }
 
-    this.ratingService.addRating(data)
-    .subscribe((res: any) => {
-        if (res.success) {
-          this.ratingSubmittedSuccess = true;
-          this.ratingSubmittedError = false;
-          this.rated.emit(true);
-        }
-        else{
+    if (this.ratingDigit > 0) {
+      this.ratingService.addRating(data)
+        .subscribe((res: any) => {
+          if (res.success) {
+            this.ratingSubmittedSuccess = true;
+            this.ratingSubmittedError = false;
+            this.rated.emit(true);
+          }
+          else {
+            this.ratingSubmittedSuccess = false;
+            this.ratingSubmittedError = true;
+          }
+        }, (err: any) => {
           this.ratingSubmittedSuccess = false;
           this.ratingSubmittedError = true;
-        }
-      }, (err: any) => {
-        this.ratingSubmittedSuccess = false;
-        this.ratingSubmittedError = true;
-      });
+        });
+    }
+    else{
+      this.ratingSubmittedSuccess = false;
+      this.ratingSubmittedError = false;
+      this.ratingSubmittedFieldsMissingError = true;
+    }
   }
 }

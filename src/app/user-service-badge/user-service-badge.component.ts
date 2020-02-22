@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OrderService } from '../services/order.service';
 import { Router } from '@angular/router';
+import { ServicesService } from '../services/services.service';
 
 @Component({
   selector: 'app-user-service-badge',
@@ -10,10 +11,13 @@ import { Router } from '@angular/router';
 export class UserServiceBadgeComponent implements OnInit {
   @Input() service: any;
   @Input() buyService: boolean; 
+
   @Output() openDialog: EventEmitter<any> = new EventEmitter();
+  @Output() loadServices: EventEmitter<any> = new EventEmitter();
 
   constructor(
     public orderService: OrderService,
+    public serviceService: ServicesService,
     public router: Router
   ) {
    }
@@ -27,5 +31,17 @@ export class UserServiceBadgeComponent implements OnInit {
 
   navigateToUserProfile(id){
     this.router.navigate([`/user-profile/${id}`]);
+  }
+
+  deleteService(id){
+    if(confirm("Are you sure you want to delete this service?")){
+      this.serviceService.deleteService({ "serviceId": id })
+      .subscribe((res: any) => {
+        if(res.success){
+          this.loadServices.emit();
+        }  
+      }, (err: any) => {
+      });
+    }
   }
 }

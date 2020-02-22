@@ -25,6 +25,10 @@ export class OrderService {
     return this.http.post(`${this.url}api/order/addOrderDeliverable.php?orderId=${id}&&status=${status}`, data);
   }
 
+  deleteOrder(data){
+    return this.http.post(`${this.url}api/order/deleteOrder.php`, { "data": data });
+  }
+
   getUnAssignedOrders(){
     return this.http.get(`${this.url}api/order/getUnAssignedOrders.php`);
   }

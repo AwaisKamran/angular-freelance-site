@@ -13,8 +13,11 @@
     <div *ngIf="buyService" class="travel-radius">{{ service.user.travelRadius }} km</div>
     <div class="placeholder" [ngStyle]="{'background-image': 'url(' + service.image + ')'}"></div>
     <div class="user-actions">
-        <div class="like-icon float-left">
+        <!-- <div class="like-icon float-left">
             <i class="fa fa-heart heart-icon"></i>
+        </div> -->
+        <div *ngIf="!buyService" class="delete-icon float-left" (click)="deleteService(service.id)">
+            <i class="fa fa-trash ml-2 trash-icon"></i>
         </div>
         <div class="service-price float-right green">
             Price <span class="bold">${{ service.hourlyCost }}/hr</span>

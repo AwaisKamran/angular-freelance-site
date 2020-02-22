@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CountryService } from '../services/country.service';
 import { RatingService } from '../services/rating.service';
+import { ConstantsService } from '../services/constants.service';
 
 @Component({
   selector: 'app-user-info-badge',
@@ -17,7 +18,8 @@ export class UserInfoBadgeComponent implements OnInit {
   constructor(
     public userService: UserService,
     public countryService: CountryService,
-    public ratingService: RatingService
+    public ratingService: RatingService,
+    public constantsService: ConstantsService
   ) { 
   }
 
@@ -53,7 +55,8 @@ export class UserInfoBadgeComponent implements OnInit {
       .subscribe((res: any) => {
         if(res.success){
           this.user = res.data;
-          console.log(this.user);
+          this.userImage = `url(${this.constantsService.getImageUrl(this.user.id)})`;
+          this.userImage += ',url(assets/images/profile-pic.png)';
         }
       }, (err: any) => {
       });

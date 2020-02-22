@@ -34,4 +34,8 @@ export class ServicesService {
   searchUserServices(data){
     return this.http.post(`${this.url}api/service/searchUserService.php`, { "data": data });
   }
+
+  deleteService(data){
+    return this.http.post(`${this.url}api/service/deleteService.php`, { "data": data });
+  }
 }

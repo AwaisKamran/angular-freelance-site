@@ -16,8 +16,8 @@
 
         <div class="bid-request-list">
             <div class="bid-request-tab" *ngFor="let bid of bidList">
-                <div class="profile-picture float-left" [ngStyle]="{ 'background-image': getUserImage(bid.proposedBy) }"></div>
-                <div class="profile-name float-left">{{ bid.userName }}</div>
+                <div class="profile-picture float-left" (click)="navigateToUserProfile(bid.proposedBy)" [ngStyle]="{ 'background-image': getUserImage(bid.proposedBy) }"></div>
+                <div class="profile-name float-left" (click)="navigateToUserProfile(bid.proposedBy)">{{ bid.userName }}</div>
                 <div class="clear-both"></div>
 
                 <div class="bid-details">
@@ -25,7 +25,7 @@
                     <div class="float-left bid-info">
                         <div class="bid-title">{{bid.serviceName}}</div>
                         <div class="price-tag">
-                            <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> £ {{bid.proposedBudget}}
+                            <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> {{ currencySymbol }} {{bid.proposedBudget}}
                         </div>
                         
                         <div class="price-tag">

@@ -44,6 +44,10 @@ export class UserService {
     return localStorage.getItem('user')? true: false;
   }
 
+  checkUserAdmin(id){
+    return this.http.get(`${this.url}api/user/checkUserAdmin.php?userId=${id}`);
+  }
+
   hasWorkPermit(){
     return JSON.parse(localStorage.getItem('user')).hasWorkPermit === "1"? true: false;
   }
@@ -66,6 +70,11 @@ export class UserService {
 
   getUserById(id){
     return this.http.get(`${this.url}api/user/getUserById.php?userId=${id}`);
+  }
+
+  
+  getUsers(){
+    return this.http.get(`${this.url}api/user/getUsers.php`);
   }
 
   updateUserLicense(data){

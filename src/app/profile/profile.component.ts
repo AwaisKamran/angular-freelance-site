@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   public stars = [];
   public userServices = [];
   public url: any;
-  public userId: string;
+  public userId: string = undefined;
   public showQualifications: boolean = true;
   public showExperience: boolean = true;
 
@@ -46,20 +46,38 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.stars = new Array(5);
     let container = this;
+
     this.route.params.subscribe(params => {
       container.userId = params['id'];
       if(params['id']){
-        this.showQualifications = true;
-        this.showExperience = true;
-        this.getUserServices(container.userId);
+        this.getUserById(container.userId);
       }
       else{
         if(this.isUserAdmin()) {
           this.showQualifications = false;
           this.showExperience = false;
         }
+        this.userId = this.data.userId;
         this.getUserServices(this.data.userId);
       }
+    });
+  }
+
+  getUserById(id){
+    this.userService.getUserById(id)
+    .subscribe((res: any) => {
+      if(res.success){
+        if(res.data.type === "0"){
+          this.showQualifications = false;
+          this.showExperience = false;
+        } 
+        else{
+          this.showQualifications = true;
+          this.showExperience = true;
+        }
+        this.getUserServices(id);
+      }
+    }, (err: any) => {
     });
   }
 

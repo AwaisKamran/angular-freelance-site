@@ -1,4 +1,4 @@
-<div class="profile-card padding-20 margin-20">
+<div *ngIf="user" class="profile-card padding-20 margin-20">
     <div class="profile-badge">
         <div [ngStyle]="{'background-image': userImage }" class="profile-picture centered"></div>
         <div class="badge-rating">
@@ -10,12 +10,12 @@
         <hr />
         <div class="badge-about-me">
             <div class="bold mb-0.5">About me</div>
-            <div *ngIf="user.aboutMe">{{ user.aboutMe }}</div>
-            <div *ngIf="!user.aboutMe">Not Specified</div>
+            <div *ngIf="user && user.aboutMe">{{ user.aboutMe }}</div>
+            <div *ngIf="!user && !user.aboutMe">Not Specified</div>
 
             <div *ngIf='user.type === "1"'>
                 <div class="bold mt-3 mb-0.5">Travel Radius</div>
-                <div *ngIf="user.travelRadius"><i class="fa fa-bicycle green" aria-hidden="true"></i> {{ user.travelRadius }} km</div>
+                <div *ngIf="user && user.travelRadius"><i class="fa fa-bicycle green" aria-hidden="true"></i> {{ user.travelRadius }} km</div>
             </div>
         </div>
     </div>
@@ -27,6 +27,6 @@
             <div class="clear-both"></div>
         </div>
 
-        <div *ngIf="user.city"><i class="fa fa-map-marker green" aria-hidden="true"></i> {{ user.city }}</div>
+        <div *ngIf="user && user.city"><i class="fa fa-map-marker green" aria-hidden="true"></i> {{ user.city }}</div>
     </div>
 </div>
