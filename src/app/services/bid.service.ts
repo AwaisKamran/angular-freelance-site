@@ -30,4 +30,8 @@ export class BidService {
   deleteBids(data){
     return this.http.post(`${this.url}api/bid/deleteBids.php`, { "data": data});
   }
+
+  deleteBidsByServiceId(data){
+    return this.http.post(`${this.url}api/bid/deleteBidsByServiceId.php`, { "data": data});
+  }
 }

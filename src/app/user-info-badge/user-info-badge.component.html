@@ -2,7 +2,7 @@
     <div class="profile-badge">
         <div [ngStyle]="{'background-image': userImage }" class="profile-picture centered"></div>
         <div class="badge-rating">
-            <i *ngFor="let star of starsCount" class="fa fa-star gray" [ngClass]="{ 'yellow': star }" aria-hidden="true"></i>
+            <i *ngFor="let star of starsCount" class="fa fa-star gray" [ngClass]="{ 'yellow': star }"></i>
             ({{ userService.userRating }})
         </div>
         <div class="badge-name">{{ user.name }}</div>
@@ -15,10 +15,13 @@
 
             <div *ngIf='user.type === "1"'>
                 <div class="bold mt-3 mb-0.5">Travel Radius</div>
-                <div *ngIf="user && user.travelRadius"><i class="fa fa-bicycle green" aria-hidden="true"></i> {{ user.travelRadius }} km</div>
+                <div *ngIf="user && user.travelRadius"><i class="fa fa-bicycle green" aria-hidden="true"></i>
+                    {{ user.travelRadius }} km
+                </div>
             </div>
         </div>
     </div>
+
     <div class="location-section mt-2">
         <div class="bold mb-0.5">Location</div>
         <div *ngIf="user.country">
@@ -28,6 +31,45 @@
         </div>
 
         <div *ngIf="user && user.city"><i class="fa fa-map-marker green" aria-hidden="true"></i> {{ user.city }}</div>
-        <div class="mt-2 text-center report-user" (click)="reportUser()">Report User</div>
+        <div *ngIf="showReportFlag" class="mt-2 text-center report-user" data-toggle="modal" data-target="#modal" (click)="reportUser()">
+            Report User
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Report User</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div *ngIf="reportSuccess" class="alert alert-success" role="alert">
+                Congratulations! the user has been reported.
+            </div>
+    
+            <div *ngIf="reportError" class="alert alert-danger" role="alert">
+                Error! There was an internal server error.
+            </div>    
+
+            <div class="modal-body">
+                <fieldset>
+                    <input type="radio" name="account-options" [(ngModel)]="data.model" value="Nudity" /> Nudity <br>
+                    <input type="radio" name="account-options" [(ngModel)]="data.model" value="Harassment" /> Harassment <br>
+                    <input type="radio" name="account-options" [(ngModel)]="data.model" value="Duplicate/Fake Account" /> Duplicate/Fake Account <br>
+                </fieldset><br/>
+
+                <textarea rows="4" placeholder="Enter the details here" [(ngModel)]="data.text" class="form-control"></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-success green-border" (click)="reportUser()">Report User</button>
+            </div>
+        </div>
     </div>
 </div>

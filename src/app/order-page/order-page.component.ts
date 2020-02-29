@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { OrderService } from '../services/order.service';
 import { UserService } from '../services/user.service';
 import { ConstantsService } from '../services/constants.service';
-import { format, compareAsc } from 'date-fns';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-order-page',
@@ -71,7 +71,7 @@ export class OrderPageComponent implements OnInit {
   }
 
   formatDate(date) {
-    return format(new Date(date), 'MM/dd/yyyy');
+    return format(new Date(date), 'dd/MM/yyyy');
   }
 
   navigateToDashboard() {

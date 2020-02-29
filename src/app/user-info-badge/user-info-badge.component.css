@@ -92,3 +92,11 @@
     text-decoration: underline;
     color: #1dbf73;
 }
+
+.report-user{
+    cursor: pointer;
+}
+
+.green-border{
+    border-color: #1db36d !important;
+}

@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit {
   public orderCreatedError: boolean = false;
   public searching: boolean = false;
   public services: any = [];
+  public currencySymbol: string;
 
   public data = {
     categoryId: "-1",
@@ -53,6 +54,7 @@ export class SearchComponent implements OnInit {
 
     this.data.country = this.userService.getUserObject().country;
     this.data.city = this.userService.getUserObject().city;
+    this.currencySymbol = JSON.parse(localStorage.getItem('user')).currencySymbol;
   }
 
   ngOnInit() {

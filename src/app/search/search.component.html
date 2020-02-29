@@ -69,7 +69,7 @@
         <div class="service-detail-name">{{ dialogData.title }}</div>
         <div class="service-cover-image">{{ dialogData.name }}</div>
         <div class="service-detail-description">{{ dialogData.description }}</div><br />
-        <div class="service-detail-hourly-rate"><span class="bold">Hourly Cost</span> {{ dialogData.hourlyCost }}/hr
+        <div class="service-detail-hourly-rate"><span class="bold">Hourly Cost</span> {{ currencySymbol }}{{ dialogData.hourlyCost }}/hr
         </div>
         <div class="service-detail-minimum-hours"><span class="bold">Minimum Hours</span> {{ dialogData.minimumHours }}
             hours</div>
@@ -77,5 +77,5 @@
             {{ dialogData.user.travelRadius }}</div>
     </div><br />
 
-    <button class="btn btn-block btn-outline-success" (click)="buyOrder()">Buy Order</button>
+    <button class="btn btn-block btn-outline-success" (click)="buyOrder()">Place Order</button>
 </div>

@@ -1,5 +1,5 @@
 <div class="order-container">
-    <div class="order-detail-section">
+    <div *ngIf="order" class="order-detail-section">
         <div *ngIf="orderStatusSuccess" class="alert alert-success" role="alert">
             Order status has been updated.
         </div>
@@ -16,7 +16,7 @@
         <div class="order-detail-description">{{order.service.description}}</div><br/>
         
         <div class="price-section">
-            <div [ngStyle]="{'background-image': getServiceImage(order.serviceId) }" class="float-left service-picture"></div>
+            <div *ngIf="order.serviceId" [ngStyle]="{'background-image': getServiceImage(order.serviceId) }" class="float-left service-picture"></div>
             <div class="float-left">
                 <!-- <div class="total-price"><span class="bold">Price</span> £ {{order.service.hourlyCost * order.service.minimumHours}}</div> -->
                 <div class="total-price"><span class="bold">Price</span> {{ currencySymbol}} {{order.budget }}</div>
@@ -33,7 +33,7 @@
         </div><br/>
 
         <div class="ordered-by">Ordered by <span class="green-highlight cursor-pointer" (click)="navigateToUserProfile(order.user.id)">{{ order.user.username }}</span> on {{ formatDate(order.orderCreated) }}</div>      
-        <div class="ordered-by" *ngIf="(order.status === '0' || order.status === '2') && isAdmin()">
+        <div class="ordered-by" *ngIf="(order.status === '0' || order.status === '2' || order.status === '3') && isAdmin()">
             Service Provided by 
             <span 
                 class="green-highlight cursor-pointer" 
@@ -92,12 +92,12 @@
             <div class="attached-file mb-1">
                 <a class="download-link" [href]="downloadLink" download>
                     <i class="fa fa-paperclip green-icon" aria-hidden="true"></i> 
-                    <span class="gray-text">Download the attachment</span>
+                    <span class="gray-text">Download attachment</span>
                 </a>
             </div>
             <div class="row">
                 <div class="col-lg-5 no-padding-right">
-                    <button class="btn btn-block btn-outline-success green-border mb-1 btn-width" (click)="changeOrderStatus(order.id, 3)">Confirm Order</button>
+                    <button class="btn btn-block btn-outline-success green-border mb-1 btn-width" (click)="changeOrderStatus(order.id, 3)">Confirm Completion</button>
                 </div>
                 <div class="col-lg-5 no-padding-right">
                     <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="changeOrderStatus(order.id, 1)">Cancel</button>
@@ -130,6 +130,7 @@
         </div>
 
         <hr/>
-        <app-comment-list [orderId]="id"></app-comment-list>
+
+        <app-comment-list [disabled]="(order.status === '-1' || order.status === '3')" [orderId]="id"></app-comment-list>
     </div><br/><br/>
 </div>

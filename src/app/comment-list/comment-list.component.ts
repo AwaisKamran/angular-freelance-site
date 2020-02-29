@@ -11,6 +11,8 @@ import { format, compareAsc } from 'date-fns'
 })
 export class CommentListComponent implements OnInit {
   @Input() orderId:string;
+  @Input() disabled: boolean;
+
   public commentText: string = undefined;
   public commentList: any = [];
 

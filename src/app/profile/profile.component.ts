@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   public showQualifications: boolean = true;
   public showExperience: boolean = true;
   public showReportFlag: boolean = false;
+  public editMode: boolean = false;
 
   public data = {
     userId: JSON.parse(localStorage.getItem("user")).id
@@ -53,12 +54,15 @@ export class ProfileComponent implements OnInit {
       if(params['id']){
         this.getUserById(container.userId);
         this.showReportFlag = true;
+        this.editMode = false;
       }
       else{
         if(this.isUserAdmin()) {
           this.showQualifications = false;
           this.showExperience = false;
         }
+
+        this.editMode = true;
         this.userId = this.data.userId;
         this.getUserServices(this.data.userId);
         this.showReportFlag = false;
