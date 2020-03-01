@@ -13,10 +13,6 @@
     <div *ngIf="buyService" class="travel-radius">{{ service.user.travelRadius }} km</div>
     <div class="placeholder" [ngStyle]="{'background-image': 'url(' + service.image + ')'}"></div>
     <div class="user-actions">
-        <!-- <div class="like-icon float-left">
-            <i class="fa fa-heart heart-icon"></i>
-        </div> -->
-
         <div *ngIf="editMode" class="delete-icon float-left" (click)="deleteService(service.id)">
             <i class="fa fa-trash ml-2 trash-icon"></i>
         </div>

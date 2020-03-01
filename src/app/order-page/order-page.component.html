@@ -96,14 +96,17 @@
                 </a>
             </div>
             <div class="row">
-                <div class="col-lg-5 no-padding-right">
+                <div class="col-lg-4 no-padding-right">
                     <button class="btn btn-block btn-outline-success green-border mb-1 btn-width" (click)="changeOrderStatus(order.id, 3)">Confirm Completion</button>
                 </div>
-                <div class="col-lg-5 no-padding-right">
-                    <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="changeOrderStatus(order.id, 1)">Cancel</button>
+                <div class="col-lg-3 no-padding-right">
+                    <button class="btn btn-block btn-outline-warning mb-1 btn-width" (click)="declineOrderByOrderId(order.id, 0)">Did Not Attend</button>
+                </div>
+                <div class="col-lg-3 no-padding-right">
+                    <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="changeOrderStatus(order.id, 1)">Request Revision</button>
                 </div>
             </div>
-            <div class="short-note">Note: Confirming order cannot be reverted, please make sure the service you requested has been delivered. If service duration or quality was unsatisfactory, please confirm order if financial transaction occurred. In the event that a freelancer did not attend, please cancel order and ensure to leave a review.
+            <div class="short-note">Note: Confirming completion cannot be reverted. Please make sure the service you requested has been delivered. If service duration or quality was unsatisfactory, confirm order if financial transaction occurred. In the event that a freelancer did not attend, please ensure to leave a review. You may request a revision service at the discretion of the freelancer.
             </div>
         </div>
 

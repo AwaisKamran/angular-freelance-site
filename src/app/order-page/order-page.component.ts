@@ -120,10 +120,6 @@ export class OrderPageComponent implements OnInit {
     }
   }
 
-  deleteOrder(){
-    
-  }
-
   handleRatedEvent($event) {
     if ($event) {
       this.orderService.changeOrderRatedStatus(this.id, true, this.userService.isUserAdmin())
