@@ -160,6 +160,16 @@
     width: max-content;
 }
 
+.badge-disputed{
+    background-color: purple;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
 .order-tab{
     font-size: 16.5px;
     color: #1db36d;
@@ -192,6 +202,20 @@
 
 .delivered-container{
     background-color: orangered;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.disputed-container{
+    background-color: purple;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.confirmed-container{
+    background-color: yellowgreen;
     color: white;
     border-radius: 5px;
     padding: 10px;
@@ -232,6 +256,7 @@
 
 .chart-container{
     padding-right: 0px;
+    cursor: pointer;
 }
 
 .red-color{

@@ -13,8 +13,16 @@
             Error! There was an internal server error.
         </div>
 
+        
+        <div *ngIf="orderMissingFieldWarning" class="alert alert-warning" role="alert">
+            Warning! Missing mandatory fields.
+        </div>
+
         <div class="col-md-12 col-12 form-group no-padding">
-            <label>Category</label>
+            <label>
+                Category
+                <span class="red">*</span>
+            </label>
             <div>
                 <select class="form-control no-padding" [(ngModel)]="data.categoryId" (change)="categoryChanged()">
                     <option value="-1" selected>Select Category</option>
@@ -26,7 +34,10 @@
         </div>
 
         <div class="col-md-12 col-12 form-group no-padding">
-            <label>Sub-Category</label>
+            <label>
+                Sub-Category
+                <span class="red">*</span>
+            </label>
             <div>
                 <select class="form-control no-padding" [(ngModel)]="data.subCategoryId">
                     <option value="-1" selected>Select Sub-Category</option>
@@ -40,13 +51,19 @@
         <textarea [(ngModel)]="data.orderInstructions" class="text-area form-control" rows="5" placeholder="Write the job description here and provide information regarding any equipment required for the task and any special considerations."></textarea><br/>
         
         <div class="form-group">
-            <label for="exampleInputHours">Hours Required</label>
+            <label for="exampleInputHours">
+                Hours Required
+                <span class="red">*</span>
+            </label>
             <input [(ngModel)]="data.hoursRequired" type="text" class="form-control" id="exampleInputHours" aria-describedby="inputHours">
             <small id="inputHours" class="form-text text-muted">Please define the number of hours as a decimal number or a whole number.</small>
         </div>
 
         <div class="form-group">
-            <label for="budgetTask">Budget</label>
+            <label for="budgetTask">
+                Budget
+                <span class="red">*</span>
+            </label>
             <input [(ngModel)]="data.budget" type="email" class="form-control" id="budgetTask" aria-describedby="budgetTask2">
             <small id="budgetTask2" class="form-text text-muted">All the payments are in {{ currency }} ({{ currencySymbol }}).</small>
         </div>

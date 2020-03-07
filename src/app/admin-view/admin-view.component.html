@@ -1,10 +1,22 @@
 <div class="admin-view-container">
     <div class="row mb-2 mt-2">
-        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container">
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="filterOrders('-1')">
+            <div class="inner-chart-container new-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">New Orders</div>
+                    <i class="fa fa-archive card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number">
+                    {{ new }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="filterOrders('0')">
             <div class="inner-chart-container progress-container">
                 <div class="float-left card-item">
                     <div class="chart-title">Scheduled</div>
-                    <i class="fa fa-check card-icons" aria-hidden="true"></i>
+                    <i class="fa fa-clock-o card-icons" aria-hidden="true"></i>
                 </div>
                 <div class="float-left card-number">
                     {{ progress }}
@@ -13,7 +25,7 @@
             </div>
         </div>
 
-       <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container">
+       <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="filterOrders('1')">
             <div class="inner-chart-container revision-container">
                 <div class="float-left card-item">
                     <div class="chart-title">Revisions</div>
@@ -25,7 +37,7 @@
             </div>
         </div>
 
-        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container">
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="filterOrders('2')">
             <div class="inner-chart-container delivered-container">
                 <div class="float-left card-item">
                     <div class="chart-title">Completed</div>
@@ -37,22 +49,36 @@
             </div>
         </div>
 
-        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container">
-            <div class="inner-chart-container new-container">
+        
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="filterOrders('4')">
+            <div class="inner-chart-container disputed-container">
                 <div class="float-left card-item">
-                    <div class="chart-title">New Orders</div>
-                    <i class="fa fa-archive card-icons" aria-hidden="true"></i>
+                    <div class="chart-title">Disputed</div>
+                    <i class="fa fa-minus-circle card-icons" aria-hidden="true"></i>
                 </div>
                 <div class="float-left card-number">
-                    {{ new }}
+                    {{ disputed }}
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="filterOrders('3')">
+            <div class="inner-chart-container confirmed-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">Confirmed</div>
+                    <i class="fa fa-money card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number">
+                    {{ confirmed }}
                 </div>
             </div>
         </div>
     </div>
 
     <div class="admin-container mb-4">
-        <div class="open-orders">My Orders List ({{ orderList.length }})</div>
-        <div class="service-container" *ngFor="let order of orderList">
+        <div class="open-orders">My Orders List ({{ filteredOrderList.length }})</div>
+        <div class="service-container" *ngFor="let order of filteredOrderList">
             <div class="buyer-request-tab-description">
                 <div class="order-tab"> 
                     <div class="float-left" (click)="navigateToOrderPage(order)">Order # {{order.id }} </div>
@@ -64,20 +90,25 @@
                         <div *ngIf="order.status === '1'" class="badge-value badge-revision float-left"> In Revision</div>
                         <div *ngIf="order.status === '2'" class="badge-value badge-delivered float-left"> Completed</div>
                         <div *ngIf="order.status === '3'" class="badge-value badge-accepted float-left">Confirmed</div>
+                        <div *ngIf="order.status === '4'" class="badge-value badge-disputed float-left">Disputed</div>
                     </div>
                     <!-- badge-accepted  -->
                     <div class="clear-both"></div>
                 </div>
+
                 <span class="title">Category</span> <span
                     class="badge badge-secondary badge-green">{{ order.categoryName }}</span>
                 <div *ngIf="order.orderInstructions" class="description">{{ order.orderInstructions }}</div><br />
+                
                 <div class="price-tag">
                     <i class="fa fa-tag green-icon small-font" aria-hidden="true"></i> {{currencySymbol}} {{ order.budget }}
                 </div>
+                
                 <div class="time-required">
                     <i class="fa fa-clock-o green-icon small-font" aria-hidden="true"></i> {{ order.hoursRequired }}
                     hours
                 </div>
+                
                 <div *ngIf="order.bidCount > 0 && order.status === '-1'" class="bid-section"
                     (click)="navigateToBids(order.id)">
                     <div class="bid-count float-left">{{ order.bidCount }}</div>
@@ -86,7 +117,8 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="orderList.length === 0" class="no-data-available mt-2">No Orders Available</div>
+
+        <div *ngIf="filteredOrderList.length === 0" class="no-data-available mt-2">No Orders Available</div>
         <div class="clear-both"></div>
     </div>
 </div>

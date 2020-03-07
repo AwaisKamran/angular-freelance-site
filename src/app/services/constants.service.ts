@@ -6,8 +6,7 @@ import { Injectable } from '@angular/core';
 export class ConstantsService {
   //public url: any = 'http://localhost/freelance-management/';
   public url: any = 'http://freelancehouseservices.com/server/';
-  constructor() { }
-
+  
   getImageUrl(id){
     return `${this.url}uploads/user/${id}.jpg`;
   }

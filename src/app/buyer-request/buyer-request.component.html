@@ -71,7 +71,7 @@
     <div class="form-group">
         <label for="proposedBudget">Proposed Budget</label>
         <input type="text" [(ngModel)]="data.proposedBudget" class="form-control" id="proposedBudget" placeholder="Enter the budget here">
-        <small class="form-text text-muted">All the budget proposed are in {{ currency }} Pound ({{ currencySymbol }}).</small>
+        <small class="form-text text-muted">All the budget proposed are in {{ currency }} ({{ currencySymbol }}) based on your location.</small>
     </div>
 
     <button class="btn btn-block btn-outline-success btn-style" (click)="submitBid()">Submit Bid</button>

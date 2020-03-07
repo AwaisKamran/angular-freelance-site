@@ -57,11 +57,11 @@ export class UserService {
   }
 
   isUserAdmin(){
-    return parseInt(this.user.type) === 0? true: false;
+    return this.user && parseInt(this.user.type) === 0? true: false;
   }
 
   getLoggedInUserImage(){
-    return `${this.url}uploads/user/${this.user.id}.jpg`;
+    return this.user && this.user.id? `${this.url}uploads/user/${this.user.id}.jpg`: undefined;
   }
 
   submitReview(data){

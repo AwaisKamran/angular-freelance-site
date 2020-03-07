@@ -34,6 +34,7 @@ export class OrderPageComponent implements OnInit {
   ngOnInit() {
     let container = this;
     this.order = this.orderService.clickedOrder;
+    
     this.route.params.subscribe(params => {
       container.id = params['id'];
       container.getDownloadFileUrl(container.id);
@@ -91,7 +92,7 @@ export class OrderPageComponent implements OnInit {
           this.order.adminRated = JSON.parse(this.order.adminRated);
         }
       }, (err: any) => {
-      });
+    });
   }
 
   isAdmin() {
@@ -108,8 +109,6 @@ export class OrderPageComponent implements OnInit {
           (res: any) => {
             if (res.success) {
               this.changeOrderStatus(id, 2);
-            }
-            else {
             }
           }, (error) => {
           }
@@ -133,38 +132,9 @@ export class OrderPageComponent implements OnInit {
                 this.order.freelancerRated = true;
               }
             }
-            else {
-            }
           }, (error) => {
           }
         );
-    }
-  }
-
-  declineOrderByOrderId(id, status) {
-    let data = {
-      "orderId": id,
-      "status": status
-    };
-
-    if(confirm("Are you sure you want to cancel the order?")){
-     this.orderService.declineOrderByOrderId(data)
-      .subscribe(
-        (res: any) => {
-          if (res.success) {
-            this.orderStatusSuccess = true;
-            this.orderStatusError = false;
-            this.navigateToDashboard();
-          }
-          else {
-            this.orderStatusSuccess = false;
-            this.orderStatusError = true;
-          }
-        }, (error) => {
-          this.orderStatusSuccess = false;
-          this.orderStatusError = true;
-        }
-      );
     }
   }
 

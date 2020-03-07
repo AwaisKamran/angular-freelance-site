@@ -69,6 +69,27 @@
     width: max-content;
 }
 
+
+.badge-disputed{
+    background-color: purple;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
+.badge-cancelled{
+    background-color: gray;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
 .green-icon{
     color: #1db36d;
     font-size: 18.5px;

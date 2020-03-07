@@ -16,6 +16,7 @@ export class CreateJobComponent implements OnInit {
   public filteredSubcategories = [];
   public orderSuccessFlag: boolean = false;
   public orderErrorFlag: boolean = false;
+  public orderMissingFieldWarning: boolean = false;
   public currency: string;
   public currencySymbol: string;
 
@@ -94,20 +95,31 @@ export class CreateJobComponent implements OnInit {
   addJob(){
     if(this.data.categoryId === "-1") this.data.categoryId = undefined;
     if(this.data.subCategoryId === "-1") this.data.subCategoryId = undefined;
-    this.orderService.createOrder(this.data)
+
+    if(this.data.categoryId && this.data.subCategoryId && this.data.budget && this.data.hoursRequired){
+      this.orderService.createOrder(this.data)
       .subscribe((res: any) => {
         if(res.success){
+          this.orderMissingFieldWarning = false;
           this.orderSuccessFlag = true;
           this.orderErrorFlag = false;
           this.resetFields();
         }
         else{
+          this.orderMissingFieldWarning = false;
           this.orderSuccessFlag = false;
           this.orderErrorFlag = true;
         }
       }, (err: any) => {
+        this.orderMissingFieldWarning = false;
         this.orderSuccessFlag = false;
         this.orderErrorFlag = true;
       });
+    }
+    else{
+      this.orderMissingFieldWarning = true;
+      this.orderSuccessFlag = false;
+      this.orderErrorFlag = false;
+    }
   }
 }

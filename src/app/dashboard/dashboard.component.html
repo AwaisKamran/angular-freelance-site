@@ -7,24 +7,34 @@
             <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                 <div class="order-list padding-10 margin-20 no-padding-left no-margin-left no-padding-top">
                     <div class="order-heading">
-                        <div class="order-heading-value float-left">Order List</div>
-                        <div class="order-count float-right">Active ({{ orderList.length }})</div>
+                        <ul class="nav nav-tabs">
+                            <li *ngFor="let tab of tabs" class="nav-item nav-cursor">
+                                <a 
+                                    [ngClass]="{ 'active' : tab.active }" 
+                                    class="nav-link link-items"
+                                    (click)="changeTab(tab.id)"
+                                >
+                                    {{ tab.name }}
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="clear-both"></div>
 
                     <div class="container">
                         <div class="row">
-                            <div *ngFor="let order of orderList" class="order-wrapper col-lg-4">
+                            <div *ngFor="let order of filteredOrders" class="order-wrapper col-lg-4">
                                 <app-user-order-badge [order]="order"></app-user-order-badge>
                             </div>
 
-                            <div class="no-data-available mt-2" *ngIf="orderList.length === 0">
+                            <div class="no-data-available mt-2" *ngIf="filteredOrders.length === 0">
                                 No Data Available
                             </div>
                         </div>
                     </div>
-                    <br/><br/>
-                    
+                    <br /><br />
+
+
                     <div class="order-heading ">
                         <div class="order-heading-value float-left">User Reviews</div>
                     </div>
@@ -32,7 +42,7 @@
                     <div class="review-container container">
                         <app-review></app-review>
                     </div>
-                    <br/><br/><br/>
+                    <br /><br /><br />
                 </div>
             </div>
         </div>

@@ -18,7 +18,6 @@
         <div class="price-section">
             <div *ngIf="order.serviceId" [ngStyle]="{'background-image': getServiceImage(order.serviceId) }" class="float-left service-picture"></div>
             <div class="float-left">
-                <!-- <div class="total-price"><span class="bold">Price</span> £ {{order.service.hourlyCost * order.service.minimumHours}}</div> -->
                 <div class="total-price"><span class="bold">Price</span> {{ currencySymbol}} {{order.budget }}</div>
                 <div class="minimum-hours"><span class="bold">Hours</span> {{ order.service.minimumHours}}</div>
                 <div class="order-status">
@@ -26,14 +25,15 @@
                     <div *ngIf="order.status === '1'" class="badge-value badge-revision">In Revision</div>
                     <div *ngIf="order.status === '2'" class="badge-value badge-delivered">Completed</div>
                     <div *ngIf="order.status === '3'" class="badge-value badge-accepted">Confirmed</div>
-                    <!-- badge-accepted -->
+                    <div *ngIf="order.status === '4'" class="badge-value badge-disputed">Disputed</div>
+                    <div *ngIf="order.status === '5'" class="badge-value badge-cancelled">Cancelled</div>
                 </div>
             </div>
             <div class="clear-both"></div>
         </div><br/>
 
         <div class="ordered-by">Ordered by <span class="green-highlight cursor-pointer" (click)="navigateToUserProfile(order.user.id)">{{ order.user.username }}</span> on {{ formatDate(order.orderCreated) }}</div>      
-        <div class="ordered-by" *ngIf="(order.status === '0' || order.status === '2' || order.status === '3') && isAdmin()">
+        <div class="ordered-by">
             Service Provided by 
             <span 
                 class="green-highlight cursor-pointer" 
@@ -48,7 +48,7 @@
                 <input type="file" class="form-control-file" id="fileToUpload" name="fileToUpload" (change)="onFileSelect($event)" />
             </div>
             <button class="btn btn-block btn-outline-success green-border" (click)="deliverOrder(order.id, 2)">Complete Order</button>
-            <button class="btn btn-block btn-outline-danger" (click)="declineOrderByOrderId(order.id, -1)">Cancel Order</button>
+            <button class="btn btn-block btn-outline-danger" (click)="changeOrderStatus(order.id, 4)">Cancel Order</button>
             <div class="short-note">Note: If you need to upload a document, please make sure it is in a .doc or .pdf format.</div>
         </div>
 
@@ -72,7 +72,7 @@
 
         <div class="delivery-section-container" *ngIf="(order.status === '-1')  && isAdmin()">
             <div class="message box">
-                <i class="fa fa-rocket green-large-icon" aria-hidden="true"></i> Please wait while you receive the bids on your job.
+                <i class="fa fa-rocket green-large-icon" aria-hidden="true"></i> Please wait while you receive an offer.
             </div>
         </div>
 
@@ -82,7 +82,7 @@
                     <button class="btn btn-block btn-outline-success green-border mb-1 btn-width" (click)="changeOrderStatus(order.id, 0)">Accept Request</button>
                 </div>
                 <div class="col-lg-5 no-padding-right">
-                    <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="declineOrderByOrderId(order.id, -1)">Decline Request</button>
+                    <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="changeOrderStatus(order.id, -1)">Decline Request</button>
                 </div>
                 <div class="short-note">Note - Note - Please respond to the buyer's request to accept or decline the order. Only accept once you have agreed on the price of the service. In case you fail to respond to the request, the order will be cancelled in three days.</div>
             </div>
@@ -99,10 +99,10 @@
                 <div class="col-lg-4 no-padding-right">
                     <button class="btn btn-block btn-outline-success green-border mb-1 btn-width" (click)="changeOrderStatus(order.id, 3)">Confirm Completion</button>
                 </div>
-                <div class="col-lg-3 no-padding-right">
-                    <button class="btn btn-block btn-outline-warning mb-1 btn-width" (click)="declineOrderByOrderId(order.id, 0)">Did Not Attend</button>
+                <div class="col-lg-4 no-padding-right">
+                    <button class="btn btn-block btn-outline-warning mb-1 btn-width" (click)="changeOrderStatus(order.id, 5)">Did Not Attend</button>
                 </div>
-                <div class="col-lg-3 no-padding-right">
+                <div class="col-lg-4 no-padding-right">
                     <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="changeOrderStatus(order.id, 1)">Request Revision</button>
                 </div>
             </div>
@@ -110,10 +110,10 @@
             </div>
         </div>
 
-        <div class="admin-section" *ngIf="(order.status === '3') && isAdmin()">
+        <div class="admin-section" *ngIf="(order.status === '3' || order.status === '5') && isAdmin()">
             <div *ngIf="order.adminRated">
                 <div class="message box">
-                    <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been confirmed.
+                    <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been closed.
                 </div>
             </div>
             <div *ngIf="!order.adminRated">
@@ -121,19 +121,31 @@
             </div>
         </div>
 
-        <div class="admin-section" *ngIf="(order.status === '3') && !isAdmin()">
+        <div class="admin-section" *ngIf="(order.status === '4') && !isAdmin()">
             <div *ngIf="order.freelancerRated">
                 <div class="message box">
-                    <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Your order has been completed.
+                    <i class="fa fa-thumbs-up green-large-icon" aria-hidden="true"></i> Please wait while your disputed order is reviewed by the buyer.
                 </div>
             </div>
-            <div *ngIf="!order.freelancerRated">
-                <app-rating (rated)="handleRatedEvent($event)" [display]="false" [orderId]="order.id" [orderCreatedBy]="order.user.id" [freelancerId]="order.freelancerId"></app-rating>
+        </div>
+        
+        <div class="admin-section" *ngIf="(order.status === '4') && isAdmin()">
+            <div class="message box">
+                <i class="fa fa-minus-circle green-large-icon" aria-hidden="true"></i> Your scheduled order has been cancelled by the freelancer.
+            </div><br/>
+
+            <div class="row">
+                <div class="col-lg-6 no-padding-right">
+                    <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="changeOrderStatus(order.id, 5)">Accept</button>
+                </div>
+                <div class="col-lg-6 no-padding-right">
+                    <button class="btn btn-block btn-outline-warning mb-1 btn-width" (click)="changeOrderStatus(order.id, 1)">Schedule Again</button>
+                </div>
             </div>
         </div>
 
         <hr/>
 
-        <app-comment-list [disabled]="(order.status === '-1' || order.status === '3')" [orderId]="id"></app-comment-list>
+        <app-comment-list [disabled]="(order.status === '-1' || order.status === '3' || order.status === '5')" [orderId]="id"></app-comment-list>
     </div><br/><br/>
 </div>

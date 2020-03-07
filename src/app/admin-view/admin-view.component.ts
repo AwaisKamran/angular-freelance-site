@@ -12,11 +12,15 @@ import { format } from 'date-fns';
 })
 export class AdminViewComponent implements OnInit {
   public orderList: any = [];
+  public filteredOrderList: any = [];
   public revised: number = 0;
   public delivered: number = 0;
   public progress: number = 0;
+  public confirmed: number = 0;
   public new: number = 0;
+  public disputed: number = 0;
   public currencySymbol: string;
+  public filterValue: string;
 
   constructor(
     public orderService: OrderService,
@@ -36,6 +40,8 @@ export class AdminViewComponent implements OnInit {
     .subscribe((res: any) => {
       if(res.success){
         this.orderList = res.data;
+        this.filteredOrderList = res.data;
+        this.filterOrders('-1');
         this.processOrders();
       }  
     }, (err: any) => {
@@ -46,9 +52,15 @@ export class AdminViewComponent implements OnInit {
     for(let i=0; i<this.orderList.length; i++){
       if(this.orderList[i].status === '0') this.progress++;
       else if(this.orderList[i].status === '1') this.revised++
-      else if(this.orderList[i].status === '2' || this.orderList[i].status === '3') this.delivered++;
+      else if(this.orderList[i].status === '2') this.delivered++;
+      else if(this.orderList[i].status === '3') this.confirmed++;
       else if(this.orderList[i].status === '-1') this.new++;
+      else if(this.orderList[i].status === '4') this.disputed++;
     }
+  }
+
+  filterOrders(status){
+    this.filteredOrderList = this.orderList.filter((value)=>value.status === status);
   }
 
   getUserImage(id){
