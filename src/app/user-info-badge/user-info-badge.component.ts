@@ -37,9 +37,11 @@ export class UserInfoBadgeComponent implements OnInit {
       this.ratingService.getAverageRating(id)
       .subscribe((res: any) => {
         if(res.success){
-          this.userService.userRating = parseInt(res.data);
-          for(let i=0; i< this.userService.userRating; i++ ){
-            this.starsCount[i] = true;
+          if(res.data){
+            this.userService.userRating = parseInt(res.data);
+            for(let i=0; i< this.userService.userRating; i++ ){
+              this.starsCount[i] = true;
+            }
           }
           resolve();
         }  

@@ -9,7 +9,7 @@ import { CountryService } from './country.service';
 export class UserService {
   public url: string;
   public user: any;
-  public userRating: number; 
+  public userRating: number = 0; 
 
   constructor(
     public http: HttpClient,

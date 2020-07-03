@@ -10,7 +10,7 @@ export class UserMiniBadgeComponent implements OnInit {
   @Input() userName: string;
   @Input() userQuote: string;
   @Input() userPosition: string;
-  @Input() userRating: any;
+  @Input() userRating: any = 0;
   public stars: any = [];
   public userStyle: any = undefined;
 
