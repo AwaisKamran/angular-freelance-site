@@ -170,6 +170,16 @@
     width: max-content;
 }
 
+.badge-cancelled{
+    background-color: gray;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
 .order-tab{
     font-size: 16.5px;
     color: #1db36d;
@@ -263,5 +273,10 @@
     color: red;
     font-size: 12.5px;
     text-decoration: underline;
+    cursor: pointer;
+}
+
+.cancelled-order{
+    color: #908a8a;
     cursor: pointer;
 }

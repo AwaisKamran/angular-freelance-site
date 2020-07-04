@@ -10,7 +10,7 @@
                     <div *ngIf="!isUserAdmin()" class="container">
                         <div class="row">
                             <div *ngFor="let service of userServices" class="order-wrapper col-lg-4">
-                                <app-user-service-badge (loadServices)="getUserServices($event)" [service]="service" [buyService]="false"></app-user-service-badge>
+                                <app-user-service-badge [editMode]="true" (loadServices)="getUserServices($event)" [service]="service" [buyService]="false"></app-user-service-badge>
                             </div>
 
                             <div class="order-wrapper col-lg-4">

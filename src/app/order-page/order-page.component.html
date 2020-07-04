@@ -62,12 +62,14 @@
             <div class="message box">
                 <i class="fa fa-check-square green-large-icon" aria-hidden="true"></i> Please wait while your order is reviewed.
             </div>
+            <button class="btn btn-block btn-outline-danger mt-10" (click)="changeOrderStatus(order.id, 4)">Cancel Order</button>
         </div>
 
         <div class="delivery-section-container" *ngIf="(order.status === '0') && isAdmin()">
             <div class="message box">
                 <i class="fa fa-history green-large-icon" aria-hidden="true"></i> Please wait, your order is scheduled. <br/>  
             </div>
+            <button class="btn btn-block btn-outline-danger mt-10" (click)="changeOrderStatus(order.id, 4)">Cancel Order</button>
         </div>
 
         <div class="delivery-section-container" *ngIf="(order.status === '-1')  && isAdmin()">
@@ -100,7 +102,7 @@
                     <button class="btn btn-block btn-outline-success green-border mb-1 btn-width" (click)="changeOrderStatus(order.id, 3)">Confirm Completion</button>
                 </div>
                 <div class="col-lg-4 no-padding-right">
-                    <button class="btn btn-block btn-outline-warning mb-1 btn-width" (click)="changeOrderStatus(order.id, 5)">Did Not Attend</button>
+                    <button class="btn btn-block btn-outline-warning mb-1 btn-width" (click)="changeOrderStatus(order.id, 4)">Did Not Attend</button>
                 </div>
                 <div class="col-lg-4 no-padding-right">
                     <button class="btn btn-block btn-outline-danger mb-1 btn-width" (click)="changeOrderStatus(order.id, 1)">Request Revision</button>

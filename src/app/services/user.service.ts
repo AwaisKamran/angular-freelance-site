@@ -88,9 +88,9 @@ export class UserService {
   storeUserInfo(data){
     let container = this;
     return new Promise(function(resolve, reject){   
+      data.currencySymbol = data.currencySymbol.slice( 1 ); //getting rid of the special character
       localStorage.setItem('user', JSON.stringify(data));
       container.user = JSON.parse(localStorage.getItem('user'));
-
       container.user.flag = container.countryService.data[container.user.country].flag;
       container.user.countryName = container.countryService.data[container.user.country].nativeName;
 

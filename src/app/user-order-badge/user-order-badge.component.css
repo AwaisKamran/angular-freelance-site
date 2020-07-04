@@ -84,6 +84,16 @@
     width: max-content;
 }
 
+.badge-cancelled{
+    background-color: gray;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 2px;
+    width: max-content;
+}
+
 .bold{
     font-weight: 500;
 }

@@ -77,7 +77,14 @@
     </div>
 
     <div class="admin-container mb-4">
-        <div class="open-orders">My Orders List ({{ filteredOrderList.length }})</div>
+        <div class="open-orders">
+            <span class="float-left">My Orders List ({{ filteredOrderList.length }})</span>
+            <span class="ml-2 cancelled-order float-right" (click)="filterOrders('5')">
+                <i aria-hidden="true" class="fa fa-calendar-times-o"></i> 
+                Cancelled Orders 
+            </span>
+        </div>
+        <br/>
         <div class="service-container" *ngFor="let order of filteredOrderList">
             <div class="buyer-request-tab-description">
                 <div class="order-tab"> 
@@ -88,9 +95,10 @@
                         <div *ngIf="order.status === '-1'" class="badge-value badge-new float-left">New</div>
                         <div *ngIf="order.status === '0'" class="badge-value badge-progress float-left"> Scheduled </div>
                         <div *ngIf="order.status === '1'" class="badge-value badge-revision float-left"> In Revision</div>
-                        <div *ngIf="order.status === '2'" class="badge-value badge-delivered float-left"> Completed</div>
+                        <div *ngIf="order.status === '2'" class="badge-value badge-delivered float-left">Completed</div>
                         <div *ngIf="order.status === '3'" class="badge-value badge-accepted float-left">Confirmed</div>
                         <div *ngIf="order.status === '4'" class="badge-value badge-disputed float-left">Disputed</div>
+                        <div *ngIf="order.status === '5'" class="badge-value badge-cancelled float-left">Cancelled</div>
                     </div>
                     <!-- badge-accepted  -->
                     <div class="clear-both"></div>

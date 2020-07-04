@@ -14,12 +14,17 @@ export class DashboardComponent implements OnInit {
   public userView: boolean = false;
   public orderList: any = [];
   public filteredOrders: any = [];
-  public activeTab: number = 0;
+  public activeTab: number = -1;
   public tabs: any[] = [
+    {
+      id: -1,
+      name: 'New',
+      active: true
+    },
     {
       id: 0,
       name: 'Scheduled',
-      active: true
+      active: false
     },
     {
       id: 1,
@@ -85,6 +90,6 @@ export class DashboardComponent implements OnInit {
     this.activeTab = this.tabs.findIndex((value) => value.id === id);
     this.tabs.map((value) => { value.active = false; });
     this.tabs[this.activeTab].active = true;
-    this.getFilteredOrders(this.activeTab);
+    this.getFilteredOrders(this.tabs[this.activeTab].id);
   }
 }

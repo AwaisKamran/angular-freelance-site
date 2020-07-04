@@ -54,8 +54,8 @@
 
 <!-- Sub Nav bar Start  -->
 <div class="sub-nav-bar" *ngIf="isUserActive && isUserAdmin">
-  <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="dropDownService.toggleFood()">
+  <div class="sub-nav-bar-container" (mouseleave)="dropDownService.toggleFood()">
+    <div class="nav-bar-title" (mouseover)="dropDownService.toggleFood()">
       Food
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showFood">
@@ -71,8 +71,8 @@
     </div>
   </div>
 
-  <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="dropDownService.toggleCleaning()">
+  <div class="sub-nav-bar-container" (mouseleave)="dropDownService.toggleCleaning()">
+    <div class="nav-bar-title" (mouseover)="dropDownService.toggleCleaning()">
       Cleaning
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showCleaning">
@@ -104,8 +104,8 @@
     </div>
   </div>
 
-  <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="dropDownService.toggleMaintenance()">
+  <div class="sub-nav-bar-container" (mouseleave)="dropDownService.toggleMaintenance()">
+    <div class="nav-bar-title" (mouseover)="dropDownService.toggleMaintenance()">
       Maintenance
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showMaintenance">
@@ -135,8 +135,8 @@
     </div>
   </div>
 
-  <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="dropDownService.toggleManagement()">
+  <div class="sub-nav-bar-container" (mouseleave)="dropDownService.toggleManagement()">
+    <div class="nav-bar-title" (mouseover)="dropDownService.toggleManagement()">
       Management
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showManagement">
@@ -156,8 +156,8 @@
     </div>
   </div>
 
-  <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="dropDownService.togglePets()">
+  <div class="sub-nav-bar-container" (mouseleave)="dropDownService.togglePets()">
+    <div class="nav-bar-title" (mouseover)="dropDownService.togglePets()">
       Pets
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showPets">
@@ -171,8 +171,8 @@
     </div>
   </div>
 
-  <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="dropDownService.toggleChildren()">
+  <div class="sub-nav-bar-container" (mouseleave)="dropDownService.toggleChildren()">
+    <div class="nav-bar-title" (mouseover)="dropDownService.toggleChildren()">
       Children
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showChildren">
@@ -185,8 +185,8 @@
     </div>
   </div>
 
-  <div class="sub-nav-bar-container">
-    <div class="nav-bar-title" (click)="dropDownService.toggleElderly()">
+  <div class="sub-nav-bar-container" (mouseleave)="dropDownService.toggleElderly()">
+    <div class="nav-bar-title" (mouseover)="dropDownService.toggleElderly()">
       Elderly care
     </div>
     <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showElderly">
@@ -199,8 +199,8 @@
     </div>
   </div>
 
-  <div class="sub-nav-bar-container">
-      <div class="nav-bar-title" (click)="dropDownService.toggleLifestyle()">
+  <div class="sub-nav-bar-container" (mouseleave)="dropDownService.toggleLifestyle()">
+      <div class="nav-bar-title" (mouseover)="dropDownService.toggleLifestyle()">
         Lifestyle
       </div>
       <div class="nav-bar-dropdown-container row" *ngIf="dropDownService.showLifestyle">
