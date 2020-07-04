@@ -1,20 +1,63 @@
 <div class="container">
+    <div class="row container-badge">
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="showUserList(true, false)">
+            <div class="inner-chart-container activated-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">Active</div>
+                    <i class="fa fa-check-circle card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number"> {{ activeUsers }} </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="showUserList(false, false)">
+            <div class="inner-chart-container deactivated-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">Inactive</div>
+                    <i class="fa fa-minus-circle card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number"> {{ inActiveUsers }} </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="showUserList(false, true)">
+            <div class="inner-chart-container flagged-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">Flagged</div>
+                    <i class="fa fa-exclamation-circle card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number"> {{ flaggedUsers }} </div>
+            </div>
+        </div>
+    </div>
+
     <div class="input-group mb-3 mt-3">
         <input type="text" class="form-control" placeholder="Find by username" aria-label="Find by username"
-            aria-describedby="button-addon2" />
+            aria-describedby="button-addon2" (keyup)="findUserName($event)" />
         <div class="input-group-append">
             <button class="btn green-outline" type="button">Search</button>
         </div>
     </div>
 
-    <div *ngFor="let user of userList" class="row user-account-container mb-3">
-        <div class="float-left">
-            <div class="profile-picture float-left ml-4 margin-top-pic"></div>
-            <div class="profile-name float-left">Awais Kamran</div>
-        </div>
+    <div *ngFor="let user of viewList">
+        <div *ngIf="user.type !== '2'">
+            <div class="user-account-container mb-3">
+                <div class="float-left" (click)="navigateToProfile(user.id)">
+                    <div class="profile-picture float-left ml-4 margin-top-pic"></div>
+                    <div class="float-left">
+                        <span class="profile-name mr-2">{{ user.name}}</span>
+                        <span class="email-text">[{{ user.email }}]</span>
+                    </div>
+                </div>
 
-        <div class="profile-active-btn float-right">
-            <span class="red-color">Activate</span> | <span class="green-color">Deactivate</span>
+                <div class="profile-active-btn float-right mr-3">
+                    <span *ngIf="!active" class="green-color" (click)="toggleUserActivation(user)"> Activate </span>
+                    <span *ngIf="active" class="red-color" (click)="toggleUserActivation(user)"> Deactivate </span>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div *ngIf="viewList.length === 0" class="no-data-available mt-3"> No Data Available </div>
+    <div id="snackbar"></div>
 </div>

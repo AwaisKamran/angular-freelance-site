@@ -9,7 +9,7 @@ import { CountryService } from './country.service';
 export class UserService {
   public url: string;
   public user: any;
-  public userRating: number = 0; 
+  public userRating: number; 
 
   constructor(
     public http: HttpClient,
@@ -24,12 +24,20 @@ export class UserService {
     return this.user;
   }
 
+  activateUser(data){
+    return this.http.post(`${this.url}api/user/activateUser.php`, { "data": data });
+  }
+
   login(data) {
     return this.http.post(`${this.url}api/user/login.php`, { "data": data });
   }
 
   register(data){
     return this.http.post(`${this.url}api/user/addUser.php`, { "data": data });
+  }
+
+  flagUser(data){
+    return this.http.post(`${this.url}api/user/flagUser.php`, { "data": data });
   }
 
   updateUserInfo(data){
@@ -88,9 +96,9 @@ export class UserService {
   storeUserInfo(data){
     let container = this;
     return new Promise(function(resolve, reject){   
-      data.currencySymbol = data.currencySymbol.slice( 1 ); //getting rid of the special character
       localStorage.setItem('user', JSON.stringify(data));
       container.user = JSON.parse(localStorage.getItem('user'));
+
       container.user.flag = container.countryService.data[container.user.country].flag;
       container.user.countryName = container.countryService.data[container.user.country].nativeName;
 
