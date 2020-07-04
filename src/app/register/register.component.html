@@ -18,6 +18,10 @@
             Warning! Please fill in all the fields.
         </div>
 
+        <div *ngIf="missingFields" class="alert alert-danger" role="alert">
+            Error! Incorrect email address.
+        </div>
+
         <img src="assets/images/logo.png" width="250" class="img-fluid centered" /><br />
 
         <div class="selectType">

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   public missingFields: boolean = false;
+  public inCorrectEmail: boolean = false;
   public regiterLoading: boolean = false;
   public registerSuccess: boolean = false;
   public registerError: boolean = false;
@@ -72,6 +73,11 @@ export class RegisterComponent {
     this.flag = this.countries[parseInt(this.data.country)].flag;
   }
 
+  validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
   register() {
     if (
       this.data.name &&
@@ -82,63 +88,75 @@ export class RegisterComponent {
       this.data.country &&
       this.data.city
     ) {
-      this.missingFields = false;
-      this.data.phone = this.data.code + "" + this.data.phone;
-      this.data.country = this.data.country; //this.countries[this.data.country].name;
-      this.data.type = this.isFreelancer? "1": "0";
-      this.regiterLoading = true;
+      if (this.validateEmail(this.data.email)){
+        this.missingFields = false;
+        this.inCorrectEmail = false;
+        this.data.phone = this.data.code + "" + this.data.phone;
+        this.data.country = this.data.country; //this.countries[this.data.country].name;
+        this.data.type = this.isFreelancer ? "1" : "0";
+        this.regiterLoading = true;
 
-      this.userService.register(this.data).subscribe(
-        (res: any) => {
-          this.regiterLoading = false;
-          if(res.success){
-            this.registerError = false;
-            this.registerSuccess = true;
+        this.userService.register(this.data).subscribe(
+          (res: any) => {
+            this.regiterLoading = false;
+            if (res.success) {
+              this.registerError = false;
+              this.registerSuccess = true;
 
-            //Login user as the registration is successful
-            this.userData.email = this.data.email;
-            this.userData.password = this.data.password;
-            this.login();
-          }
-          else{
+              //Login user as the registration is successful
+              this.userData.email = this.data.email;
+              this.userData.password = this.data.password;
+              this.login();
+            }
+            else {
+              this.registerError = true;
+              this.registerSuccess = false;
+            }
+          }, (error) => {
+            this.regiterLoading = false;
             this.registerError = true;
             this.registerSuccess = false;
           }
-        }, (error) => {
-          this.regiterLoading = false;
-          this.registerError = true;
-          this.registerSuccess = false;
-        }
-      );
+        );
+      }
+      else{
+        this.inCorrectEmail = true;
+        this.missingFields = false;
+        this.registerError = false;
+        this.registerSuccess = false;  
+      }
     }
     else {
+      this.inCorrectEmail = false;
       this.missingFields = true;
       this.registerError = false;
       this.registerSuccess = false;
     }
   }
 
-  selectType(value){
+  selectType(value) {
     this.isFreelancer = value;
   }
 
-  toggleRegisterForm(){
+  toggleRegisterForm() {
     this.isRegister = !this.isRegister;
     this.isForgotPasswordView = false;
   }
 
-  backToLogin(){
+  backToLogin() {
     this.isRegister = false;
     this.isForgotPasswordView = false;
   }
 
-  toggleForgotPassword(){
+  toggleForgotPassword() {
     this.isForgotPasswordView = !this.isForgotPasswordView;
   }
 
-  agreeToTerms(){
+  agreeToTerms() {
     this.buttonDisabled = !this.buttonDisabled;
   }
+
+  agreeToAge(){}
 
   login() {
     if (this.userData.email && this.userData.password) {
@@ -147,9 +165,16 @@ export class RegisterComponent {
         (res: any) => {
           if (res.success) {
             let container = this;
-            this.userService.storeUserInfo(res.data).then(function(){
-              container.router.navigate([`/dashboard`]);
-            });
+            if (res.data.type === "2") {
+              this.userService.storeUserInfo(res.data).then(function () {
+                container.router.navigate([`/admin-account-list`]);
+              });
+            }
+            else {
+              this.userService.storeUserInfo(res.data).then(function () {
+                container.router.navigate([`/dashboard`]);
+              });
+            }
           }
           else {
             this.loginError = true;
