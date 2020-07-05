@@ -18,6 +18,8 @@ export class RegisterComponent {
   public isRegister: boolean = false;
   public isForgotPasswordView: boolean = false;
   public buttonDisabled: boolean = true;
+  public forgotPasswordError: boolean = false;
+  public forgotPasswordSuccess: boolean = false;
 
   public loginSuccess: boolean = false;
   public loginError: boolean = false;
@@ -43,6 +45,10 @@ export class RegisterComponent {
   public userData: any = {
     email: undefined,
     password: undefined
+  }
+
+  public forgotPasswordData: any = {
+    email: undefined
   }
 
   constructor(
@@ -157,6 +163,30 @@ export class RegisterComponent {
   }
 
   agreeToAge(){}
+
+  forgotPassword(){
+    if(this.forgotPasswordData.email){
+      this.loginLoading = true;
+
+      this.userService.forgotPassword(this.forgotPasswordData.email).subscribe(
+        (res: any) => {
+          this.loginLoading = false;
+          if (res.success) {
+            this.forgotPasswordSuccess = true;
+            this.forgotPasswordError = false;
+          }
+          else{
+            this.forgotPasswordError = true;
+            this.forgotPasswordSuccess = false;
+          }
+        }, (error) => {
+          this.loginLoading = false;
+          this.forgotPasswordSuccess = false;
+          this.forgotPasswordError = true;
+        }
+      );
+    }
+  }
 
   login() {
     if (this.userData.email && this.userData.password) {

@@ -183,6 +183,14 @@
         <div class="row">
             <div class="col-md-5 col-sm-11 col-11 margin-top-style no-padding form login-form">
                 <div class="login-wrapper">
+                    <div *ngIf="forgotPasswordSuccess" class="alert alert-success" role="alert">
+                        Congratulations! your email to reset password has been sent.
+                    </div>
+
+                    <div *ngIf="forgotPasswordError" class="alert alert-danger" role="alert">
+                        Internal Server Error! Invalid email address
+                    </div>
+
                     <div class="back-icon" (click)="backToLogin()">
                         <i class="fa fa-arrow-circle-o-left green-icon" aria-hidden="true"></i>
                         Back to Login
@@ -197,7 +205,9 @@
                     </div>
 
                     <button type="button" class="btn dark-theme-background btn-block" (click)="forgotPassword()">
-                    Submit email
+                        Submit email
+                        <span *ngIf="loginLoading" class="spinner-border spinner-border-sm" role="status"
+                        aria-hidden="true"></span>
                     </button>
                 </div>
                 <div class="clear-both"></div>

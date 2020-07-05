@@ -32,6 +32,10 @@ export class UserService {
     return this.http.post(`${this.url}api/user/login.php`, { "data": data });
   }
 
+  forgotPassword(email){
+    return this.http.get(`${this.url}api/user/forgotPassword.php?email=${email}`);
+  }
+
   register(data){
     return this.http.post(`${this.url}api/user/addUser.php`, { "data": data });
   }
