@@ -9,6 +9,15 @@
     background-repeat: no-repeat;
 }
 
+.type{
+    background-color: #1db36d;
+    color: white;
+    border-radius: 3px;
+    margin-left: 4px;
+    padding: 2px;
+    font-size: 12px;
+}
+
 .green-outline{    
     border-color: #1db36d !important;
     color: #1db36d !important;
@@ -116,6 +125,20 @@
 
 .deactivated-container{    
     background-color: orangered;    
+    color: white;    
+    border-radius: 5px;    
+    padding: 10px;
+}
+
+.freelancer-container{
+    background-color: #1db36d;    
+    color: white;    
+    border-radius: 5px;    
+    padding: 10px;
+}
+
+.hirer-container{
+    background-color: goldenrod;    
     color: white;    
     border-radius: 5px;    
     padding: 10px;

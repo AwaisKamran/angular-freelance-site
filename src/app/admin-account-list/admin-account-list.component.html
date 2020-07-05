@@ -29,6 +29,26 @@
                 <div class="float-left card-number"> {{ flaggedUsers }} </div>
             </div>
         </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="showUserTypeList('1')">
+            <div class="inner-chart-container freelancer-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">Freelancers</div>
+                    <i class="fa fa-exclamation-circle card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number"> {{ freelancerCount }} </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="showUserTypeList('0')">
+            <div class="inner-chart-container hirer-container">
+                <div class="float-left card-item">
+                    <div class="chart-title">Hirers</div>
+                    <i class="fa fa-exclamation-circle card-icons" aria-hidden="true"></i>
+                </div>
+                <div class="float-left card-number"> {{ hirerCount }} </div>
+            </div>
+        </div>
     </div>
 
     <div class="input-group mb-3 mt-3">
@@ -47,6 +67,7 @@
                     <div class="float-left">
                         <span class="profile-name mr-2">{{ user.name}}</span>
                         <span class="email-text">[{{ user.email }}]</span>
+                        <span class="type">{{ user.type === '1'? 'Freelancer': 'Hirer' }}</span>
                     </div>
                 </div>
 

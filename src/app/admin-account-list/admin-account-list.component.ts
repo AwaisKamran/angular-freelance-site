@@ -15,6 +15,8 @@ export class AdminAccountListComponent implements OnInit {
   public activeUsers = 0;
   public inActiveUsers = 0;
   public flaggedUsers = 0;
+  public freelancerCount = 0;
+  public hirerCount = 0;
 
   constructor(
     private router: Router,
@@ -43,9 +45,14 @@ export class AdminAccountListComponent implements OnInit {
     this.activeUsers = 0;
     this.inActiveUsers = 0;
     this.flaggedUsers = 0;
+    this.freelancerCount = 0;
+    this.hirerCount = 0;
 
     for (let i = 0; i < this.userList.length; i++) {
       if (this.userList[i].type !== "2") {
+        if(this.userList[i].type === "1") this.freelancerCount++;
+        if(this.userList[i].type === "0") this.hirerCount++;
+
         if(this.userList[i].flagged === "1"){
           if (this.userList[i].active === "1") this.flaggedUsers++;
           else if (this.userList[i].active === "0") this.inActiveUsers++;
@@ -102,6 +109,14 @@ export class AdminAccountListComponent implements OnInit {
         }
       });
     }
+  }
+
+  showUserTypeList(type = 1) {
+    this.viewList = this.userList.filter((user) => {
+      if(user.type === type){
+        return true;
+      }
+    });
   }
 
   showToast(success) {
