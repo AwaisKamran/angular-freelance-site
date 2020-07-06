@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AdminAccountListComponent implements OnInit {
   public userList: any = [];
   public viewList: any = [];
+  public dataList: any = [];
   public active = true;
   public activeUsers = 0;
   public inActiveUsers = 0;
@@ -50,8 +51,8 @@ export class AdminAccountListComponent implements OnInit {
 
     for (let i = 0; i < this.userList.length; i++) {
       if (this.userList[i].type !== "2") {
-        if(this.userList[i].type === "1") this.freelancerCount++;
-        if(this.userList[i].type === "0") this.hirerCount++;
+        if(this.userList[i].type === "1" && this.userList[i].active === "1") this.freelancerCount++;
+        if(this.userList[i].type === "0" && this.userList[i].active === "1") this.hirerCount++;
 
         if(this.userList[i].flagged === "1"){
           if (this.userList[i].active === "1") this.flaggedUsers++;
@@ -83,10 +84,10 @@ export class AdminAccountListComponent implements OnInit {
 
   findUserName(event) {
     if (event.target.value) {
-      this.viewList = this.userList.filter((user) => user.name.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1);
+      this.dataList = this.viewList.filter((user) => user.name.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1);
     }
     else {
-      this.viewList = this.userList;
+      this.dataList = this.viewList;
     }
   }
 
@@ -109,6 +110,7 @@ export class AdminAccountListComponent implements OnInit {
         }
       });
     }
+    this.dataList = [... this.viewList];
   }
 
   showUserTypeList(type = 1) {
@@ -117,6 +119,7 @@ export class AdminAccountListComponent implements OnInit {
         return true;
       }
     });
+    this.dataList = [... this.viewList];
   }
 
   showToast(success) {

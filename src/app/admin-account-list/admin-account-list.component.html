@@ -2,8 +2,8 @@
     <div class="row container-badge">
         <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="showUserList(true, false)">
             <div class="inner-chart-container activated-container">
+                <div class="chart-title">Active</div>
                 <div class="float-left card-item">
-                    <div class="chart-title">Active</div>
                     <i class="fa fa-check-circle card-icons" aria-hidden="true"></i>
                 </div>
                 <div class="float-left card-number"> {{ activeUsers }} </div>
@@ -12,8 +12,8 @@
 
         <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="showUserList(false, false)">
             <div class="inner-chart-container deactivated-container">
+                <div class="chart-title">Inactive</div>
                 <div class="float-left card-item">
-                    <div class="chart-title">Inactive</div>
                     <i class="fa fa-minus-circle card-icons" aria-hidden="true"></i>
                 </div>
                 <div class="float-left card-number"> {{ inActiveUsers }} </div>
@@ -22,8 +22,8 @@
 
         <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="showUserList(false, true)">
             <div class="inner-chart-container flagged-container">
+                <div class="chart-title">Flagged</div>
                 <div class="float-left card-item">
-                    <div class="chart-title">Flagged</div>
                     <i class="fa fa-exclamation-circle card-icons" aria-hidden="true"></i>
                 </div>
                 <div class="float-left card-number"> {{ flaggedUsers }} </div>
@@ -32,8 +32,8 @@
 
         <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="showUserTypeList('1')">
             <div class="inner-chart-container freelancer-container">
+                <div class="chart-title">Freelancers</div>
                 <div class="float-left card-item">
-                    <div class="chart-title">Freelancers</div>
                     <i class="fa fa-exclamation-circle card-icons" aria-hidden="true"></i>
                 </div>
                 <div class="float-left card-number"> {{ freelancerCount }} </div>
@@ -42,8 +42,8 @@
 
         <div class="col-lg-2 col-md-4 col-sm-5 col-5 chart-container" (click)="showUserTypeList('0')">
             <div class="inner-chart-container hirer-container">
+                <div class="chart-title">Hirers</div>
                 <div class="float-left card-item">
-                    <div class="chart-title">Hirers</div>
                     <i class="fa fa-exclamation-circle card-icons" aria-hidden="true"></i>
                 </div>
                 <div class="float-left card-number"> {{ hirerCount }} </div>
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div *ngFor="let user of viewList">
+    <div *ngFor="let user of dataList">
         <div *ngIf="user.type !== '2'">
             <div class="user-account-container mb-3">
                 <div class="float-left" (click)="navigateToProfile(user.id)">

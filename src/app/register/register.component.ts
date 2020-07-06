@@ -37,6 +37,7 @@ export class RegisterComponent {
     city: undefined,
     phone: undefined,
     type: undefined,
+    active: undefined,
     travelRadius: undefined,
     currency: undefined,
     currencySymbol: undefined
@@ -100,6 +101,7 @@ export class RegisterComponent {
         this.data.phone = this.data.code + "" + this.data.phone;
         this.data.country = this.data.country; //this.countries[this.data.country].name;
         this.data.type = this.isFreelancer ? "1" : "0";
+        this.data.active = "1";
         this.regiterLoading = true;
 
         this.userService.register(this.data).subscribe(
