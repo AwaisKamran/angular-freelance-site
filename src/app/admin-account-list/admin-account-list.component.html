@@ -72,8 +72,8 @@
                 </div>
 
                 <div class="profile-active-btn float-right mr-3">
-                    <span *ngIf="!active" class="green-color" (click)="toggleUserActivation(user)"> Activate </span>
-                    <span *ngIf="active" class="red-color" (click)="toggleUserActivation(user)"> Deactivate </span>
+                    <span *ngIf="user.active === '0'" class="green-color" (click)="toggleUserActivation(user)"> Activate </span>
+                    <span *ngIf="user.active === '1'" class="red-color" (click)="toggleUserActivation(user)"> Deactivate </span>
                 </div>
             </div>
         </div>

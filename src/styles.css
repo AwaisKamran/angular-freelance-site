@@ -1,3 +1,11 @@
+html{
+    overflow-x: hidden;
+}
+
+body{
+    overflow-x: hidden;
+}
+
 .navigation-bar{
     background-color: white;
     padding-top: 4px !important;

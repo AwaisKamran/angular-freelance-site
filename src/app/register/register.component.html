@@ -24,16 +24,44 @@
 
         <img src="assets/images/logo.png" width="250" class="img-fluid centered" /><br />
 
-        <div class="selectType">
-            <div [ngClass]="{ 'greenBlock': isFreelancer === true }" class="typeContainer margin-right-10"
-                (click)="selectType(true)">Become freelancer</div>
-            <div [ngClass]="{ 'greenBlock': isFreelancer === false }" class="typeContainer" (click)="selectType(false)">
-                Hire freelancers</div>
+        <div class="alert alert-warning" role="alert">
+            <b>Note</b> - Please choose your role as a freelancer or hirer by clicking the buttons below.
+        </div>
+
+        <div class="selectType row">
+            <div 
+                [ngClass]="{ 'greenBlock': isFreelancer === true }" 
+                class="typeContainer margin-right-10 col-lg-5 col-md-6 col-sm-12"
+                (click)="selectType(true)"
+            > Become freelancer</div>
+
+            <div 
+                [ngClass]="{ 'greenBlock': isFreelancer === false }" 
+                class="typeContainer col-lg-5 col-md-6 col-sm-12" 
+                (click)="selectType(false)"
+            > Hire freelancers</div>
+        </div>
+
+        <div *ngIf="isFreelancer" class="alert alert-info" role="alert">
+            <b>Instructors</b><br/>
+            1. Set up your profile under settings in the top right corner. Add a picture, your experience and relevant qualifications.<br/>
+            2. Select services in the top left corner and click on the green sign to create a gig, one gig for each service you offer and select the correct category.<br/>
+            3. When hirers express direct interest in your service, your job will be listed in dashboard and you can accept or decline.<br/>
+            4. If jobs are advertised to all relevant freelancers, they will be listed under ‘buyer request’ in the top left corner and you would be able bid on them.<br/>
+            5. You are more likely to secure bookings if your portfolio is clear and detailed.
+        </div>
+
+        <div *ngIf="!isFreelancer" class="alert alert-info" role="alert">
+            <b>Instructors</b><br/>
+            1. Set up your profile under settings in the top right corner.<br/>
+            2. You can search directly for services near you using the navigation bar.<br/>
+            3. If you prefer to publish your requirements and get bids, select ‘request a service’ in the top left corner and submit your ad. Wait until you receive bids, which you can accept.
         </div>
 
         <div class="form-group">
             <label for="exampleInputEmail1">Username<span class="red">*</span></label>
             <input [(ngModel)]="data.name" type="text" class="form-control" placeholder="Enter username">
+            <small class="form-text text-muted">Please do not use your email address as usernames.</small>
         </div>
 
         <div class="form-group">
@@ -48,7 +76,7 @@
 
         <div class="form-group" *ngIf="isFreelancer">
             <div class="form-group">
-                <label for="exampleInputEmail1">Position</label>
+                <label for="exampleInputEmail1">Main Role</label>
                 <input [(ngModel)]="data.position" type="text" class="form-control" placeholder="Enter your position">
             </div>
         </div>

@@ -49,7 +49,7 @@
                         <input [(ngModel)]="data.city" type="text" class="form-control" placeholder="City" />
                     </div>
 
-                    <div *ngIf="!isAdmin()">
+                    <!-- <div *ngIf="!isAdmin()">
                         <div class="form-group">
                             <label>Bank Name</label>
                             <input [(ngModel)]="data.bankName" type="text" class="form-control"
@@ -67,7 +67,7 @@
                             <input [(ngModel)]="data.bankAccountNumber" type="text" class="form-control"
                                 placeholder="Bank Account Number" />
                         </div>
-                    </div>
+                    </div> -->
 
                     <button type="button" class="btn btn-success btn-block green-block"
                         (click)="updateUserInformation()">
@@ -195,7 +195,7 @@
                     <app-experience></app-experience>
                 </div>
 
-                <div *ngIf="!isAdmin()" class="create-order padding-10 margin-20">
+                <!-- <div *ngIf="!isAdmin()" class="create-order padding-10 margin-20">
                     <div class="profile-heading">
                         <div *ngIf="userUpdateFailedWorkPermit" class="alert alert-warning" role="alert">
                             Warning! Please make sure you check the declaration checkbox
@@ -221,9 +221,9 @@
                     <button type="button" class="btn btn-success btn-block green-block" (click)="submitWorkPermit()">
                         Submit
                     </button>
-                </div>
+                </div> -->
 
-                <div *ngIf="!isAdmin()" class="create-order padding-10 margin-20">
+                <!-- <div *ngIf="!isAdmin()" class="create-order padding-10 margin-20">
                     <div class="profile-heading">
                         <div *ngIf="userUpdateFailedLicense" class="alert alert-warning" role="alert">
                             Warning! Please make sure you check the declaration checkbox
@@ -249,7 +249,7 @@
                     <button type="button" class="btn btn-success btn-block green-block" (click)="submitLicense()">
                         Submit
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

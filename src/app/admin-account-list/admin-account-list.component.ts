@@ -115,7 +115,7 @@ export class AdminAccountListComponent implements OnInit {
 
   showUserTypeList(type = 1) {
     this.viewList = this.userList.filter((user) => {
-      if(user.type === type){
+      if(user.type === type && user.active === "1"){
         return true;
       }
     });
