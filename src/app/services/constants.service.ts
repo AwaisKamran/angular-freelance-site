@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConstantsService {
-  public url: any = 'http://localhost/freelance-management/';
-  //public url: any = 'http://freelancehouseservices.com/server/';
+  //public url: any = 'http://localhost/freelance-management/';
+  public url: any = 'http://freelancehouseservices.com/server/';
   
   getImageUrl(id){
     return `${this.url}uploads/user/${id}.jpg`;
@@ -19,3 +19,4 @@ export class ConstantsService {
     return `${this.url}uploads/order/${file}`;
   }
 }
+            

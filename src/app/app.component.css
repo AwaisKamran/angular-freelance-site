@@ -6,10 +6,18 @@
     .sub-nav-bar{
         display: none !important;
     }
+
+    .log-out-nav-item{
+        display: show;
+    }
 }
 
 @media screen and (min-width: 935px) {
     #footerAccordion{
+        display: none;
+    }
+
+    .log-out-nav-item{
         display: none;
     }
 }
@@ -228,4 +236,9 @@
 
 .content{
     overflow-x: hidden;
+}
+
+.nav-item{
+    height:45px;
+    line-height: 45px;
 }
